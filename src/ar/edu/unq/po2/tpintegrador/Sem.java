@@ -1,6 +1,7 @@
 package ar.edu.unq.po2.tpintegrador;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sem {
@@ -78,6 +79,15 @@ public class Sem {
 	}
 	
 	
+	public List<RegistroDeCompra> registrarTodasLasCompras(){
+	    List<RegistroDeCompra> todasLasCompras = new ArrayList<RegistroDeCompra>();
+		
+		for(Zona zona : zonas) {
+			todasLasCompras.addAll(zona.registrarComprasDePuntosDeVenta());
+		}
+		
+		return todasLasCompras;
+	}
   
 
  
