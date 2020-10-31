@@ -5,5 +5,5 @@ import java.util.List;
 public class Sem {
    
     private List<Zona> zonas;
-    private List<Celular> celularesDeConductores:
+    private List<Celular> celularesDeConductores;
 }
