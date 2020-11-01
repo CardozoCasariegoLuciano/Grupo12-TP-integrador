@@ -1,5 +1,12 @@
 package ar.edu.unq.po2.tpintegrador;
 
-public class RegistroDeCompra {
+import java.util.Calendar;
+import java.util.Date;
 
+public abstract class RegistroDeCompra {
+
+	protected static int numeroDeRegistro;
+	protected Date fecha;
+	protected Calendar hora;
+	
 }
