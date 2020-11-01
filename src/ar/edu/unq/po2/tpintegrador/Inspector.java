@@ -32,6 +32,10 @@ public class Inspector {
 	}
 	
 	
+	private boolean verificarEstacionamiento(String patente) {
+		return this.perteneceA.estaEstacionadoEnZona(patente);
+	}
+	
 	
 	
 	
