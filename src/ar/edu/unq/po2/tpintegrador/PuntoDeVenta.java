@@ -9,5 +9,10 @@ public class PuntoDeVenta {
 		
 	}
 
+	public void finalizarEstacionamientosDePuntoDeVenta() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
 	

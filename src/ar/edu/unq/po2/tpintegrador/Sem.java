@@ -11,15 +11,29 @@ public class Sem {
     private LocalDateTime inicioFranjaHoraria;
     private LocalDateTime finFranjaHoraria;
     private float costo =  12;
+    private List<Subscriptor> sistemasSubscriptos;
     
     
-	public Sem(List<Zona>zonas, List<Celular> celulares, LocalDateTime inicioDeFranja, LocalDateTime finDeFranja, float costo) {
+
+
+
+	public Sem(List<Zona>zonas, List<Celular> celulares, LocalDateTime inicioDeFranja, LocalDateTime finDeFranja, float costo , List<Subscriptor>subscriptores ) {
 		 this.setZonas(zonas);
-	     this.setCelularesDeConductores(celularesDeConductores);
+	     this.setCelularesDeConductores(celulares);
 	     this.setInicioFranjaHoraria(inicioDeFranja);
 	     this.setFinFranjaHoraria(finDeFranja);
 	     this.setCosto(costo);
+	     this.setSistemasSubscriptos(subscriptores);
 	}
+    
+
+
+
+	private void setSistemasSubscriptos(List<Subscriptor> sistemasSubscriptos) {
+		this.sistemasSubscriptos = sistemasSubscriptos;
+	}
+
+
 
 
 	public LocalDateTime getInicioFranjaHoraria() {
@@ -89,7 +103,13 @@ public class Sem {
 		return todasLasCompras;
 	}
   
-//test
+   private void subscribirSistema(Subscriptor sistema) {
+	   this.sistemasSubscriptos.add(sistema);
+		   
+   }
  
-    
+   private void desSubscribirSistema(Subscriptor sistema) {
+	   this.sistemasSubscriptos.remove(sistema);
+   }
+   
 }
