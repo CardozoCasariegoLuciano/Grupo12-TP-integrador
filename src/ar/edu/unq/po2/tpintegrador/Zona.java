@@ -9,7 +9,7 @@ public class Zona {
 	private List<PuntoDeVenta>puntosDeVenta;
 	
 	
-	
+	/*Constructor*/
 	public Zona(Inspector inspector, List<PuntoDeVenta> puntosDeVenta) {
 		this.inspector = inspector;
 		this.puntosDeVenta = puntosDeVenta;
@@ -53,9 +53,25 @@ public class Zona {
 		return compras;
 	}
 
+	
+	public List<RegistroEstacionamiento> getEstacionamientosDeTodasLasZonas(){
+	  List<RegistroEstacionamiento>	estacionamientos = new ArrayList<RegistroEstacionamiento>();
+	  
+	  for (PuntoDeVenta puntoDeVenta : this.puntosDeVenta) {
+		  estacionamientos.addAll(puntoDeVenta.registrarEstacionamientos());
+	  }
+		
+	  return estacionamientos;	
+	}
+	
 	public boolean estaEstacionadoEnZona(String patente) {
-		
-		
+		for (RegistroEstacionamiento registro : this.getEstacionamientosDeTodasLasZonas()) {
+			if(registro.perteneceAPatente(patente)) {
+				return true;
+			}
+		   	
+		}
+		return false;
 	}
 
 

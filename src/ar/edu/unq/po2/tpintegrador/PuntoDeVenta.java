@@ -2,6 +2,7 @@ package ar.edu.unq.po2.tpintegrador;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 
 public class PuntoDeVenta {
 	
@@ -48,6 +49,12 @@ public class PuntoDeVenta {
 	public void finalizarEstacionamientosDePuntoDeVenta() {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	public ArrayList<RegistroEstacionamiento> registrarEstacionamientos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
