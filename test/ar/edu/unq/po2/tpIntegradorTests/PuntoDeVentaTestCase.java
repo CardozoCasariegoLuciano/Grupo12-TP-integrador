@@ -16,17 +16,16 @@ class PuntoDeVentaTestCase {
 	Zona unaZona;
 	
 	@BeforeEach
-	public void setUp() {
+	public void setUp() {		
 		
 		unaZona = mock(Zona.class);
-		
 		unPuntoDeVenta = new  PuntoDeVenta(unaZona);
 	}
 	
 	
 	@Test
 	void unPuntoDeVentaEsCreadoConUnaZonaYConListasDeEstacionamientosYComprasVacios() {
-				
+					
 		assertEquals(unaZona , unPuntoDeVenta.getZona());
 		assertEquals(0 , unPuntoDeVenta.getRegistrosDeCargas().size());
 		assertEquals(0 , unPuntoDeVenta.getRegistrosDeEstacionamiento().size());
