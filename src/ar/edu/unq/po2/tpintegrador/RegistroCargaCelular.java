@@ -1,7 +1,7 @@
 package ar.edu.unq.po2.tpintegrador;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class RegistroCargaCelular extends RegistroDeCompra {
 
@@ -17,8 +17,9 @@ public class RegistroCargaCelular extends RegistroDeCompra {
 		this.celular = unCelu;
 		this.puntoDeVenta = puntoDeVenta;
 		RegistroDeCompra.numeroDeRegistro ++;
-		this.hora = Calendar.getInstance();
-		this.fecha = new Date();
+		this.hora = LocalTime.now();
+		this.fecha = LocalDate.now();
 	}
+	
 
 }

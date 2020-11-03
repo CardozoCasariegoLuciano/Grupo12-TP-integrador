@@ -25,36 +25,46 @@ class PuntoDeVentaTestCase {
 	
 	
 	@Test
-	void unPuntoDeVentaEsCreadoConUnaZona() {
+	void unPuntoDeVentaEsCreadoConUnaZonaYConListasDeEstacionamientosYComprasVacios() {
 				
 		assertEquals(unaZona , unPuntoDeVenta.getZona());
-	}
+		assertEquals(0 , unPuntoDeVenta.getRegistrosDeCargas().size());
+		assertEquals(0 , unPuntoDeVenta.getRegistrosDeEstacionamiento().size());
+	}	
 	
-	@Test
-	void unPuntoDeVentaTieneUnaListaDeRegistrosDeVentas() {
-				
-		assertEquals(0 , unPuntoDeVenta.getRegistrosDeCompra().size());
-	}
 	
 	@Test
 	void unPuntoDeVentaPuedeRegistrarUnaCargaDeCelular() {
 		
 		Celular unCelu = mock(Celular.class);
 		
-		assertEquals(0 , unPuntoDeVenta.getRegistrosDeCompra().size());		
+		assertEquals(0 , unPuntoDeVenta.getRegistrosDeCargas().size());		
 		unPuntoDeVenta.registrarCargaCredito(500,unCelu);		
-		assertEquals(1 , unPuntoDeVenta.getRegistrosDeCompra().size());
+		assertEquals(1 , unPuntoDeVenta.getRegistrosDeCargas().size());
 	}
 	
 	
 	@Test
-	void unPuntoDeVentaPuedeRegistrarUnEstacionamiento() {
-		
+	void unPuntoDeVentaPuedeRegistrarUnEstacionamiento() {		
 				
-		assertEquals(0 , unPuntoDeVenta.getRegistrosDeCompra().size());		
+		assertEquals(0 , unPuntoDeVenta.getRegistrosDeEstacionamiento().size());		
 		unPuntoDeVenta.registrarEstacionamiento("patente", 18);		
-		assertEquals(1 , unPuntoDeVenta.getRegistrosDeCompra().size());
+		assertEquals(1 , unPuntoDeVenta.getRegistrosDeEstacionamiento().size());
 	}	
 	
+	
+	@Test
+	void unPuntoDeVentaPuedeFinalizarTodosLosestacionamientos() {		
+				
+		unPuntoDeVenta.registrarEstacionamiento("patente1", 18);
+		unPuntoDeVenta.registrarEstacionamiento("patente2", 20);
+		
+		assertEquals(2, unPuntoDeVenta.getEstacionamientosActivos());
+		
+		unPuntoDeVenta.finalizarEstacionamientosDePuntoDeVenta();
+		
+		assertEquals(0, unPuntoDeVenta.getEstacionamientosActivos());
+		
+	}	
 
 }

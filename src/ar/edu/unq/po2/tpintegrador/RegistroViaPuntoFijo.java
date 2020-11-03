@@ -1,9 +1,9 @@
 package ar.edu.unq.po2.tpintegrador;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
-public class RegistroViaPuntoFijo extends RegistroEstacionamientos {
+public class RegistroViaPuntoFijo extends RegistroEstacionamiento {
 	
 	private int cantDeHoras;
 	private PuntoDeVenta puntoDeVenta;
@@ -19,8 +19,9 @@ public class RegistroViaPuntoFijo extends RegistroEstacionamientos {
 		this.horaFinal = null;
 		
 		RegistroDeCompra.numeroDeRegistro ++;
-		this.hora = Calendar.getInstance();
-		this.fecha = new Date();
+		this.hora = LocalTime.now();
+		this.fecha = LocalDate.now();
 	}
+	
 
 }

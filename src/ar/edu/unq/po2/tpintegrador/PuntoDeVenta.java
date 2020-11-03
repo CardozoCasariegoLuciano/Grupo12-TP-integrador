@@ -1,61 +1,94 @@
 package ar.edu.unq.po2.tpintegrador;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
+
+
 
 public class PuntoDeVenta {
 	
-	//Variables
-	Calendar hora; 
-	
+	//Variables	
 	private Zona zona;
-	private ArrayList<RegistroDeCompra> listaDeRegistros;
+	private ArrayList<RegistroEstacionamiento> listaDeEstacionamientos;
+	private ArrayList<RegistroCargaCelular> listaDeCargasCelular;
+	
+	
 	
 	
 	//Constructor
 	public PuntoDeVenta(Zona unaZona) {
 		
 		this.zona = unaZona;
-		this.listaDeRegistros = new ArrayList<RegistroDeCompra>();
+		this.listaDeEstacionamientos = new ArrayList<RegistroEstacionamiento>();
+		this.listaDeCargasCelular = new ArrayList<RegistroCargaCelular>();
 	}
 	
 	
 	// Getters
-	public Zona getZona() {
+	public Zona getZona() {		
 		return zona;
 	}
 
-
-	public ArrayList<RegistroDeCompra> getRegistrosDeCompra() {
-		
-		return listaDeRegistros;
+	public ArrayList<RegistroEstacionamiento> getRegistrosDeEstacionamiento() {		
+		return this.listaDeEstacionamientos;
 	}
+
+	public ArrayList<RegistroCargaCelular> getRegistrosDeCargas(){		
+		return this.listaDeCargasCelular;
+	}
+	
 
 	// Metodos
 	
 	public void registrarEstacionamiento(String unaPatente, int cantDeHoras) {
 		
-		listaDeRegistros.add(new RegistroViaPuntoFijo(cantDeHoras,unaPatente, this));		
+		listaDeEstacionamientos.add(new RegistroViaPuntoFijo(cantDeHoras,unaPatente, this));		
 	}
 
 
 	public void registrarCargaCredito(float unMonto, Celular unCelu) {
 		
-		listaDeRegistros.add(new RegistroCargaCelular(unMonto, unCelu, this));		
+		listaDeCargasCelular.add(new RegistroCargaCelular(unMonto, unCelu, this));		
 	}
 
 
 	public void finalizarEstacionamientosDePuntoDeVenta() {
-		// TODO Auto-generated method stub
+		
+		for(RegistroEstacionamiento elem:this.listaDeEstacionamientos) {
+			
+			elem.finalizarRegistro();
+		}
 		
 	}
 
+	public int getEstacionamientosActivos() {
+		
+		int contador = 0;
+		
+		for(RegistroEstacionamiento elem:this.listaDeEstacionamientos) {
+			
+			if(elem.estaActivo == true) {
+				contador++;
+			}
+		}
+		
+		return contador;
+	}
+	
+	
+	//Para que es este metodo?
 
 	public ArrayList<RegistroEstacionamiento> registrarEstacionamientos() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+
+
+	
+
+	
 
 }
 	
