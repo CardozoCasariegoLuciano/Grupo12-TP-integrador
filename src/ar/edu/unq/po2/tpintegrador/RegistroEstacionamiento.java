@@ -12,22 +12,26 @@ public abstract class RegistroEstacionamiento extends RegistroDeCompra{
 	
 	
 	//Getters
-	public String getPatente() {
-		
+	public String getPatente() {		
 		return this.patente;
+	}
+	
+	public LocalTime getHoraFinal() {
+		return horaFinal;
 	}
 	
 	//Metodos
 	public void finalizarRegistro() {
 		
 		this.estaActivo = false;
+		
 	}
 
 	public  boolean perteneceAPatente(String patente) {
 		return this.patente == patente ;
 	}
 	
-
+	public abstract boolean comprobarValidez();
 
 }
 

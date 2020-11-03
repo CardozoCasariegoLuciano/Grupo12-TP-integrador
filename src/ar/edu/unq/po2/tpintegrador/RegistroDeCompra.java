@@ -7,7 +7,5 @@ public abstract class RegistroDeCompra {
 
 	protected static int numeroDeRegistro;
 	protected LocalDate fecha;
-	protected LocalTime hora;
-	
-	
+	protected LocalTime hora;	
 }

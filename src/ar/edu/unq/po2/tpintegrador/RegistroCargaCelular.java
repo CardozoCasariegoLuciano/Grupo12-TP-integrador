@@ -19,7 +19,6 @@ public class RegistroCargaCelular extends RegistroDeCompra {
 		RegistroDeCompra.numeroDeRegistro ++;
 		this.hora = LocalTime.now();
 		this.fecha = LocalDate.now();
-	}
-	
-
+	}	
 }
+

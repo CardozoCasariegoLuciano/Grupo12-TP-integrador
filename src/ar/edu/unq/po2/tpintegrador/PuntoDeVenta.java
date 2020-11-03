@@ -11,8 +11,7 @@ public class PuntoDeVenta {
 	private ArrayList<RegistroEstacionamiento> listaDeEstacionamientos;
 	private ArrayList<RegistroCargaCelular> listaDeCargasCelular;
 	
-	
-	
+		
 	
 	//Constructor
 	public PuntoDeVenta(Zona unaZona) {
@@ -81,10 +80,6 @@ public class PuntoDeVenta {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-
-
 
 	
 
