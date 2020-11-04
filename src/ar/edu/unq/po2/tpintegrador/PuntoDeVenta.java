@@ -8,7 +8,7 @@ public class PuntoDeVenta {
 	
 	//Variables	
 	private Zona zona;
-	private ArrayList<RegistroViaPuntoFijo> listaDeEstacionamientos;
+	private ArrayList<RegistroViaPuntoFijo> listaDeEstacionamientosPorCompraPuntual;
 	private ArrayList<RegistroCargaCelular> listaDeCargasCelular;
 	
 		
@@ -17,7 +17,7 @@ public class PuntoDeVenta {
 	public PuntoDeVenta(Zona unaZona) {
 		
 		this.zona = unaZona;
-		this.listaDeEstacionamientos = new ArrayList<RegistroViaPuntoFijo>();
+		this.listaDeEstacionamientosPorCompraPuntual = new ArrayList<RegistroViaPuntoFijo>();
 		this.listaDeCargasCelular = new ArrayList<RegistroCargaCelular>();
 	}
 	
@@ -27,8 +27,8 @@ public class PuntoDeVenta {
 		return zona;
 	}
 
-	public ArrayList<RegistroViaPuntoFijo> getRegistrosDeEstacionamiento() {		
-		return this.listaDeEstacionamientos;
+	public ArrayList<RegistroViaPuntoFijo> getRegistrosDeEstacionamientoPorCompraPuntual() {		
+		return this.listaDeEstacionamientosPorCompraPuntual;
 	}
 
 	public ArrayList<RegistroCargaCelular> getRegistrosDeCargas(){		
@@ -40,7 +40,7 @@ public class PuntoDeVenta {
 	
 	public void registrarEstacionamiento(String unaPatente, int cantDeHoras) {
 		
-		listaDeEstacionamientos.add(new RegistroViaPuntoFijo(cantDeHoras,unaPatente, this));		
+		listaDeEstacionamientosPorCompraPuntual.add(new RegistroViaPuntoFijo(cantDeHoras,unaPatente, this));		
 	}
 
 
@@ -52,7 +52,7 @@ public class PuntoDeVenta {
 
 	public void finalizarEstacionamientosDePuntoDeVenta() {
 		
-		for(RegistroEstacionamiento elem:this.listaDeEstacionamientos) {
+		for(RegistroEstacionamiento elem:this.listaDeEstacionamientosPorCompraPuntual) {
 			
 			elem.finalizarRegistro();
 		}
@@ -63,7 +63,7 @@ public class PuntoDeVenta {
 		
 		int contador = 0;
 		
-		for(RegistroEstacionamiento elem:this.listaDeEstacionamientos) {
+		for(RegistroEstacionamiento elem:this.listaDeEstacionamientosPorCompraPuntual) {
 			
 			if(elem.estaActivo == true) {
 				contador++;

@@ -28,7 +28,7 @@ class PuntoDeVentaTestCase {
 					
 		assertEquals(unaZona , unPuntoDeVenta.getZona());
 		assertEquals(0 , unPuntoDeVenta.getRegistrosDeCargas().size());
-		assertEquals(0 , unPuntoDeVenta.getRegistrosDeEstacionamiento().size());
+		assertEquals(0 , unPuntoDeVenta.getRegistrosDeEstacionamientoPorCompraPuntual().size());
 	}	
 	
 	
@@ -46,9 +46,9 @@ class PuntoDeVentaTestCase {
 	@Test
 	void unPuntoDeVentaPuedeRegistrarUnEstacionamiento() {		
 				
-		assertEquals(0 , unPuntoDeVenta.getRegistrosDeEstacionamiento().size());		
+		assertEquals(0 , unPuntoDeVenta.getRegistrosDeEstacionamientoPorCompraPuntual().size());		
 		unPuntoDeVenta.registrarEstacionamiento("patente", 18);		
-		assertEquals(1 , unPuntoDeVenta.getRegistrosDeEstacionamiento().size());
+		assertEquals(1 , unPuntoDeVenta.getRegistrosDeEstacionamientoPorCompraPuntual().size());
 	}	
 	
 	
