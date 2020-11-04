@@ -7,12 +7,13 @@ public class Zona {
     
 	private Inspector inspector;
 	private List<PuntoDeVenta>puntosDeVenta;
-	
+	private List<RegistroViaApp> estacinamientosViaApp;
 	
 	/*Constructor*/
-	public Zona(Inspector inspector, List<PuntoDeVenta> puntosDeVenta) {
+	public Zona(Inspector inspector, List<PuntoDeVenta> puntosDeVenta , List<RegistroViaApp>estacionamientosDeApp) {
 		this.inspector = inspector;
 		this.puntosDeVenta = puntosDeVenta;
+		this.setEstacinamientosViaApp(estacionamientosDeApp);
 	}
 
 	private Inspector getInspector() {
@@ -34,6 +35,14 @@ public class Zona {
 	
 	
 	
+	private List<RegistroViaApp> getEstacinamientosViaApp() {
+		return estacinamientosViaApp;
+	}
+
+	private void setEstacinamientosViaApp(List<RegistroViaApp> estacinamientosViaApp) {
+		this.estacinamientosViaApp = estacinamientosViaApp;
+	}
+
 	public void finalizarEstacionamientos() {
 		for(PuntoDeVenta puntoDeVenta : puntosDeVenta) {
 			puntoDeVenta.finalizarEstacionamientosDePuntoDeVenta();
@@ -47,25 +56,34 @@ public class Zona {
 		List<RegistroDeCompra> compras = new ArrayList<RegistroDeCompra>();
 			
 		for (PuntoDeVenta puntoDeVenta : puntosDeVenta) {
-			compras.addAll(puntoDeVenta.registrarCompras());
+			compras.addAll(puntoDeVenta.getRegistrosDeCargas());
 		}
 		
 		return compras;
 	}
 
 	
-	public List<RegistroEstacionamiento> getEstacionamientosDeTodasLasZonas(){
+	public List<RegistroEstacionamiento> getEstacionamientosDePuntosDeVenta(){
 	  List<RegistroEstacionamiento>	estacionamientos = new ArrayList<RegistroEstacionamiento>();
 	  
 	  for (PuntoDeVenta puntoDeVenta : this.puntosDeVenta) {
-		  estacionamientos.addAll(puntoDeVenta.registrarEstacionamientos());
+		  estacionamientos.addAll(puntoDeVenta.getRegistrosDeEstacionamiento());
 	  }
 		
 	  return estacionamientos;	
 	}
 	
+	
+	
+	
 	public boolean estaEstacionadoEnZona(String patente) {
-		for (RegistroEstacionamiento registro : this.getEstacionamientosDeTodasLasZonas()) {
+		ArrayList<RegistroEstacionamiento>	estacionamientos = new ArrayList<RegistroEstacionamiento>();
+		estacionamientos.addAll(this.estacinamientosViaApp);
+		estacionamientos.addAll(this.getEstacionamientosDePuntosDeVenta());
+		
+		
+		
+		for (RegistroEstacionamiento registro : this.getEstacionamientosDePuntosDeVenta()) {
 			if(registro.perteneceAPatente(patente)) {
 				return true;
 			}

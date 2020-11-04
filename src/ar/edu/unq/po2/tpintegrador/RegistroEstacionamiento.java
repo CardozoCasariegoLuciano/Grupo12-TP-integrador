@@ -26,6 +26,10 @@ public abstract class RegistroEstacionamiento extends RegistroDeCompra{
 		this.estaActivo = false;
 		
 	}
+
+	public  boolean perteneceAPatente(String patente) {
+		return this.patente == patente ;
+	}
 	
 	public abstract boolean comprobarValidez();
 
