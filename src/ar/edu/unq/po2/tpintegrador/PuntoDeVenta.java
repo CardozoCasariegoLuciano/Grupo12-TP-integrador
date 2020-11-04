@@ -8,7 +8,7 @@ public class PuntoDeVenta {
 	
 	//Variables	
 	private Zona zona;
-	private ArrayList<RegistroEstacionamiento> listaDeEstacionamientos;
+	private ArrayList<RegistroViaPuntoFijo> listaDeEstacionamientos;
 	private ArrayList<RegistroCargaCelular> listaDeCargasCelular;
 	
 		
@@ -17,7 +17,7 @@ public class PuntoDeVenta {
 	public PuntoDeVenta(Zona unaZona) {
 		
 		this.zona = unaZona;
-		this.listaDeEstacionamientos = new ArrayList<RegistroEstacionamiento>();
+		this.listaDeEstacionamientos = new ArrayList<RegistroViaPuntoFijo>();
 		this.listaDeCargasCelular = new ArrayList<RegistroCargaCelular>();
 	}
 	
@@ -27,7 +27,7 @@ public class PuntoDeVenta {
 		return zona;
 	}
 
-	public ArrayList<RegistroEstacionamiento> getRegistrosDeEstacionamiento() {		
+	public ArrayList<RegistroViaPuntoFijo> getRegistrosDeEstacionamiento() {		
 		return this.listaDeEstacionamientos;
 	}
 
@@ -68,18 +68,11 @@ public class PuntoDeVenta {
 			if(elem.estaActivo == true) {
 				contador++;
 			}
-		}
-		
+		}		
 		return contador;
 	}
 	
 	
-	//Para que es este metodo?
-
-	public ArrayList<RegistroEstacionamiento> registrarEstacionamientos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
 

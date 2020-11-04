@@ -24,7 +24,7 @@ class PuntoDeVentaTestCase {
 	
 	
 	@Test
-	void unPuntoDeVentaEsCreadoConUnaZonaYConListasDeEstacionamientosYComprasVacios() {
+	void unPuntoDeVentaEsCreadoConUnaZonaYConListasDeEstacionamientosPorPuntoVentaYComprasVacios() {
 					
 		assertEquals(unaZona , unPuntoDeVenta.getZona());
 		assertEquals(0 , unPuntoDeVenta.getRegistrosDeCargas().size());
