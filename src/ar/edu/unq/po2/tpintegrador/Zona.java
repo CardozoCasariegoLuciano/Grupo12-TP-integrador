@@ -78,7 +78,10 @@ public class Zona {
 	
 	public boolean estaEstacionadoEnZona(String patente) {
 		ArrayList<RegistroEstacionamiento>	estacionamientos = new ArrayList<RegistroEstacionamiento>();
-		estacionamientos.addAll(this.getEstacinamientosViaApp());
+		estacionamientos.addAll(this.estacinamientosViaApp);
+		estacionamientos.addAll(this.getEstacionamientosDePuntosDeVenta());
+		
+		
 		
 		for (RegistroEstacionamiento registro : this.getEstacionamientosDePuntosDeVenta()) {
 			if(registro.perteneceAPatente(patente)) {
