@@ -12,7 +12,7 @@ public class Inspector {
 	}
 
 
-	private Zona getPerteneceA() {
+	public Zona getPerteneceA() {
 		return perteneceA;
 	}
 
@@ -37,6 +37,9 @@ public class Inspector {
 	}
 	
 	
+	private void multar(String patente) {
+		this.dispositivoMovil.registrarMulta(patente);
+	}
 	
 	
 }
