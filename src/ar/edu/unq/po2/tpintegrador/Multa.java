@@ -11,11 +11,11 @@ public class Multa {
     private LocalDate fecha;
     private LocalTime hora;
     private Inspector inspector;
-    private Zona zona;
+    private ZonaDeEstacionamiento zona;
 
 	
 
-	public Multa(String patente, LocalDate fecha, LocalTime hora, Inspector inspector, Zona zona) {
+	public Multa(String patente, LocalDate fecha, LocalTime hora, Inspector inspector, ZonaDeEstacionamiento zona) {
 		this.patente = patente;
 		this.fecha = fecha;
 		this.hora = hora;
@@ -55,11 +55,11 @@ public class Multa {
 		this.inspector = inspector;
 	}
 
-	private Zona getZona() {
+	private ZonaDeEstacionamiento getZona() {
 		return zona;
 	}
 
-	private void setZona(Zona zona) {
+	private void setZona(ZonaDeEstacionamiento zona) {
 		this.zona = zona;
 	}
 
