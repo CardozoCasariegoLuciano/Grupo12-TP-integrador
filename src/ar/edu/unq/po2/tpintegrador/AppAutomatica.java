@@ -12,6 +12,7 @@ public class AppAutomatica implements ModoDeApp {
 	public void finEstacionamiento() {
 		//sem.finalizoEstacionamiento 
 		
+		
 	}
 
 }

@@ -9,7 +9,7 @@ public class AppUsuario {
 	}
 
 	void alertaDeInicioDeEstacionamiento() {
-		
+		 
 	}
 
 	void alertaDeFinDeEstacionamiento() {
