@@ -17,8 +17,7 @@ public class AppInspector {
 
 	public void registrarMulta(String patente , Date fecha, LocalTime hora , Inspector inspector) {
 	  		
-  	   this.listaDeMultas.add(new Multa(patente , fecha, hora , inspector, inspector.getPerteneceA()));
-		
+  	   this.listaDeMultas.add(new Multa(patente , fecha, hora , inspector, inspector.getPerteneceA()));		
 	}
 
 }
