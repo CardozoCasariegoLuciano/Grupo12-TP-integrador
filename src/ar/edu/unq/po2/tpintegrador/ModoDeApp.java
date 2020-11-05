@@ -4,6 +4,6 @@ public interface ModoDeApp {
 	
 	
 	void estacionar(String patente);
-	
+	 
 	void finEstacionamiento();
 }
