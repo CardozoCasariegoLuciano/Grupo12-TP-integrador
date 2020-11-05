@@ -1,20 +1,21 @@
 package ar.edu.unq.po2.tpintegrador;
 
 
+import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
+
 
 public class Multa {
 
     private String patente;
-    private Date fecha;
+    private LocalDate fecha;
     private LocalTime hora;
     private Inspector inspector;
     private Zona zona;
 
 	
 
-	public Multa(String patente, Date fecha, LocalTime hora, Inspector inspector, Zona zona) {
+	public Multa(String patente, LocalDate fecha, LocalTime hora, Inspector inspector, Zona zona) {
 		this.patente = patente;
 		this.fecha = fecha;
 		this.hora = hora;
@@ -30,11 +31,11 @@ public class Multa {
 		this.patente = patente;
 	}
 
-	private Date getFecha() {
+	private LocalDate getFecha() {
 		return fecha;
 	}
 
-	private void setFecha(Date fecha) {
+	private void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 

@@ -1,7 +1,7 @@
 package ar.edu.unq.po2.tpintegrador;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
 
 public class AppInspector {
@@ -15,7 +15,7 @@ public class AppInspector {
 	}
 
 
-	public void registrarMulta(String patente , Date fecha, LocalTime hora , Inspector inspector) {
+	public void registrarMulta(String patente , LocalDate fecha, LocalTime hora , Inspector inspector) {
 	  		
   	   this.listaDeMultas.add(new Multa(patente , fecha, hora , inspector, inspector.getPerteneceA()));		
 	}

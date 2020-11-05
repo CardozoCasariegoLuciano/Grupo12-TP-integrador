@@ -1,5 +1,8 @@
 package ar.edu.unq.po2.tpintegrador;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Inspector {
    
 	private Zona perteneceA;
@@ -38,7 +41,7 @@ public class Inspector {
 	
 	
 	private void multar(String patente) {
-		this.dispositivoMovil.registrarMulta(patente);
+		this.dispositivoMovil.registrarMulta(patente , LocalDate.now() , LocalTime.now() , this);
 	}
 	
 	
