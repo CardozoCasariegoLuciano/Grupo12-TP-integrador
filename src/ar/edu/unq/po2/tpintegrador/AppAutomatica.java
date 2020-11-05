@@ -4,13 +4,13 @@ public class AppAutomatica implements ModoDeApp {
 
 	@Override
 	public void estacionar(String patente) {
-		
+		//sem.estacionar
 		
 	}
 
 	@Override
 	public void finEstacionamiento() {
-		// TODO Auto-generated method stub
+		//sem.finalizoEstacionamiento 
 		
 	}
 
