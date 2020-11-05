@@ -27,10 +27,14 @@ public class PuntoDeVenta {
 		return zona;
 	}
 
+	
+	
 	public ArrayList<RegistroViaPuntoFijo> getRegistrosDeEstacionamientoPorCompraPuntual() {		
 		return this.listaDeEstacionamientosPorCompraPuntual;
 	}
 
+	
+	
 	public ArrayList<RegistroCargaCelular> getRegistrosDeCargas(){		
 		return this.listaDeCargasCelular;
 	}
