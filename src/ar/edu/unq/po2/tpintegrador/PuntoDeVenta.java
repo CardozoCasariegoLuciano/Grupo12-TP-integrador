@@ -73,7 +73,9 @@ public class PuntoDeVenta {
 				contador++;
 			}
 		}		
+		
 		return contador;
+		
 	}
 	
 	
