@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Sem {
    
-    private List<Zona> zonas;
+    private List<ZonaDeEstacionamiento> zonas;
     private List<Celular> celularesDeConductores;
     private LocalDateTime inicioFranjaHoraria;
     private LocalDateTime finFranjaHoraria;
@@ -17,7 +17,7 @@ public class Sem {
 
 
 
-	public Sem(List<Zona>zonas, List<Celular> celulares, LocalDateTime inicioDeFranja, LocalDateTime finDeFranja, float costo , List<Subscriptor>subscriptores ) {
+	public Sem(List<ZonaDeEstacionamiento>zonas, List<Celular> celulares, LocalDateTime inicioDeFranja, LocalDateTime finDeFranja, float costo , List<Subscriptor>subscriptores ) {
 		 this.setZonas(zonas);
 	     this.setCelularesDeConductores(celulares);
 	     this.setInicioFranjaHoraria(inicioDeFranja);
@@ -66,12 +66,12 @@ public class Sem {
 	}
 
 
-	private List<Zona> getZonas() {
+	private List<ZonaDeEstacionamiento> getZonas() {
 		return zonas;
 	}
 
 
-	private void setZonas(List<Zona> zonas) {
+	private void setZonas(List<ZonaDeEstacionamiento> zonas) {
 		this.zonas = zonas;
 	}
 
@@ -87,7 +87,7 @@ public class Sem {
     
     
 	private void finalizarTodosLosEstacionamientos() {
-		for (Zona zona : zonas) {
+		for (ZonaDeEstacionamiento zona : zonas) {
 			zona.finalizarEstacionamientos();
 		}
 	}
@@ -96,7 +96,7 @@ public class Sem {
 	public List<RegistroDeCompra> registrarTodasLasCompras(){
 	    List<RegistroDeCompra> todasLasCompras = new ArrayList<RegistroDeCompra>();
 		
-		for(Zona zona : zonas) {
+		for(ZonaDeEstacionamiento zona : zonas) {
 			todasLasCompras.addAll(zona.registrarComprasDePuntosDeVenta());
 		}
 		

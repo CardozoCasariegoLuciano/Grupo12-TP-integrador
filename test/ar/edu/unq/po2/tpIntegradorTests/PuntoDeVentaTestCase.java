@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.po2.tpintegrador.Celular;
 import ar.edu.unq.po2.tpintegrador.PuntoDeVenta;
-import ar.edu.unq.po2.tpintegrador.Zona;
+import ar.edu.unq.po2.tpintegrador.ZonaDeEstacionamiento;
 
 class PuntoDeVentaTestCase {
 
 	PuntoDeVenta unPuntoDeVenta;
-	Zona unaZona;
+	ZonaDeEstacionamiento unaZona;
 	
 	@BeforeEach
 	public void setUp() {		
 		
-		unaZona = mock(Zona.class);
+		unaZona = mock(ZonaDeEstacionamiento.class);
 		unPuntoDeVenta = new  PuntoDeVenta(unaZona);
 	}
 	

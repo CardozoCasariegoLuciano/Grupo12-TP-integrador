@@ -3,14 +3,14 @@ package ar.edu.unq.po2.tpintegrador;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Zona {
+public class ZonaDeEstacionamiento {
     
 	private Inspector inspector;
 	private List<PuntoDeVenta>puntosDeVenta;
 	private List<RegistroViaApp> estacinamientosViaApp;
 	
 	/*Constructor*/
-	public Zona(Inspector inspector, List<PuntoDeVenta> puntosDeVenta , List<RegistroViaApp>estacionamientosDeApp) {
+	public ZonaDeEstacionamiento(Inspector inspector, List<PuntoDeVenta> puntosDeVenta , List<RegistroViaApp>estacionamientosDeApp) {
 		this.inspector = inspector;
 		this.puntosDeVenta = puntosDeVenta;
 		this.setEstacinamientosViaApp(estacionamientosDeApp);
