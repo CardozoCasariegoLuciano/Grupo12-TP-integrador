@@ -93,6 +93,33 @@ public class Sem {
 	}
 	
 	
+	
+	public void finalizarEstacionamientosDePuntoDeVenta() {
+		
+		for(RegistroEstacionamiento elem:this.listaDeEstacionamientosPorCompraPuntual) {
+			
+			elem.finalizarRegistro();
+		}
+		
+	}
+
+	public int getEstacionamientosActivos() {
+		
+		int contador = 0;
+		
+		for(RegistroEstacionamiento elem:this.listaDeEstacionamientosPorCompraPuntual) {
+			
+			if(elem.estaActivo == true) {
+				contador++;
+			}
+		}		
+		
+		return contador;
+		
+	}
+	
+	
+	
 	public List<RegistroDeCompra> registrarTodasLasCompras(){
 	    List<RegistroDeCompra> todasLasCompras = new ArrayList<RegistroDeCompra>();
 		
