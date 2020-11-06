@@ -59,8 +59,7 @@ public class PuntoDeVenta {
 		for(RegistroEstacionamiento elem:this.listaDeEstacionamientosPorCompraPuntual) {
 			
 			elem.finalizarRegistro();
-		}
-		
+		}		
 	}
 
 	public int getEstacionamientosActivos() {
