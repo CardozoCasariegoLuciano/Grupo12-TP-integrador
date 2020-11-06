@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.po2.tpintegrador.Celular;
 import ar.edu.unq.po2.tpintegrador.PuntoDeVenta;
+import ar.edu.unq.po2.tpintegrador.Sem;
 import ar.edu.unq.po2.tpintegrador.ZonaDeEstacionamiento;
 
 class PuntoDeVentaTestCase {
@@ -24,11 +25,11 @@ class PuntoDeVentaTestCase {
 	
 	
 	@Test
-	void unPuntoDeVentaEsCreadoConUnaZonaYConListasDeEstacionamientosPorPuntoVentaYComprasVacios() {
+	void unPuntoDeVentaEsCreadoConUnaZonaYConListaDeComprasVacia() {
 					
 		assertEquals(unaZona , unPuntoDeVenta.getZona());
-		assertEquals(0 , unPuntoDeVenta.getRegistrosDeCargas().size());
-		assertEquals(0 , unPuntoDeVenta.getRegistrosDeEstacionamientoPorCompraPuntual().size());
+		assertEquals(0 , unPuntoDeVenta.getRegistrosDeCompra().size());
+		
 	}	
 	
 	
@@ -37,32 +38,20 @@ class PuntoDeVentaTestCase {
 		
 		Celular unCelu = mock(Celular.class);
 		
-		assertEquals(0 , unPuntoDeVenta.getRegistrosDeCargas().size());		
+		assertEquals(0 , unPuntoDeVenta.getRegistrosDeCompra().size());		
 		unPuntoDeVenta.registrarCargaCredito(500,unCelu);		
-		assertEquals(1 , unPuntoDeVenta.getRegistrosDeCargas().size());
+		assertEquals(1 , unPuntoDeVenta.getRegistrosDeCompra().size());
 	}
 	
 	
 	@Test
-	void unPuntoDeVentaPuedeRegistrarUnEstacionamiento() {		
-				
-		assertEquals(0 , unPuntoDeVenta.getRegistrosDeEstacionamientoPorCompraPuntual().size());		
-		unPuntoDeVenta.registrarEstacionamiento("patente", 18);		
-		assertEquals(1 , unPuntoDeVenta.getRegistrosDeEstacionamientoPorCompraPuntual().size());
-	}	
-	
-	
-	@Test
-	void unPuntoDeVentaPuedeFinalizarTodosLosestacionamientos() {		
-				
-		unPuntoDeVenta.registrarEstacionamiento("patente1", 18);
-		unPuntoDeVenta.registrarEstacionamiento("patente2", 20);
+	void cuandoSeRegistraUnEstacionamientoElPVregistraLaCompraDeHoras() {	
 		
-		//assertEquals(2, unPuntoDeVenta.getEstacionamientosActivos());
+		Sem unSem = mock(Sem.class);	
+			
+		unPuntoDeVenta.registrarEstacionamiento("patente", 1, unSem);		
+		assertEquals(1 , unPuntoDeVenta.getRegistrosDeCompra().size());
 		
-	//	unPuntoDeVenta.finalizarEstacionamientosDePuntoDeVenta();
-		
-		//assertEquals(0, unPuntoDeVenta.getEstacionamientosActivos());
 		
 	}	
 
