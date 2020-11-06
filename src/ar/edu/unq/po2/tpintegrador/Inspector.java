@@ -5,22 +5,22 @@ import java.time.LocalTime;
 
 public class Inspector {
    
-	private Zona perteneceA;
+	private ZonaDeEstacionamiento perteneceA;
 	private AppInspector dispositivoMovil;
 	
 	
-	public Inspector(Zona perteneceA, AppInspector dispositivoMovil) {
+	public Inspector(ZonaDeEstacionamiento perteneceA, AppInspector dispositivoMovil) {
 		this.setPerteneceA(perteneceA);
 		this.setDispositivoMovil(dispositivoMovil);
 	}
 
 
-	public Zona getPerteneceA() {
+	public ZonaDeEstacionamiento getPerteneceA() {
 		return perteneceA;
 	}
 
 
-	private void setPerteneceA(Zona perteneceA) {
+	private void setPerteneceA(ZonaDeEstacionamiento perteneceA) {
 		this.perteneceA = perteneceA;
 	}
 

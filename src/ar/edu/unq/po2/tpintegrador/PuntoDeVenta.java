@@ -7,14 +7,14 @@ import java.util.ArrayList;
 public class PuntoDeVenta {
 	
 	//Variables	
-	private Zona zona;
+	private ZonaDeEstacionamiento zona;
 	private ArrayList<RegistroViaPuntoFijo> listaDeEstacionamientosPorCompraPuntual;
 	private ArrayList<RegistroCargaCelular> listaDeCargasCelular;
 	
 		
 	
 	//Constructor
-	public PuntoDeVenta(Zona unaZona) {
+	public PuntoDeVenta(ZonaDeEstacionamiento unaZona) {
 		
 		this.zona = unaZona;
 		this.listaDeEstacionamientosPorCompraPuntual = new ArrayList<RegistroViaPuntoFijo>();
@@ -23,7 +23,7 @@ public class PuntoDeVenta {
 	
 	
 	// Getters
-	public Zona getZona() {		
+	public ZonaDeEstacionamiento getZona() {		
 		return zona;
 	}
 
@@ -53,29 +53,6 @@ public class PuntoDeVenta {
 		listaDeCargasCelular.add(new RegistroCargaCelular(unMonto, unCelu, this));		
 	}
 
-
-	public void finalizarEstacionamientosDePuntoDeVenta() {
-		
-		for(RegistroEstacionamiento elem:this.listaDeEstacionamientosPorCompraPuntual) {
-			
-			elem.finalizarRegistro();
-		}		
-	}
-
-	public int getEstacionamientosActivos() {
-		
-		int contador = 0;
-		
-		for(RegistroEstacionamiento elem:this.listaDeEstacionamientosPorCompraPuntual) {
-			
-			if(elem.estaActivo == true) {
-				contador++;
-			}
-		}		
-		return contador;
-	}
-	
-	
 
 	
 
