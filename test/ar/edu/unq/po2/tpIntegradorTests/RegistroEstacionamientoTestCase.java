@@ -3,6 +3,8 @@ package ar.edu.unq.po2.tpIntegradorTests;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import java.time.LocalTime;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +23,7 @@ class RegistroEstacionamientoTestCase {
 	public void setUp() {
 		
 		unPuntoDeV = mock(PuntoDeVenta.class);
-		unRegistro = new RegistroViaPuntoFijo(1, "altaPatente", unPuntoDeV);
+		unRegistro = new RegistroViaPuntoFijo(1, "unaPatente", unPuntoDeV);
 		
 	}
 	
@@ -43,10 +45,9 @@ class RegistroEstacionamientoTestCase {
 	@Test
 	void unRegistroDeEstacionamientSabeSiNoEstaActivo() {
 		
-		//Como testeo esto?
-		//Quiero que comprobarValidez retorne Falso por agotamiento del tiempo comprado
+		when(unRegistro.horaActual()).thenReturn(LocalTime.of(20, 00, 00));
 		
-		//assertFalse(unRegistro.comprobarValidez());
+		assertFalse(unRegistro.comprobarValidez());
 	}
 	
 	

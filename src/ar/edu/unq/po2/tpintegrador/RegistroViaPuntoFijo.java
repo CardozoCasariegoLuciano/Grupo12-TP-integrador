@@ -35,6 +35,12 @@ public class RegistroViaPuntoFijo extends RegistroEstacionamiento {
 		
 		return this.puntoDeVenta;
 	}
+	
+	public LocalTime horaActual() {			
+				
+		return LocalTime.now();
+	}
+	
 
 	//Metodos
 	@Override
@@ -42,7 +48,7 @@ public class RegistroViaPuntoFijo extends RegistroEstacionamiento {
 		
 		boolean resultado;
 			
-		LocalTime horaActual = LocalTime.now();	
+		LocalTime horaActual = horaActual();	
 		
 		resultado = this.estaActivo && this.horaFinal.isAfter(horaActual);
 		

@@ -8,17 +8,13 @@ public class PuntoDeVenta {
 	
 	//Variables	
 	private ZonaDeEstacionamiento zona;
-	private ArrayList<RegistroViaPuntoFijo> listaDeEstacionamientosPorCompraPuntual;
-	private ArrayList<RegistroCargaCelular> listaDeCargasCelular;
-	
-		
+	private ArrayList<RegistroDeCompra> listaDeCompras;		
 	
 	//Constructor
 	public PuntoDeVenta(ZonaDeEstacionamiento unaZona) {
 		
 		this.zona = unaZona;
-		this.listaDeEstacionamientosPorCompraPuntual = new ArrayList<RegistroViaPuntoFijo>();
-		this.listaDeCargasCelular = new ArrayList<RegistroCargaCelular>();
+		this.listaDeCompras = new ArrayList<RegistroDeCompra>();		
 	}
 	
 	
@@ -26,37 +22,28 @@ public class PuntoDeVenta {
 	public ZonaDeEstacionamiento getZona() {		
 		return zona;
 	}
-
 	
-	
-	public ArrayList<RegistroViaPuntoFijo> getRegistrosDeEstacionamientoPorCompraPuntual() {		
-		return this.listaDeEstacionamientosPorCompraPuntual;
-	}
-
-	
-	
-	public ArrayList<RegistroCargaCelular> getRegistrosDeCargas(){		
-		return this.listaDeCargasCelular;
-	}
+	public ArrayList<RegistroDeCompra> getRegistrosDeCompra() {		
+		return this.listaDeCompras;
+	}	
 	
 
 	// Metodos
 	
-	public void registrarEstacionamiento(String unaPatente, int cantDeHoras) {
+	public void registrarEstacionamiento(String unaPatente, int cantDeHoras, Sem unSem) {
 		
-		listaDeEstacionamientosPorCompraPuntual.add(new RegistroViaPuntoFijo(cantDeHoras,unaPatente, this));		
+		unSem.registrarEstacionamientoViaPuntoDeVenta(new RegistroViaPuntoFijo(cantDeHoras,unaPatente, this));	// Ramiro, quiza tenias razon y es mejor que el 
+																												//  registroViaPuntoFijo se construya dentro de SEM y no en
+																												// puntoDeVenta jajajaja
+		
+		this.listaDeCompras.add(new RegistroCompraDeHoras(cantDeHoras, unaPatente ,this));
 	}
 
 
 	public void registrarCargaCredito(float unMonto, Celular unCelu) {
 		
-		listaDeCargasCelular.add(new RegistroCargaCelular(unMonto, unCelu, this));		
+		this.listaDeCompras.add(new RegistroCargaCelular(unMonto, unCelu, this));		
 	}
-
-
-
-	
-
 	
 
 }

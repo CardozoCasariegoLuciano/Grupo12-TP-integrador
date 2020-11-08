@@ -153,5 +153,13 @@ public class Sem {
    private void desSubscribirSistema(Subscriptor sistema) {
 	   this.sistemasSubscriptos.remove(sistema);
    }
+
+
+
+
+public void registrarEstacionamientoViaPuntoDeVenta(RegistroViaPuntoFijo registroViaPuntoFijo) {
+	// TODO Auto-generated method stub
+	
+}
    
 }
