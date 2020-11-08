@@ -7,6 +7,7 @@ public class ZonaDeEstacionamiento {
     
 	private Inspector inspector;
 	private List<PuntoDeVenta>puntosDeVenta;
+	
 
 	
 	/*Constructor*/

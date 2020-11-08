@@ -102,21 +102,16 @@ public class Sem {
     
     
 	private void finalizarTodosLosEstacionamientos() {
-		for (ZonaDeEstacionamiento zona : zonas) {
-			zona.finalizarEstacionamientos();
-		}
-	}
-	
-	
-	
-	public void finalizarEstacionamientosDePuntoDeVenta() {
-		
-		for(RegistroEstacionamiento elem:this.estacionamientos) {
+	for(RegistroEstacionamiento elem:this.estacionamientos) {
 			
 			elem.finalizarRegistro();
 		}
 		
 	}
+	
+	
+	
+
 
 	public int getEstacionamientosActivos() {
 		
@@ -157,9 +152,6 @@ public class Sem {
 
 
 
-public void registrarEstacionamientoViaPuntoDeVenta(RegistroViaPuntoFijo registroViaPuntoFijo) {
-	// TODO Auto-generated method stub
-	
-}
+
    
 }
