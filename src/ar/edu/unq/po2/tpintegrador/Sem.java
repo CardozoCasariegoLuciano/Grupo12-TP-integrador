@@ -17,7 +17,7 @@ public class Sem {
     
 
 
-    //Constructor
+    
 	public Sem(List<ZonaDeEstacionamiento>zonas, List<Celular> celulares, LocalDateTime inicioDeFranja, LocalDateTime finDeFranja, float costo , List<Subscriptor>subscriptores ) {
 		 this.setZonas(zonas);
 	     this.setCelularesDeConductores(celulares);
