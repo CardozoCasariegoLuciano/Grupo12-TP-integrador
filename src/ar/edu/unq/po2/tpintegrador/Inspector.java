@@ -35,8 +35,8 @@ public class Inspector {
 	}
 	
 	
-	private boolean verificarEstacionamiento(String patente) {
-		return this.perteneceA.estaEstacionadoEnZona(patente);
+	private boolean verificarEstacionamiento(String patente, Sem unSem) {
+		return unSem.existeEstacionamientoDe(patente);
 	}
 	
 	

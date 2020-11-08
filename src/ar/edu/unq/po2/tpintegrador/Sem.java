@@ -35,6 +35,7 @@ public class Sem {
 	}
 
 	
+
 	
 
     public void registrarEstacionamientoViaPuntoDeVenta(RegistroViaPuntoFijo unEstacionamiento) {
@@ -42,9 +43,11 @@ public class Sem {
     }
 
     
+    
     public void registrarEstacionamientoViaApp(RegistroViaApp unEstacionamiento) {
     	this.estacionamientos.add(unEstacionamiento);
     }
+    
     
     
 	public LocalDateTime getInicioFranjaHoraria() {
@@ -52,9 +55,11 @@ public class Sem {
 	}
 	
 	
+	
 	public void setInicioFranjaHoraria(LocalDateTime inicioFranjaHoraria) {
 		this.inicioFranjaHoraria = inicioFranjaHoraria;
 	}
+	
 	
 	
 	public LocalDateTime getFinFranjaHoraria() {
@@ -62,14 +67,17 @@ public class Sem {
 	}
 	
 	
+	
 	public void setFinFranjaHoraria(LocalDateTime finFranjaHoraria) {
 		this.finFranjaHoraria = finFranjaHoraria;
 	}
 	
 	
+	
 	public Float getCosto() {
 		return costo;
 	}
+	
 	
 	
 	public void setCosto(Float costo) {
@@ -152,6 +160,19 @@ public class Sem {
 
 
 
+public boolean existeEstacionamientoDe(String unaPatente) {
+	
+	for (RegistroEstacionamiento estacionamiento :this.estacionamientos) {
+		if(estacionamiento.perteneceAPatente(unaPatente)) {
+			return true;
+		}
+	}  	 
+	return false;
+}
+
+
+
+}
 
    
-}
+
