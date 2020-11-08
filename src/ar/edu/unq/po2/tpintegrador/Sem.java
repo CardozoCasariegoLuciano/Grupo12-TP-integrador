@@ -12,6 +12,7 @@ public class Sem {
     private LocalDateTime finFranjaHoraria;
     private float costo =  12;
     private List<Subscriptor> sistemasSubscriptos;
+    private List<RegistroEstacionamiento> estacionamientos;
     
     
 
@@ -33,9 +34,19 @@ public class Sem {
 		this.sistemasSubscriptos = sistemasSubscriptos;
 	}
 
+	
+	
 
+    public void registrarEstacionamientoViaPuntoDeVenta(RegistroViaPuntoFijo unEstacionamiento) {
+    	this.estacionamientos.add(unEstacionamiento);
+    }
 
-
+    
+    public void registrarEstacionamientoViaApp(RegistroViaApp unEstacionamiento) {
+    	this.estacionamientos.add(unEstacionamiento);
+    }
+    
+    
 	public LocalDateTime getInicioFranjaHoraria() {
 		return inicioFranjaHoraria;
 	}
@@ -66,9 +77,13 @@ public class Sem {
 	}
 
 
+	
+
 	private List<ZonaDeEstacionamiento> getZonas() {
 		return zonas;
 	}
+
+
 
 
 	private void setZonas(List<ZonaDeEstacionamiento> zonas) {
@@ -96,7 +111,7 @@ public class Sem {
 	
 	public void finalizarEstacionamientosDePuntoDeVenta() {
 		
-		for(RegistroEstacionamiento elem:this.listaDeEstacionamientosPorCompraPuntual) {
+		for(RegistroEstacionamiento elem:this.estacionamientos) {
 			
 			elem.finalizarRegistro();
 		}
@@ -107,7 +122,7 @@ public class Sem {
 		
 		int contador = 0;
 		
-		for(RegistroEstacionamiento elem:this.listaDeEstacionamientosPorCompraPuntual) {
+		for(RegistroEstacionamiento elem:this.estacionamientos) {
 			
 			if(elem.estaActivo == true) {
 				contador++;
