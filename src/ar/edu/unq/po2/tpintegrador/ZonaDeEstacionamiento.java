@@ -41,7 +41,7 @@ public class ZonaDeEstacionamiento {
 		List<RegistroDeCompra> compras = new ArrayList<RegistroDeCompra>();
 			
 		for (PuntoDeVenta puntoDeVenta : puntosDeVenta) {
-			compras.addAll(puntoDeVenta.getRegistrosDeCargas());
+			compras.addAll(puntoDeVenta.getRegistrosDeCompra());
 		}
 		
 		return compras;
