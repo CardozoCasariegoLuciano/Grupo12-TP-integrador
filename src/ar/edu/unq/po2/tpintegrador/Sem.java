@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sem {
+public class Sem implements ISem {
    
     private List<ZonaDeEstacionamiento> zonas;
     private List<Celular> celularesDeConductores;

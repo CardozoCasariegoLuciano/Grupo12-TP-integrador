@@ -30,7 +30,7 @@ public class PuntoDeVenta {
 
 	// Metodos
 	
-	public void registrarEstacionamiento(String unaPatente, int cantDeHoras, Sem unSem) {
+	public void registrarEstacionamiento(String unaPatente, int cantDeHoras, ISem unSem) {
 		
 		unSem.registrarEstacionamientoViaPuntoDeVenta(new RegistroViaPuntoFijo(cantDeHoras,unaPatente, this));	// Ramiro, quiza tenias razon y es mejor que el 
 																												//  registroViaPuntoFijo se construya dentro de SEM y no en

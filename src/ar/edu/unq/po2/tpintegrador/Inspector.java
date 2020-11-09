@@ -35,7 +35,7 @@ public class Inspector {
 	}
 	
 	
-	private boolean verificarEstacionamiento(String patente, Sem unSem) {
+	private boolean verificarEstacionamiento(String patente, ISem unSem) {
 		return unSem.existeEstacionamientoDe(patente);
 	}
 	
