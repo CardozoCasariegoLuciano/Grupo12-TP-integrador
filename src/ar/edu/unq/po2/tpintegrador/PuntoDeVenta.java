@@ -8,13 +8,15 @@ public class PuntoDeVenta {
 	
 	//Variables	
 	private ZonaDeEstacionamiento zona;
-	private ArrayList<RegistroDeCompra> listaDeCompras;		
+	private ArrayList<RegistroDeCompra> listaDeCompras;
+	private ISem elSem;
 	
 	//Constructor
-	public PuntoDeVenta(ZonaDeEstacionamiento unaZona) {
+	public PuntoDeVenta(ZonaDeEstacionamiento unaZona, ISem unSem) {
 		
 		this.zona = unaZona;
-		this.listaDeCompras = new ArrayList<RegistroDeCompra>();		
+		this.listaDeCompras = new ArrayList<RegistroDeCompra>();
+		this.elSem = unSem;
 	}
 	
 	
@@ -30,11 +32,9 @@ public class PuntoDeVenta {
 
 	// Metodos
 	
-	public void registrarEstacionamiento(String unaPatente, int cantDeHoras, ISem unSem) {
+	public void registrarEstacionamiento(String unaPatente, int cantDeHoras) {
 		
-		unSem.registrarEstacionamientoViaPuntoDeVenta(new RegistroViaPuntoFijo(cantDeHoras,unaPatente, this));	// Ramiro, quiza tenias razon y es mejor que el 
-																												//  registroViaPuntoFijo se construya dentro de SEM y no en
-																												// puntoDeVenta jajajaja
+		elSem.registrarEstacionamientoViaPuntoDeVenta(new RegistroViaPuntoFijo(cantDeHoras,unaPatente, this));
 		
 		this.listaDeCompras.add(new RegistroCompraDeHoras(cantDeHoras, unaPatente ,this));
 	}
