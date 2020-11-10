@@ -15,12 +15,14 @@ class PuntoDeVentaTestCase {
 
 	PuntoDeVenta unPuntoDeVenta;
 	ZonaDeEstacionamiento unaZona;
+	Sem unSem;
 	
 	@BeforeEach
 	public void setUp() {		
 		
 		unaZona = mock(ZonaDeEstacionamiento.class);
-		unPuntoDeVenta = new  PuntoDeVenta(unaZona);
+		unSem = mock(Sem.class);
+		unPuntoDeVenta = new  PuntoDeVenta(unaZona, unSem);
 	}
 	
 	
@@ -47,9 +49,9 @@ class PuntoDeVentaTestCase {
 	@Test
 	void cuandoSeRegistraUnEstacionamientoElPVregistraLaCompraDeHoras() {	
 		
-		Sem unSem = mock(Sem.class);	
 			
-		unPuntoDeVenta.registrarEstacionamiento("patente", 1, unSem);		
+			
+		unPuntoDeVenta.registrarEstacionamiento("patente", 1);		
 		assertEquals(1 , unPuntoDeVenta.getRegistrosDeCompra().size());
 		
 		

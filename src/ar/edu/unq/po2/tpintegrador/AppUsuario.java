@@ -2,6 +2,11 @@ package ar.edu.unq.po2.tpintegrador;
 
 public class AppUsuario {
 	private ModoDeApp modoDeApp;
+	private String numero;
+	private int saldo;
+	private String patente;
+	
+	
 	
 	
 	void setModo(ModoDeApp setModo) {
@@ -9,11 +14,11 @@ public class AppUsuario {
 	}
 
 	void alertaDeInicioDeEstacionamiento() {
-		 
+		 modoDeApp.estacionar(patente);
 	}
 
 	void alertaDeFinDeEstacionamiento() {
-
+		modoDeApp.finEstacionamiento();
 	}
 
 	void estacionar(String patente) {
@@ -22,7 +27,15 @@ public class AppUsuario {
 	}
 
 	void finDeEstacionamiento() {
+		modoDeApp.finEstacionamiento();
+	}
 
+	public Integer getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(Integer saldo) {
+		this.saldo = saldo;
 	}
 
 }

@@ -3,7 +3,7 @@ package ar.edu.unq.po2.tpintegrador;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class EstacionamientoViaPuntoDeVenta extends Estacionamiento {
+public class EstacionamientoViaPuntoDeVenta extends RegistroEstacionamiento {
 	
 	//Variables
 	private int cantDeHoras;

@@ -2,7 +2,7 @@ package ar.edu.unq.po2.tpintegrador;
 
 import java.time.LocalTime;
 
-public abstract class Estacionamiento {
+public abstract class RegistroEstacionamiento {
 	
 	//Variables
 	protected String patente;

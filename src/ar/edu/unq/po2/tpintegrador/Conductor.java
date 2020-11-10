@@ -2,12 +2,13 @@ package ar.edu.unq.po2.tpintegrador;
 
 public class Conductor {
 	private String patente;
-	private Celular celularActual;
 	public PuntoDeVenta puntoDeVenta;
+	public AppUsuario app;
 
-	public Conductor(String patente, Celular celularDeConductor) {
-		this.celularActual = celularDeConductor;
+	public Conductor(String patente, AppUsuario app) {
+		this.app = app;
 		this.patente = patente;
+		
 
 	}
 
@@ -17,22 +18,22 @@ public class Conductor {
 
 	// Metodos para estacionar
 
-	void estacionarPorPuntoDeVenta(String patente, int horas) {
-		this.puntoDeVenta.registrarEstacionamiento(patente, horas);
+	void estacionarPorPuntoDeVenta(String patente, int horas, Sem sem) {
+		this.puntoDeVenta.registrarEstacionamiento(patente, horas, sem);
 	}
 
 	void estacionarPorApp() {
 
-		celularActual.estacionar(patente);
+		app.estacionar(patente);
 	}
 	
 	
 	//Delega acciones al celular
 	void finalizarEstacionamientoPorApp() {
-		celularActual.finDeEstacionamiento();
+		app.finDeEstacionamiento();
 	}
 
 	void recargarCelular(int nuevoSaldo) {
-		celularActual.setSaldo(nuevoSaldo);
+		app.setSaldo(nuevoSaldo);
 	}
 }

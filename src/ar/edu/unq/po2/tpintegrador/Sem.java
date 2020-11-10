@@ -12,7 +12,7 @@ public class Sem implements ISem {
     private LocalDateTime finFranjaHoraria;
     private float costo =  12;
     private List<Subscriptor> sistemasSubscriptos;
-    private List<Estacionamiento> estacionamientos;
+    private List<RegistroEstacionamiento> estacionamientos;
     
     
 
@@ -110,7 +110,7 @@ public class Sem implements ISem {
     
     
 	private void finalizarTodosLosEstacionamientos() {
-	for(Estacionamiento elem:this.estacionamientos) {
+	for(RegistroEstacionamiento elem:this.estacionamientos) {
 			
 			elem.finalizarRegistro();
 		}
@@ -125,7 +125,7 @@ public class Sem implements ISem {
 		
 		int contador = 0;
 		
-		for(Estacionamiento elem:this.estacionamientos) {
+		for(RegistroEstacionamiento elem:this.estacionamientos) {
 			
 			if(elem.estaActivo == true) {
 				contador++;
@@ -162,7 +162,7 @@ public class Sem implements ISem {
 
 public boolean existeEstacionamientoDe(String unaPatente) {
 	
-	for (Estacionamiento estacionamiento :this.estacionamientos) {
+	for (RegistroEstacionamiento estacionamiento :this.estacionamientos) {
 		if(estacionamiento.perteneceAPatente(unaPatente)) {
 			return true;
 		}
