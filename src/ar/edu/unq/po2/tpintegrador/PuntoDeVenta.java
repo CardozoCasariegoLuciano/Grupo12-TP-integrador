@@ -30,9 +30,13 @@ public class PuntoDeVenta {
 
 	// Metodos
 	
+	
+	
+	
+	
 	public void registrarEstacionamiento(String unaPatente, int cantDeHoras, ISem unSem) {
 		
-		unSem.registrarEstacionamientoViaPuntoDeVenta(new RegistroViaPuntoFijo(cantDeHoras,unaPatente, this));	// Ramiro, quiza tenias razon y es mejor que el 
+		unSem.registrarEstacionamientoViaPuntoDeVenta(new EstacionamientoViaPuntoDeVenta(cantDeHoras,unaPatente, this));	// Ramiro, quiza tenias razon y es mejor que el 
 																												//  registroViaPuntoFijo se construya dentro de SEM y no en
 																												// puntoDeVenta jajajaja
 		
@@ -40,10 +44,15 @@ public class PuntoDeVenta {
 	}
 
 
+	
+	
+	
 	public void registrarCargaCredito(float unMonto, Celular unCelu) {
 		
 		this.listaDeCompras.add(new RegistroCargaCelular(unMonto, unCelu, this));		
 	}
+	
+	
 	
 
 }

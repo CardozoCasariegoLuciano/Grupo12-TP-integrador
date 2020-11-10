@@ -3,7 +3,7 @@ package ar.edu.unq.po2.tpintegrador;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class RegistroViaPuntoFijo extends RegistroEstacionamiento {
+public class EstacionamientoViaPuntoDeVenta extends Estacionamiento {
 	
 	//Variables
 	private int cantDeHoras;
@@ -11,7 +11,7 @@ public class RegistroViaPuntoFijo extends RegistroEstacionamiento {
 	
 	
 	//Constructor
-	public RegistroViaPuntoFijo(int cantDeHoras, String unaPatente, PuntoDeVenta puntoDeVenta) {
+	public EstacionamientoViaPuntoDeVenta(int cantDeHoras, String unaPatente, PuntoDeVenta puntoDeVenta) {
 		
 		this.cantDeHoras = cantDeHoras;
 		this.puntoDeVenta = puntoDeVenta;			

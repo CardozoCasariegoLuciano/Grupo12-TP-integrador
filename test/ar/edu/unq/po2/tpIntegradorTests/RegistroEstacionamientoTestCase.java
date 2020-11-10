@@ -9,21 +9,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.po2.tpintegrador.PuntoDeVenta;
-import ar.edu.unq.po2.tpintegrador.RegistroViaPuntoFijo;
+import ar.edu.unq.po2.tpintegrador.EstacionamientoViaPuntoDeVenta;
 
 class RegistroEstacionamientoTestCase {
 	
 	PuntoDeVenta unPuntoDeV;
-	RegistroViaPuntoFijo unRegistro;
+	EstacionamientoViaPuntoDeVenta unRegistro;
 	
-	RegistroViaPuntoFijo unRegistro2;
+	EstacionamientoViaPuntoDeVenta unRegistro2;
 	
 	
 	@BeforeEach
 	public void setUp() {
 		
 		unPuntoDeV = mock(PuntoDeVenta.class);
-		unRegistro = new RegistroViaPuntoFijo(1, "unaPatente", unPuntoDeV);
+		unRegistro = new EstacionamientoViaPuntoDeVenta(1, "unaPatente", unPuntoDeV);
 		
 	}
 	
