@@ -4,55 +4,47 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class EstacionamientoViaPuntoDeVenta extends Estacionamiento {
-	
-	//Variables
+
+	// Variables
 	private int cantDeHoras;
 	private PuntoDeVenta puntoDeVenta;
-	
-	
-	//Constructor
+
+	// Constructor
 	public EstacionamientoViaPuntoDeVenta(int cantDeHoras, String unaPatente, PuntoDeVenta puntoDeVenta) {
-		
+
 		this.cantDeHoras = cantDeHoras;
-		this.puntoDeVenta = puntoDeVenta;			
-		
-		RegistroDeCompra.numeroDeRegistro ++;
-		this.hora = LocalTime.now();
-		this.fecha = LocalDate.now();
-		
+		this.puntoDeVenta = puntoDeVenta;
 		this.patente = unaPatente;
 		this.estaActivo = true;
-		this.horaFinal = this.hora.plusHours(this.cantDeHoras);
+		this.horaFinal = LocalTime.now().plusHours(this.cantDeHoras);
 	}
 
-	//Getters
+	// Getters
 	public Integer getCantDeHS() {
-		
+
 		return this.cantDeHoras;
 	}
 
 	public Object getPuntoDeVenta() {
-		
+
 		return this.puntoDeVenta;
 	}
-	
-	public LocalTime horaActual() {			
-				
+
+	public LocalTime horaActual() {
+
 		return LocalTime.now();
 	}
-	
 
-	//Metodos
+	// Metodos
 	@Override
-	public boolean comprobarValidez() {		
-		
+	public boolean comprobarValidez() {
+
 		boolean resultado;
-			
-		LocalTime horaActual = horaActual();	
-		
+
+		LocalTime horaActual = horaActual();
+
 		resultado = this.estaActivo && this.horaFinal.isAfter(horaActual);
-		
-				
+
 		return resultado;
 	}
 }

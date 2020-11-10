@@ -5,16 +5,13 @@ public class AppUsuario {
 	private String numero;
 	private int saldo;
 	private String patente;
-	
-	
-	
-	
+
 	void setModo(ModoDeApp setModo) {
 		this.modoDeApp = setModo;
 	}
 
 	void alertaDeInicioDeEstacionamiento() {
-		 modoDeApp.estacionar(patente);
+		modoDeApp.estacionar(patente);
 	}
 
 	void alertaDeFinDeEstacionamiento() {
@@ -22,7 +19,7 @@ public class AppUsuario {
 	}
 
 	void estacionar(String patente) {
-		//Deja que el modo de app actual se encargue 
+		// Deja que el modo de app actual se encargue
 		modoDeApp.estacionar(patente);
 	}
 
