@@ -7,6 +7,7 @@ public class AppManual implements ModoDeApp {
 	public void estacionar(String patente) {
 		
 	}
+	
 
 	@Override
 	public void finEstacionamiento() {
