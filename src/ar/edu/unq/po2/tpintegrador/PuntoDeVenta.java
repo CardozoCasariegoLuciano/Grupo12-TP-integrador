@@ -30,20 +30,30 @@ public class PuntoDeVenta {
 	}	
 	
 
-	// Metodos
+	// Metodos	
 	
 	public void registrarEstacionamiento(String unaPatente, int cantDeHoras) {
+
 		
-		elSem.registrarEstacionamientoViaPuntoDeVenta(new RegistroViaPuntoFijo(cantDeHoras,unaPatente, this));
+
+		elSem.registrarEstacionamientoViaPuntoDeVenta(new EstacionamientoViaPuntoDeVenta(cantDeHoras,unaPatente, this));
+
+		elSem.registrarEstacionamientoViaPuntoDeVenta(new EstacionamientoViaPuntoDeVenta(cantDeHoras,unaPatente, this));	
+
 		
 		this.listaDeCompras.add(new RegistroCompraDeHoras(cantDeHoras, unaPatente ,this));
 	}
 
 
+	
+	
+	
 	public void registrarCargaCredito(float unMonto, Celular unCelu) {
 		
 		this.listaDeCompras.add(new RegistroCargaCelular(unMonto, unCelu, this));		
 	}
+	
+	
 	
 
 }

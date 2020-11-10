@@ -11,31 +11,46 @@ public class ZonaDeEstacionamiento {
 
 	
 	/*Constructor*/
-	public ZonaDeEstacionamiento(Inspector inspector, List<PuntoDeVenta> puntosDeVenta , List<RegistroViaApp>estacionamientosDeApp) {
+	public ZonaDeEstacionamiento(Inspector inspector, List<PuntoDeVenta> puntosDeVenta , List<EstacionamientoViaApp>estacionamientosDeApp) {
 		this.inspector = inspector;
 		this.puntosDeVenta = puntosDeVenta;
 	}
 
+	
+	
+	
+	
+	
 	private Inspector getInspector() {
 		return inspector;
 	}
 
+	
+	
+	
+	
 	private void setInspector(Inspector inspector) {
 		this.inspector = inspector;
 	}
 
+	
+	
+	
+	
 	private List<PuntoDeVenta> getPuntosDeVenta() {
 		return puntosDeVenta;
 	}
 
+	
+	
+	
+	
 	private void setPuntosDeVenta(List<PuntoDeVenta> puntosDeVenta) {
 		this.puntosDeVenta = puntosDeVenta;
 	}
 
 	
 	
-	
-
 	
 	public List<RegistroDeCompra> registrarComprasDePuntosDeVenta() {
 		List<RegistroDeCompra> compras = new ArrayList<RegistroDeCompra>();
