@@ -7,21 +7,26 @@ import java.util.List;
 public class Sem implements ISem {
 
 	private List<ZonaDeEstacionamiento> zonas;
-	private List<AppUsuario> celularesDeConductores;
+	private List<AppUsuario> appDeUsuarios;
 	private LocalDateTime inicioFranjaHoraria;
 	private LocalDateTime finFranjaHoraria;
-	private float costo = 12;
+	private float costo;
 	private List<Subscriptor> sistemasSubscriptos;
 	private List<Estacionamiento> estacionamientos;
 
-	public Sem(List<ZonaDeEstacionamiento> zonas, List<AppUsuario> celulares, LocalDateTime inicioDeFranja,
-			LocalDateTime finDeFranja, float costo, List<Subscriptor> subscriptores) {
-		this.setZonas(zonas);
-		this.setCelularesDeConductores(celulares);
+
+	public Sem(LocalDateTime inicioDeFranja,LocalDateTime finDeFranja, float costo) {
+		
+		this.zonas = new ArrayList<ZonaDeEstacionamiento>();		
+		this.appDeUsuarios = new ArrayList<AppUsuario>();		
+		
 		this.setInicioFranjaHoraria(inicioDeFranja);
 		this.setFinFranjaHoraria(finDeFranja);
+		
 		this.setCosto(costo);
-		this.setSistemasSubscriptos(subscriptores);
+		
+		this.sistemasSubscriptos = new ArrayList<Subscriptor>();
+		this.estacionamientos = new ArrayList<Estacionamiento>();
 	}
 
 	private void setSistemasSubscriptos(List<Subscriptor> sistemasSubscriptos) {
@@ -68,12 +73,12 @@ public class Sem implements ISem {
 		this.zonas = zonas;
 	}
 
-	private List<AppUsuario> getCelularesDeConductores() {
-		return celularesDeConductores;
+	private List<AppUsuario> getAppDeConductores() {
+		return appDeUsuarios;
 	}
 
-	private void setCelularesDeConductores(List<AppUsuario> celularesDeConductores) {
-		this.celularesDeConductores = celularesDeConductores;
+	private void agregarAppUsuario(AppUsuario appUsuario) {
+		this.appDeUsuarios.add(appUsuario);
 	}
 
 	private void finalizarTodosLosEstacionamientos() {
