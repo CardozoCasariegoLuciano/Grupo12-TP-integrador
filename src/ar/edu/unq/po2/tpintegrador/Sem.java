@@ -10,12 +10,11 @@ public class Sem implements ISem {
 	private List<AppUsuario> celularesDeConductores;
 	private LocalDateTime inicioFranjaHoraria;
 	private LocalDateTime finFranjaHoraria;
-	private float costo = 12;
+	private float costo;
 	private List<Subscriptor> sistemasSubscriptos;
 	private List<Estacionamiento> estacionamientos;
 
-	public Sem(List<ZonaDeEstacionamiento> zonas, List<AppUsuario> celulares, LocalDateTime inicioDeFranja,
-			LocalDateTime finDeFranja, float costo, List<Subscriptor> subscriptores) {
+	public Sem(List<ZonaDeEstacionamiento> zonas, List<AppUsuario> celulares, LocalDateTime inicioDeFranja,LocalDateTime finDeFranja, float costo, List<Subscriptor> subscriptores) {
 		this.setZonas(zonas);
 		this.setCelularesDeConductores(celulares);
 		this.setInicioFranjaHoraria(inicioDeFranja);
