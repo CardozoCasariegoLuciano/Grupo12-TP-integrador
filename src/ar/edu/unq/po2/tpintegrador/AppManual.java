@@ -11,13 +11,15 @@ public class AppManual implements ModoDeApp {
 
 	@Override
 	public void estacionar() {
-		
+		this.app.getSem().registrarEstacionamientoViaApp(new EstacionamientoViaApp(app));
 		
 	}
 
 	@Override
 	public void finDeEstacionamiento() {
-		// TODO Auto-generated method stub
+		if (!(this.app.getSem().existeEstacionamientoDe(this.app.getPatente())))
+			
+		this.app.getSem().finalizarEstacionamientoViaApp(this.app.getNumero());
 		
 	}
 

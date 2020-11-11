@@ -8,6 +8,7 @@ public abstract class Estacionamiento {
 	protected String patente;
 	protected boolean estaActivo;
 	protected LocalTime horaFinal;
+	protected LocalTime horaInicio;
 
 	// Getters
 	public String getPatente() {

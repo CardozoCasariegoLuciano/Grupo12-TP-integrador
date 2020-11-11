@@ -8,6 +8,9 @@ public class AppUsuario implements MovementSensor {
 	private String patente;
 	private ISem sem;
 
+	
+	
+
 	public AppUsuario(ModoDeApp modoDeApp, int numero, int saldo, String patente, ISem sem) {
 		this.modoDeApp = modoDeApp;
 		this.numero = numero;
@@ -15,6 +18,11 @@ public class AppUsuario implements MovementSensor {
 		this.patente = patente;
 		this.sem = sem;
 	}
+	
+	public ISem getSem() {
+		return sem;
+	}
+
 
 	private void setModo(ModoDeApp setModo) {
 		this.modoDeApp = setModo;
@@ -23,12 +31,11 @@ public class AppUsuario implements MovementSensor {
 	public void modoManual() {
 		this.setModo(new AppManual(this));
 	}
-	
+
 	public void modoAutomatico() {
 		this.setModo(new AppAutomatica(this));
 	}
-	
-	
+
 	void alertaDeInicioDeEstacionamiento() {
 		modoDeApp.estacionar();
 	}
@@ -56,15 +63,24 @@ public class AppUsuario implements MovementSensor {
 
 	@Override
 	public void driving() {
-		if (!(sem.existeEstacionamientoDe(this.patente))){//Falta definir sem y gps
+		if (!(sem.existeEstacionamientoDe(this.getPatente()))) {// Falta definir sem y gps
 			this.alertaDeFinDeEstacionamiento();
 		}
 	}
 
 	@Override
 	public void walking() {
-		if (sem.existeEstacionamientoDe(this.patente)) {//Falta definir sem y gps
+		if (sem.existeEstacionamientoDe(this.getPatente())) {// Falta definir sem y gps
 			this.alertaDeInicioDeEstacionamiento();
 		}
 	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public String getPatente() {
+		return patente;
+	}
+
 }

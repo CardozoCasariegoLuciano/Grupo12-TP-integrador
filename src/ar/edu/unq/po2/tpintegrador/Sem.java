@@ -119,4 +119,12 @@ public class Sem implements ISem {
 		return false;
 
 	}
+
+	@Override
+	public void finalizarEstacionamientoViaApp(int numero) {
+		
+		
+	}
+	
+	
 }
