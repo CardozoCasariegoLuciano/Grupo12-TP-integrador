@@ -29,10 +29,14 @@ public class Sem implements ISem {
 		this.estacionamientos = new ArrayList<Estacionamiento>();
 	}
 
-	private void setSistemasSubscriptos(List<Subscriptor> sistemasSubscriptos) {
-		this.sistemasSubscriptos = sistemasSubscriptos;
+	private void suscribirSistema(Subscriptor sistemaSubscriptor) {
+		this.sistemasSubscriptos.add(sistemaSubscriptor);
 	}
 
+	private void desSubscribirSistema(Subscriptor sistema) {
+		this.sistemasSubscriptos.remove(sistema);
+	}
+	
 	public void registrarEstacionamientoViaPuntoDeVenta(EstacionamientoViaPuntoDeVenta unEstacionamiento) {
 		this.estacionamientos.add(unEstacionamiento);
 	}
@@ -89,22 +93,6 @@ public class Sem implements ISem {
 
 	}
 
-	public int getEstacionamientosActivos() {
-
-		int contador = 0;
-
-		for (Estacionamiento elem : this.estacionamientos) {
-
-			if (elem.estaActivo == true) {
-
-				contador++;
-			}
-		}
-
-		return contador;
-
-	}
-
 	public List<RegistroDeCompra> registrarTodasLasCompras() {
 		List<RegistroDeCompra> todasLasCompras = new ArrayList<RegistroDeCompra>();
 
@@ -115,14 +103,8 @@ public class Sem implements ISem {
 		return todasLasCompras;
 	}
 
-	private void subscribirSistema(Subscriptor sistema) {
-		this.sistemasSubscriptos.add(sistema);
 
-	}
 
-	private void desSubscribirSistema(Subscriptor sistema) {
-		this.sistemasSubscriptos.remove(sistema);
-	}
 
 	public boolean existeEstacionamientoDe(String unaPatente) {
 
