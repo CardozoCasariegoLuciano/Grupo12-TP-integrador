@@ -1,6 +1,7 @@
 package ar.edu.unq.po2.tpintegrador;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,14 +9,14 @@ public class Sem implements ISem {
 
 	private List<ZonaDeEstacionamiento> zonas;
 	private List<AppUsuario> appDeUsuarios;
-	private LocalDateTime inicioFranjaHoraria;
-	private LocalDateTime finFranjaHoraria;
+	private LocalTime inicioFranjaHoraria;
+	private LocalTime finFranjaHoraria;
 	private float costo;
 	private List<Subscriptor> sistemasSubscriptos;
 	private List<Estacionamiento> estacionamientos;
 
 
-	public Sem(LocalDateTime inicioDeFranja,LocalDateTime finDeFranja, float costo) {
+	public Sem(LocalTime inicioDeFranja,LocalTime finDeFranja, float costo) {
 		
 		this.zonas = new ArrayList<ZonaDeEstacionamiento>();		
 		this.appDeUsuarios = new ArrayList<AppUsuario>();		
@@ -45,19 +46,19 @@ public class Sem implements ISem {
 		this.estacionamientos.add(unEstacionamiento);
 	}
 
-	public LocalDateTime getInicioFranjaHoraria() {
+	public LocalTime getInicioFranjaHoraria() {
 		return inicioFranjaHoraria;
 	}
 
-	public void setInicioFranjaHoraria(LocalDateTime inicioFranjaHoraria) {
+	public void setInicioFranjaHoraria(LocalTime inicioFranjaHoraria) {
 		this.inicioFranjaHoraria = inicioFranjaHoraria;
 	}
 
-	public LocalDateTime getFinFranjaHoraria() {
+	public LocalTime getFinFranjaHoraria() {
 		return finFranjaHoraria;
 	}
 
-	public void setFinFranjaHoraria(LocalDateTime finFranjaHoraria) {
+	public void setFinFranjaHoraria(LocalTime finFranjaHoraria) {
 		this.finFranjaHoraria = finFranjaHoraria;
 	}
 
