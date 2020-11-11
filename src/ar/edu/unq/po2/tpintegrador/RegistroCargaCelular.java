@@ -7,14 +7,14 @@ public class RegistroCargaCelular extends RegistroDeCompra {
 
 	//Variables
 	private float monto;
-	private Celular celular;
-	private PuntoDeVenta puntoDeVenta;
+	private AppUsuario AppUsuario;
+	private PuntoDeVenta puntoDeVenta;	
 	
 	//Constructor
-	public RegistroCargaCelular(float unMonto, Celular unCelu, PuntoDeVenta puntoDeVenta) {
+	public RegistroCargaCelular(float unMonto, AppUsuario unaAppUsuario, PuntoDeVenta puntoDeVenta) {
 		
 		this.monto = unMonto;
-		this.celular = unCelu;
+		this.AppUsuario = unaAppUsuario;
 		this.puntoDeVenta = puntoDeVenta;
 		RegistroDeCompra.numeroDeRegistro ++;
 		this.hora = LocalTime.now();

@@ -6,7 +6,7 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ar.edu.unq.po2.tpintegrador.Celular;
+import ar.edu.unq.po2.tpintegrador.AppUsuario;
 import ar.edu.unq.po2.tpintegrador.PuntoDeVenta;
 import ar.edu.unq.po2.tpintegrador.Sem;
 import ar.edu.unq.po2.tpintegrador.ZonaDeEstacionamiento;
@@ -38,23 +38,20 @@ class PuntoDeVentaTestCase {
 	@Test
 	void unPuntoDeVentaPuedeRegistrarUnaCargaDeCelular() {
 		
-		Celular unCelu = mock(Celular.class);
+		AppUsuario unaAppusuario = mock(AppUsuario.class);
 		
 		assertEquals(0 , unPuntoDeVenta.getRegistrosDeCompra().size());		
-		unPuntoDeVenta.registrarCargaCredito(500,unCelu);		
+		unPuntoDeVenta.registrarCargaCredito(500,unaAppusuario);		
 		assertEquals(1 , unPuntoDeVenta.getRegistrosDeCompra().size());
 	}
 	
 	
 	@Test
-	void cuandoSeRegistraUnEstacionamientoElPVregistraLaCompraDeHoras() {	
-		
+	void cuandoSeRegistraUnEstacionamientoElPVregistraLaCompraDeHoras() {		
 			
 			
 		unPuntoDeVenta.registrarEstacionamiento("patente", 1);		
-		assertEquals(1 , unPuntoDeVenta.getRegistrosDeCompra().size());
-		
-		
+		assertEquals(1 , unPuntoDeVenta.getRegistrosDeCompra().size());		
 	}	
 
 }
