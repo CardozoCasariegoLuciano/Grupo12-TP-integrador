@@ -12,7 +12,7 @@ public class AppUsuario {
 	}
 
 	void alertaDeInicioDeEstacionamiento() {
-		modoDeApp.estacionar(patente);
+		
 	}
 
 	void alertaDeFinDeEstacionamiento() {
@@ -21,7 +21,7 @@ public class AppUsuario {
 
 	void estacionar(String patente, int numeroCelular, ISem sem) {
 		// Deja que el modo de app actual se encargue
-		modoDeApp.estacionar(patente);
+		modoDeApp.estacionar(patente, numeroCelular, sem);
 	}
 
 	void finDeEstacionamiento() {
