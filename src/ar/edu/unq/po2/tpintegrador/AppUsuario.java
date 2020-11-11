@@ -2,9 +2,10 @@ package ar.edu.unq.po2.tpintegrador;
 
 public class AppUsuario {
 	private ModoDeApp modoDeApp;
-	private String numero;
+	private int numero;
 	private int saldo;
 	private String patente;
+	private ISem sem;
 
 	void setModo(ModoDeApp setModo) {
 		this.modoDeApp = setModo;
@@ -18,7 +19,7 @@ public class AppUsuario {
 		modoDeApp.finEstacionamiento();
 	}
 
-	void estacionar(String patente) {
+	void estacionar(String patente, int numeroCelular, ISem sem) {
 		// Deja que el modo de app actual se encargue
 		modoDeApp.estacionar(patente);
 	}
