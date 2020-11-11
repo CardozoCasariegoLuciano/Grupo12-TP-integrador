@@ -2,59 +2,43 @@ package ar.edu.unq.po2.tpintegrador;
 
 import java.util.ArrayList;
 
-
-
 public class PuntoDeVenta {
-	
-	//Variables	
+
+	// Variables
 	private ZonaDeEstacionamiento zona;
 	private ArrayList<RegistroDeCompra> listaDeCompras;
 	private ISem elSem;
-	
-	//Constructor
+
+	// Constructor
 	public PuntoDeVenta(ZonaDeEstacionamiento unaZona, ISem unSem) {
-		
+
 		this.zona = unaZona;
 		this.listaDeCompras = new ArrayList<RegistroDeCompra>();
 		this.elSem = unSem;
 	}
-	
-	
+
 	// Getters
-	public ZonaDeEstacionamiento getZona() {		
+	public ZonaDeEstacionamiento getZona() {
 		return zona;
 	}
-	
-	public ArrayList<RegistroDeCompra> getRegistrosDeCompra() {		
-		return this.listaDeCompras;
-	}	
-	
 
-	// Metodos	
-	
+	public ArrayList<RegistroDeCompra> getRegistrosDeCompra() {
+		return this.listaDeCompras;
+	}
+
+	// Metodos
+
 	public void registrarEstacionamiento(String unaPatente, int cantDeHoras) {
 
-		
+		elSem.registrarEstacionamientoViaPuntoDeVenta(
+				new EstacionamientoViaPuntoDeVenta(cantDeHoras, unaPatente, this));
 
-		elSem.registrarEstacionamientoViaPuntoDeVenta(new EstacionamientoViaPuntoDeVenta(cantDeHoras,unaPatente, this));
-
-		elSem.registrarEstacionamientoViaPuntoDeVenta(new EstacionamientoViaPuntoDeVenta(cantDeHoras,unaPatente, this));	
-
-		
-		this.listaDeCompras.add(new RegistroCompraDeHoras(cantDeHoras, unaPatente ,this));
+		this.listaDeCompras.add(new RegistroCompraDeHoras(cantDeHoras, unaPatente, this));
 	}
 
-
-	
-	
-	
 	public void registrarCargaCredito(float unMonto, Celular unCelu) {
-		
-		this.listaDeCompras.add(new RegistroCargaCelular(unMonto, unCelu, this));		
+
+		this.listaDeCompras.add(new RegistroCargaCelular(unMonto, unCelu, this));
 	}
-	
-	
-	
 
 }
-	

@@ -3,15 +3,12 @@ package ar.edu.unq.po2.tpintegrador;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-<<<<<<< HEAD
+
 public class EstacionamientoViaPuntoDeVenta extends Estacionamiento {
 
 	// Variables
-=======
-public class EstacionamientoViaPuntoDeVenta extends RegistroEstacionamiento {
-	
-	//Variables
->>>>>>> branch 'main' of https://github.com/CardozoCasariegoLuciano/Grupo12-TP-integrador.git
+
+
 	private int cantDeHoras;
 	private PuntoDeVenta puntoDeVenta;
 

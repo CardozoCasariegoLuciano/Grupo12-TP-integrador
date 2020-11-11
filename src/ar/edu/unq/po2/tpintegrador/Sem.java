@@ -5,19 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sem implements ISem {
-<<<<<<< HEAD
-=======
-   
-    private List<ZonaDeEstacionamiento> zonas;
-    private List<Celular> celularesDeConductores;
-    private LocalDateTime inicioFranjaHoraria;
-    private LocalDateTime finFranjaHoraria;
-    private float costo =  12;
-    private List<Subscriptor> sistemasSubscriptos;
-    private List<RegistroEstacionamiento> estacionamientos;
-    
-    
->>>>>>> branch 'main' of https://github.com/CardozoCasariegoLuciano/Grupo12-TP-integrador.git
 
 	private List<ZonaDeEstacionamiento> zonas;
 	private List<AppUsuario> celularesDeConductores;
@@ -90,13 +77,8 @@ public class Sem implements ISem {
 	}
 
 	private void finalizarTodosLosEstacionamientos() {
-<<<<<<< HEAD
-		for (Estacionamiento elem : this.estacionamientos) {
 
-=======
-	for(RegistroEstacionamiento elem:this.estacionamientos) {
-			
->>>>>>> branch 'main' of https://github.com/CardozoCasariegoLuciano/Grupo12-TP-integrador.git
+		for (Estacionamiento elem : this.estacionamientos) {
 			elem.finalizarRegistro();
 		}
 
@@ -105,17 +87,11 @@ public class Sem implements ISem {
 	public int getEstacionamientosActivos() {
 
 		int contador = 0;
-<<<<<<< HEAD
 
 		for (Estacionamiento elem : this.estacionamientos) {
 
 			if (elem.estaActivo == true) {
-=======
-		
-		for(RegistroEstacionamiento elem:this.estacionamientos) {
-			
-			if(elem.estaActivo == true) {
->>>>>>> branch 'main' of https://github.com/CardozoCasariegoLuciano/Grupo12-TP-integrador.git
+
 				contador++;
 			}
 		}
@@ -143,24 +119,16 @@ public class Sem implements ISem {
 		this.sistemasSubscriptos.remove(sistema);
 	}
 
-<<<<<<< HEAD
 	public boolean existeEstacionamientoDe(String unaPatente) {
 
 		for (Estacionamiento estacionamiento : this.estacionamientos) {
 			if (estacionamiento.perteneceAPatente(unaPatente)) {
 				return true;
+
 			}
 
-=======
-public boolean existeEstacionamientoDe(String unaPatente) {
-	
-	for (RegistroEstacionamiento estacionamiento :this.estacionamientos) {
-		if(estacionamiento.perteneceAPatente(unaPatente)) {
-			return true;
->>>>>>> branch 'main' of https://github.com/CardozoCasariegoLuciano/Grupo12-TP-integrador.git
 		}
-
 		return false;
-	}
 
+	}
 }

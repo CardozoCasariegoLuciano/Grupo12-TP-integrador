@@ -18,8 +18,8 @@ public class Conductor {
 
 	// Metodos para estacionar
 
-	void estacionarPorPuntoDeVenta(String patente, int horas, Sem sem) {
-		this.puntoDeVenta.registrarEstacionamiento(patente, horas, sem);
+	void estacionarPorPuntoDeVenta(String patente, int horas) {
+		this.puntoDeVenta.registrarEstacionamiento(patente, horas);
 	}
 
 	void estacionarPorApp() {
