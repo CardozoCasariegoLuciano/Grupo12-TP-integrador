@@ -24,6 +24,8 @@ public class AppAutomatica implements ModoDeApp {
 	@Override
 	public void alertaDeInicioDeEstacionamiento() {
 		new AppManual(this.app).estacionar();
+		
+		
 	}
 
 	@Override

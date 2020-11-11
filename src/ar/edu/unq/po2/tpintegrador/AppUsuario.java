@@ -6,17 +6,19 @@ public class AppUsuario implements MovementSensor {
 	private int numero;
 	private int saldo;
 	private String patente;
-	private ISem sem;
+	protected ISem sem;
+	protected Sem semClase;
 
 	
 	
 
-	public AppUsuario(ModoDeApp modoDeApp, int numero, int saldo, String patente, ISem sem) {
+	public AppUsuario(ModoDeApp modoDeApp, int numero, int saldo, String patente, ISem semInterfaz, Sem semClase) {
 		this.modoDeApp = modoDeApp;
 		this.numero = numero;
 		this.saldo = saldo;
 		this.patente = patente;
 		this.sem = sem;
+		this.semClase = semClase;
 	}
 	
 	public ISem getSem() {
@@ -36,13 +38,13 @@ public class AppUsuario implements MovementSensor {
 		this.setModo(new AppAutomatica(this));
 	}
 
-	void alertaDeInicioDeEstacionamiento() {
-		modoDeApp.estacionar();
-	}
-
-	void alertaDeFinDeEstacionamiento() {
-		modoDeApp.finDeEstacionamiento();
-	}
+//	void alertaDeInicioDeEstacionamiento() {
+//		modoDeApp.estacionar();
+//	}
+//
+//	void alertaDeFinDeEstacionamiento() {
+//		modoDeApp.finDeEstacionamiento();
+//	}
 
 	void estacionar() {
 		// Deja que el modo de app actual se encargue
