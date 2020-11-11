@@ -2,22 +2,39 @@ package ar.edu.unq.po2.tpintegrador;
 
 public class AppManual implements ModoDeApp {
 
-
-	@Override
+	private AppUsuario app;
 	
-	public void estacionar(String patente, int numeroCelular, ISem sem)  {
-		sem.registrarEstacionamientoViaApp(new EstacionamientoViaApp(numeroCelular, patente));
+	public AppManual (AppUsuario app) {
+		this.app = app;
+		
 	}
-	
 
 	@Override
-	public void finEstacionamiento() {
+	public void estacionar() {
 		
 		
 	}
 
+	@Override
+	public void finDeEstacionamiento() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void alertaDeInicioDeEstacionamiento() {
+		// No se usan de manera manual
+		
+	}
+
+	@Override
+	public void alertaDeFinDeEstacionamiento() {
+		// No se usan de manera manual
+		
+	}
 
 
+	
 
 
 

@@ -1,31 +1,49 @@
 package ar.edu.unq.po2.tpintegrador;
 
-public class AppUsuario {
+public class AppUsuario implements MovementSensor {
+
 	private ModoDeApp modoDeApp;
 	private int numero;
 	private int saldo;
 	private String patente;
 	private ISem sem;
 
-	void setModo(ModoDeApp setModo) {
+	public AppUsuario(ModoDeApp modoDeApp, int numero, int saldo, String patente, ISem sem) {
+		this.modoDeApp = modoDeApp;
+		this.numero = numero;
+		this.saldo = saldo;
+		this.patente = patente;
+		this.sem = sem;
+	}
+
+	private void setModo(ModoDeApp setModo) {
 		this.modoDeApp = setModo;
 	}
 
+	public void modoManual() {
+		this.setModo(new AppManual(this));
+	}
+	
+	public void modoAutomatico() {
+		this.setModo(new AppAutomatica(this));
+	}
+	
+	
 	void alertaDeInicioDeEstacionamiento() {
-		
+		modoDeApp.estacionar();
 	}
 
 	void alertaDeFinDeEstacionamiento() {
-		modoDeApp.finEstacionamiento();
+		modoDeApp.finDeEstacionamiento();
 	}
 
-	void estacionar(String patente, int numeroCelular, ISem sem) {
+	void estacionar() {
 		// Deja que el modo de app actual se encargue
-		modoDeApp.estacionar(patente, numeroCelular, sem);
+		modoDeApp.estacionar();
 	}
 
 	void finDeEstacionamiento() {
-		modoDeApp.finEstacionamiento();
+		modoDeApp.finDeEstacionamiento();
 	}
 
 	public Integer getSaldo() {
@@ -36,4 +54,17 @@ public class AppUsuario {
 		this.saldo = saldo;
 	}
 
+	@Override
+	public void driving() {
+		if (!(sem.existeEstacionamientoDe(this.patente))){//Falta definir sem y gps
+			this.alertaDeFinDeEstacionamiento();
+		}
+	}
+
+	@Override
+	public void walking() {
+		if (sem.existeEstacionamientoDe(this.patente)) {//Falta definir sem y gps
+			this.alertaDeInicioDeEstacionamiento();
+		}
+	}
 }

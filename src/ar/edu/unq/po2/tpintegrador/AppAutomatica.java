@@ -1,22 +1,35 @@
 package ar.edu.unq.po2.tpintegrador;
 
 public class AppAutomatica implements ModoDeApp {
-	private MovementSensor sensor;
 
-	
-	@Override
-	public void estacionar(String patente, int numeroCelular, ISem sem) {
-		//verificar el sensor
-		sem.registrarEstacionamientoViaApp(new EstacionamientoViaApp(numeroCelular, patente));
-		
+	private AppUsuario app;
+
+	public AppAutomatica(AppUsuario app) {
+		this.app = app;
+
 	}
 
 	@Override
-	public void finEstacionamiento() {
-		//sem.finalizoEstacionamiento 
-		
-		
+	public void estacionar() {
+		// Esta acción no se ejecuta de forma manual
+
 	}
 
+	@Override
+	public void finDeEstacionamiento() {
+		// Esta acción no se ejecuta de forma manual
+
+	}
+
+	@Override
+	public void alertaDeInicioDeEstacionamiento() {
+		new AppManual(this.app).estacionar();
+	}
+
+	@Override
+	public void alertaDeFinDeEstacionamiento() {
+		new AppManual(this.app).finDeEstacionamiento();
+
+	}
 
 }
