@@ -38,13 +38,13 @@ public class AppUsuario implements MovementSensor {
 		this.setModo(new AppAutomatica(this));
 	}
 
-//	void alertaDeInicioDeEstacionamiento() {
-//		modoDeApp.estacionar();
-//	}
-//
-//	void alertaDeFinDeEstacionamiento() {
-//		modoDeApp.finDeEstacionamiento();
-//	}
+	void alertaDeInicioDeEstacionamiento() {
+		modoDeApp.alertaDeInicioDeEstacionamiento();
+	}
+
+	void alertaDeFinDeEstacionamiento() {
+		modoDeApp.alertaDeFinDeEstacionamiento();
+	}
 
 	void estacionar() {
 		// Deja que el modo de app actual se encargue
