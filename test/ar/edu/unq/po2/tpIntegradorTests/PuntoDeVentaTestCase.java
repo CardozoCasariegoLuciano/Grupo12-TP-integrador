@@ -1,8 +1,8 @@
 package ar.edu.unq.po2.tpIntegradorTests;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -30,8 +30,7 @@ class PuntoDeVentaTestCase {
 	void unPuntoDeVentaEsCreadoConUnaZonaYConListaDeComprasVacia() {
 					
 		assertEquals(unaZona , unPuntoDeVenta.getZona());
-		assertEquals(0 , unPuntoDeVenta.getRegistrosDeCompra().size());
-		
+		assertEquals(0 , unPuntoDeVenta.getRegistrosDeCompra().size());		
 	}	
 	
 	

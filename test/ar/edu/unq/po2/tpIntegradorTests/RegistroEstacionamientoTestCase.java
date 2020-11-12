@@ -30,7 +30,7 @@ class RegistroEstacionamientoTestCase {
 	@Test
 	void unRegistroDeEstacionamientSabeSusDatosDeConstruccion() {
 		
-		assertEquals("altaPatente", unRegistro.getPatente());
+		assertEquals("unaPatente", unRegistro.getPatente());
 		assertEquals(1, unRegistro.getCantDeHS());
 		assertEquals(unPuntoDeV, unRegistro.getPuntoDeVenta());
 	}
