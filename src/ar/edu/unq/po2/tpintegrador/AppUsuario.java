@@ -1,6 +1,8 @@
 package ar.edu.unq.po2.tpintegrador;
 
-public class AppUsuario implements MovementSensor {
+////Falta validación de zona y retorno de fin de estacionamiento 
+
+public class AppUsuario implements MovementSensor, Gps {
 
 	private ModoDeApp modoDeApp;
 	private int numero;
@@ -8,9 +10,6 @@ public class AppUsuario implements MovementSensor {
 	private String patente;
 	protected ISem sem;
 	protected Sem semClase;
-
-	
-	
 
 	public AppUsuario(ModoDeApp modoDeApp, int numero, int saldo, String patente, ISem semInterfaz, Sem semClase) {
 		this.modoDeApp = modoDeApp;
@@ -20,11 +19,10 @@ public class AppUsuario implements MovementSensor {
 		this.sem = sem;
 		this.semClase = semClase;
 	}
-	
+
 	public ISem getSem() {
 		return sem;
 	}
-
 
 	private void setModo(ModoDeApp setModo) {
 		this.modoDeApp = setModo;
@@ -38,22 +36,13 @@ public class AppUsuario implements MovementSensor {
 		this.setModo(new AppAutomatica(this));
 	}
 
-	void alertaDeInicioDeEstacionamiento() {
-		modoDeApp.alertaDeInicioDeEstacionamiento();
-	}
-
-	void alertaDeFinDeEstacionamiento() {
-		modoDeApp.alertaDeFinDeEstacionamiento();
-	}
-
-	void estacionar() {
-		// Deja que el modo de app actual se encargue
-		modoDeApp.estacionar();
-	}
-
-	void finDeEstacionamiento() {
-		modoDeApp.finDeEstacionamiento();
-	}
+//	void alertaDeInicioDeEstacionamiento() {
+//	
+//	}
+//
+//	void alertaDeFinDeEstacionamiento() {
+//		
+//	}
 
 	public Integer getSaldo() {
 		return saldo;
@@ -61,20 +50,6 @@ public class AppUsuario implements MovementSensor {
 
 	public void setSaldo(Integer saldo) {
 		this.saldo = saldo;
-	}
-
-	@Override
-	public void driving() {
-		if (!(sem.existeEstacionamientoDe(this.getPatente()))) {// Falta definir sem y gps
-			this.alertaDeFinDeEstacionamiento();
-		}
-	}
-
-	@Override
-	public void walking() {
-		if (sem.existeEstacionamientoDe(this.getPatente())) {// Falta definir sem y gps
-			this.alertaDeInicioDeEstacionamiento();
-		}
 	}
 
 	public int getNumero() {
@@ -85,4 +60,57 @@ public class AppUsuario implements MovementSensor {
 		return patente;
 	}
 
+	/// METODOS DE ESTACIONAMIENTO MANUAL
+
+	void estacionar() {
+
+		modoDeApp.estacionar();
+	}
+
+	void finDeEstacionamiento() {
+		modoDeApp.finDeEstacionamiento();
+	}
+
+	/// METODOS ESTACIONAMIENTO AUTOMATICO
+
+	private void inicioDeEstacionamientoAutomatico() {
+		modoDeApp.inicioDeEstacionamientoAutomatico();
+
+	}
+
+	private void finDeEstacionamientoAutomatico() {
+		modoDeApp.finDeEstacionamientoAutomatico();
+
+	}
+
+	/// MovementSensor/////////
+	@Override
+	public void driving() {
+		if (sem.existeEstacionamientoDe(this.getPatente()) && this.modoDeApp == modoDeApp) {// Falta definir sem y gps
+			this.finDeEstacionamientoAutomatico();
+		}
+	}
+
+	@Override
+	public void walking() {
+		if (!(sem.existeEstacionamientoDe(this.getPatente()))) {// Falta definir sem y gps
+			this.inicioDeEstacionamientoAutomatico();
+		}
+	}
+
+	/////////////////
+
+	/// GPS///////////////////////
+	@Override
+	public void cambiarPosicion() {
+		// No sabemos como se define
+
+	}
+
+	@Override
+	public void getPosition() {
+		// No sabemos como se define
+
+	}
+	/////////////////////////////
 }
