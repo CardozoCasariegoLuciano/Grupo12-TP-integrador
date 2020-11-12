@@ -17,3 +17,5 @@ public class Ubicacion {
 		return latitud;
 	}
 }
+
+
