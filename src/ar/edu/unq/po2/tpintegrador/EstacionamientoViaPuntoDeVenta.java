@@ -11,6 +11,7 @@ public class EstacionamientoViaPuntoDeVenta extends Estacionamiento {
 
 	private int cantDeHoras;
 	private PuntoDeVenta puntoDeVenta;
+	private Boolean estaActivo;
 
 	// Constructor
 	public EstacionamientoViaPuntoDeVenta(int cantDeHoras, String unaPatente, PuntoDeVenta puntoDeVenta) {
@@ -38,6 +39,13 @@ public class EstacionamientoViaPuntoDeVenta extends Estacionamiento {
 		return LocalTime.now();
 	}
 
+	
+	public Boolean estacionamientoEstaAcitvo() {
+		return this.estaActivo;
+		
+	}
+
+	
 	// Metodos
 	@Override
 	public boolean comprobarValidez() {
