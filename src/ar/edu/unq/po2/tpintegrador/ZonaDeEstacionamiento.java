@@ -8,17 +8,23 @@ public class ZonaDeEstacionamiento {
 	//Variables
 	private Inspector inspector;
 	private List<PuntoDeVenta>puntosDeVenta;
-	
+	private Ubicacion unaUbicacion;
 
 	
 	/*Constructor*/
-	public ZonaDeEstacionamiento(Inspector inspector) {
+	public ZonaDeEstacionamiento(Inspector inspector, Ubicacion unaUbicacion) {
 		this.inspector = inspector;
 		this.puntosDeVenta = new ArrayList<PuntoDeVenta>();
+		this.unaUbicacion = unaUbicacion; 
 	}
 	
 	
 	//Getters
+	
+	public Ubicacion getUbicacion() {
+		
+		return this.unaUbicacion;
+	}
 	
 	public Inspector getInspector() {
 		return inspector;
@@ -31,11 +37,11 @@ public class ZonaDeEstacionamiento {
 	
 	//Metodos
 	
-	public List<RegistroDeCompra> registrarComprasDePuntosDeVenta() {
-		List<RegistroDeCompra> compras = new ArrayList<RegistroDeCompra>();
+	public ArrayList<RegistroDeCompra> registrarComprasDePuntosDeVenta() {
+		ArrayList<RegistroDeCompra> compras = new ArrayList<RegistroDeCompra>();
 			
 		for (PuntoDeVenta puntoDeVenta : puntosDeVenta) {
-			compras.addAll(puntoDeVenta.getRegistrosDeCompra());   // que o para que es este metodo?
+			compras.addAll(puntoDeVenta.getRegistrosDeCompra());
 		}
 		
 		return compras;

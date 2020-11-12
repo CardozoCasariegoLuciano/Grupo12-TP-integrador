@@ -8,21 +8,17 @@ public class AppUsuario implements MovementSensor, Gps {
 	private int numero;
 	private int saldo;
 	private String patente;
-	protected ISem sem;
-	protected Sem semClase;
+	protected Sem sem;
 
-	public AppUsuario(ModoDeApp modoDeApp, int numero, int saldo, String patente, ISem semInterfaz, Sem semClase) {
+	public AppUsuario(ModoDeApp modoDeApp, int numero, int saldo, String patente, Sem semClase) {
 		this.modoDeApp = modoDeApp;
 		this.numero = numero;
 		this.saldo = saldo;
 		this.patente = patente;
-		this.sem = sem;
-		this.semClase = semClase;
+		this.sem = semClase;
 	}
 
-	public ISem getSem() {
-		return sem;
-	}
+	
 
 	private void setModo(ModoDeApp setModo) {
 		this.modoDeApp = setModo;
@@ -62,12 +58,12 @@ public class AppUsuario implements MovementSensor, Gps {
 
 	/// METODOS DE ESTACIONAMIENTO MANUAL
 
-	void estacionar() {
+	public void estacionar() {
 
 		modoDeApp.estacionar();
 	}
 
-	void finDeEstacionamiento() {
+	public void finDeEstacionamiento() {
 		modoDeApp.finDeEstacionamiento();
 	}
 
@@ -86,16 +82,14 @@ public class AppUsuario implements MovementSensor, Gps {
 	/// MovementSensor/////////
 	@Override
 	public void driving() {
-		if (sem.existeEstacionamientoDe(this.getPatente()) && this.modoDeApp == modoDeApp) {// Falta definir sem y gps
 			this.finDeEstacionamientoAutomatico();
-		}
+		
 	}
 
 	@Override
 	public void walking() {
-		if (!(sem.existeEstacionamientoDe(this.getPatente()))) {// Falta definir sem y gps
 			this.inicioDeEstacionamientoAutomatico();
-		}
+		
 	}
 
 	/////////////////
@@ -113,4 +107,11 @@ public class AppUsuario implements MovementSensor, Gps {
 
 	}
 	/////////////////////////////
+
+
+
+	public Object getModo() {
+		
+		return this.modoDeApp;
+	}
 }

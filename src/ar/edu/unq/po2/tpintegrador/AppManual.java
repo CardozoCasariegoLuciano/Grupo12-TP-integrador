@@ -11,8 +11,9 @@ public class AppManual implements ModoDeApp {
 
 	@Override
 	public void estacionar() {
-		if (this.app.getSaldo() > this.app.semClase.getCosto()) {
-			this.app.getSem().registrarEstacionamientoViaApp(new EstacionamientoViaApp(app));
+		if (this.app.getSaldo() > this.app.sem.getCosto() ) {
+			// && this.app.getPosition() == Falta la validación del sem
+			this.app.sem.registrarEstacionamientoViaApp(new EstacionamientoViaApp(app));
 			this.alertaDeInicioDeEstacionamiento();
 		} else
 			System.out.println("Saldo insuficiente. Estacionamiento no permitido.");
@@ -20,9 +21,9 @@ public class AppManual implements ModoDeApp {
 
 	@Override
 	public void finDeEstacionamiento() {
-		if (!(this.app.getSem().existeEstacionamientoDe(this.app.getPatente()))) {
+		if (!(this.app.sem.existeEstacionamientoDe(this.app.getPatente()))) {
 
-			this.app.getSem().finalizarEstacionamientoViaApp(this.app.getNumero());
+			this.app.sem.finalizarEstacionamientoViaApp(this.app.getNumero());
 			this.alertaDeFinDeEstacionamiento();
 
 		} else {
