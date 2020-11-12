@@ -23,14 +23,14 @@ class RegistroEstacionamientoTestCase {
 	public void setUp() {
 		
 		unPuntoDeV = mock(PuntoDeVenta.class);
-		unRegistro = new EstacionamientoViaPuntoDeVenta(1, "patenteX", unPuntoDeV);
+		unRegistro = new EstacionamientoViaPuntoDeVenta(1, "altaPatente", unPuntoDeV);
 		
 	}
 	
 	@Test
 	void unRegistroDeEstacionamientSabeSusDatosDeConstruccion() {
 		
-		assertEquals("patenteX", unRegistro.getPatente());
+		assertEquals("altaPatente", unRegistro.getPatente());
 		assertEquals(1, unRegistro.getCantDeHS());
 		assertEquals(unPuntoDeV, unRegistro.getPuntoDeVenta());
 	}
