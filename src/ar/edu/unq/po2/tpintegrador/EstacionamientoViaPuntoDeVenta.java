@@ -57,4 +57,6 @@ public class EstacionamientoViaPuntoDeVenta extends Estacionamiento {
 
 		return resultado;
 	}
+	
+	
 }

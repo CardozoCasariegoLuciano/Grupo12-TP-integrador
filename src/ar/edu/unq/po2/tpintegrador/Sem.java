@@ -137,6 +137,10 @@ public class Sem implements ISem {
 	}
 
 
+	
+	public void agregarZonaDeEstacionamientoASem(ZonaDeEstacionamiento zona) {
+		this.zonas.add(zona);
+	}
 
 
 	public boolean existeEstacionamientoDe(String unaPatente) {
@@ -156,9 +160,9 @@ public class Sem implements ISem {
 	}
 
 	@Override
-	public void finalizarEstacionamientoViaApp(int numero) {
-		this.estacionamientosViaApp.removeIf(n -> n.getNumeroDeCelular() ==  numero);
+	public void finalizarEstacionamientoViaApp(int numeroDeTelefono) {
 		
+				
 	}
 	
 	
