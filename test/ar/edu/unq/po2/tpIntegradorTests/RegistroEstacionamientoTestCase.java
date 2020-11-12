@@ -14,7 +14,7 @@ import ar.edu.unq.po2.tpintegrador.EstacionamientoViaPuntoDeVenta;
 class RegistroEstacionamientoTestCase {
 	
 	PuntoDeVenta unPuntoDeV;
-	EstacionamientoViaPuntoDeVenta unRegistro;
+	EstacionamientoViaPuntoDeVenta unEstacionamientoPuntoDeVenta;
 	
 	EstacionamientoViaPuntoDeVenta unRegistro2;
 	
@@ -23,31 +23,31 @@ class RegistroEstacionamientoTestCase {
 	public void setUp() {
 		
 		unPuntoDeV = mock(PuntoDeVenta.class);
-		unRegistro = new EstacionamientoViaPuntoDeVenta(1, "altaPatente", unPuntoDeV);
+		unEstacionamientoPuntoDeVenta = new EstacionamientoViaPuntoDeVenta(1, "altaPatente", unPuntoDeV);
 		
 	}
 	
 	@Test
 	void unRegistroDeEstacionamientSabeSusDatosDeConstruccion() {
 		
-		assertEquals("altaPatente", unRegistro.getPatente());
-		assertEquals(1, unRegistro.getCantDeHS());
-		assertEquals(unPuntoDeV, unRegistro.getPuntoDeVenta());
+		assertEquals("altaPatente", unEstacionamientoPuntoDeVenta.getPatente());
+		assertEquals(1, unEstacionamientoPuntoDeVenta.getCantDeHS());
+		assertEquals(unPuntoDeV, unEstacionamientoPuntoDeVenta.getPuntoDeVenta());
 	}
 
 	
 	@Test
 	void unRegistroDeEstacionamientSabeSiEstaActivo() {
 		
-		assertTrue(unRegistro.comprobarValidez());
+		assertTrue(unEstacionamientoPuntoDeVenta.comprobarValidez());
 	}
 	
 	@Test
 	void unRegistroDeEstacionamientSabeSiNoEstaActivo() {
 		
-		when(unRegistro.horaActual()).thenReturn(LocalTime.of(20, 00, 00));
+		when(unEstacionamientoPuntoDeVenta.horaActual()).thenReturn(LocalTime.of(20, 00, 00));
 		
-		assertFalse(unRegistro.comprobarValidez());
+		assertFalse(unEstacionamientoPuntoDeVenta.comprobarValidez());
 	}
 	
 	
@@ -56,11 +56,11 @@ class RegistroEstacionamientoTestCase {
 	@Test
 	void unRegistroDeEstacionamientPuedeFinalizarse() {
 		
-		assertTrue(unRegistro.comprobarValidez());
+		assertTrue(unEstacionamientoPuntoDeVenta.comprobarValidez());
 		
-		unRegistro.finalizarRegistro();
+		unEstacionamientoPuntoDeVenta.finalizarRegistro();
 		
-		assertFalse(unRegistro.comprobarValidez());
+		assertFalse(unEstacionamientoPuntoDeVenta.comprobarValidez());
 	}	
 	
 	

@@ -13,7 +13,7 @@ public class AppManual implements ModoDeApp {
 	public void estacionar() {
 		if (this.app.getSaldo() > this.app.semClase.getCosto()) {
 			this.app.getSem().registrarEstacionamientoViaApp(new EstacionamientoViaApp(app));
-			System.out.println("Estacionamiento Exitoso");
+			this.alertaDeInicioDeEstacionamiento();
 		} else
 			System.out.println("Saldo insuficiente. Estacionamiento no permitido.");
 	}
@@ -23,7 +23,8 @@ public class AppManual implements ModoDeApp {
 		if (!(this.app.getSem().existeEstacionamientoDe(this.app.getPatente()))) {
 
 			this.app.getSem().finalizarEstacionamientoViaApp(this.app.getNumero());
-			System.out.println("Fin de Estacionamiento Exitoso");
+			this.alertaDeFinDeEstacionamiento();
+
 		} else {
 			System.out.println("No existe estacionamiento de la patente");
 		}
@@ -31,14 +32,26 @@ public class AppManual implements ModoDeApp {
 	}
 
 	@Override
-	public void alertaDeInicioDeEstacionamiento() {
+	public void inicioDeEstacionamientoAutomatico() {
 		// No se usan de manera manual
 
 	}
 
 	@Override
-	public void alertaDeFinDeEstacionamiento() {
+	public void finDeEstacionamientoAutomatico() {
 		// No se usan de manera manual
+
+	}
+
+	@Override
+	public void alertaDeInicioDeEstacionamiento() {
+		System.out.println("Estacionamiento Exitoso");
+
+	}
+
+	@Override
+	public void alertaDeFinDeEstacionamiento() {
+		System.out.println("Fin de Estacionamiento Exitoso");
 
 	}
 

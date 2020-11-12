@@ -5,61 +5,46 @@ import java.util.List;
 
 public class ZonaDeEstacionamiento {
     
+	//Variables
 	private Inspector inspector;
 	private List<PuntoDeVenta>puntosDeVenta;
 	
 
 	
 	/*Constructor*/
-	public ZonaDeEstacionamiento(Inspector inspector, List<PuntoDeVenta> puntosDeVenta , List<EstacionamientoViaApp>estacionamientosDeApp) {
+	public ZonaDeEstacionamiento(Inspector inspector) {
 		this.inspector = inspector;
-		this.puntosDeVenta = puntosDeVenta;
+		this.puntosDeVenta = new ArrayList<PuntoDeVenta>();
 	}
-
 	
 	
+	//Getters
 	
-	
-	
-	private Inspector getInspector() {
+	public Inspector getInspector() {
 		return inspector;
 	}
-
 	
-	
-	
-	
-	private void setInspector(Inspector inspector) {
-		this.inspector = inspector;
-	}
-
-	
-	
-	
-	
-	private List<PuntoDeVenta> getPuntosDeVenta() {
+	public List<PuntoDeVenta> getPuntosDeVenta() {
 		return puntosDeVenta;
-	}
-
+	}	
 	
 	
-	
-	
-	private void setPuntosDeVenta(List<PuntoDeVenta> puntosDeVenta) {
-		this.puntosDeVenta = puntosDeVenta;
-	}
-
-	
-	
+	//Metodos
 	
 	public List<RegistroDeCompra> registrarComprasDePuntosDeVenta() {
 		List<RegistroDeCompra> compras = new ArrayList<RegistroDeCompra>();
 			
 		for (PuntoDeVenta puntoDeVenta : puntosDeVenta) {
-			compras.addAll(puntoDeVenta.getRegistrosDeCompra());
+			compras.addAll(puntoDeVenta.getRegistrosDeCompra());   // que o para que es este metodo?
 		}
 		
 		return compras;
+	}
+
+
+	public void abrirPuntoDeVenta(PuntoDeVenta unPV) {
+		this.puntosDeVenta.add(unPV);
+		
 	}
 
 	

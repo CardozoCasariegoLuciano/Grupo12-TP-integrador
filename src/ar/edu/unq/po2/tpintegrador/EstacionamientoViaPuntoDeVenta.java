@@ -1,6 +1,5 @@
 package ar.edu.unq.po2.tpintegrador;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 
 
@@ -54,7 +53,7 @@ public class EstacionamientoViaPuntoDeVenta extends Estacionamiento {
 
 		LocalTime horaActual = horaActual();
 
-		resultado = this.estaActivo && this.horaFinal.isAfter(horaActual);
+		resultado = (this.estaActivo && this.horaFinal.isAfter(horaActual));
 
 		return resultado;
 	}

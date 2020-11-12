@@ -4,6 +4,7 @@ import java.time.LocalTime;
 
 public class EstacionamientoViaApp extends Estacionamiento {
 	private int numeroDeCelular;
+	
 	private String patente;
 	private Integer saldo;
 	private Sem sem;
@@ -18,6 +19,11 @@ public class EstacionamientoViaApp extends Estacionamiento {
 
 		
 	}
+	
+	public int getNumeroDeCelular() {
+		return numeroDeCelular;
+	}
+
 
 	@Override
 	public boolean comprobarValidez() {

@@ -23,44 +23,28 @@ public class Multa {
 		this.zona = zona;
 	}
 
-	private String getPatente() {
+	public String getPatente() {
 		return patente;
 	}
+	
 
-	private void setPatente(String patente) {
-		this.patente = patente;
-	}
-
-	private LocalDate getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
 
-	private void setFecha(LocalDate fecha) {
-		this.fecha = fecha;
-	}
 
-	private LocalTime getHora() {
+	public LocalTime getHora() {
 		return hora;
 	}
+	
 
-	private void setHora(LocalTime hora) {
-		this.hora = hora;
-	}
-
-	private Inspector getInspector() {
+	public Inspector getInspector() {
 		return inspector;
 	}
+	
 
-	private void setInspector(Inspector inspector) {
-		this.inspector = inspector;
-	}
-
-	private ZonaDeEstacionamiento getZona() {
+	public ZonaDeEstacionamiento getZona() {
 		return zona;
-	}
-
-	private void setZona(ZonaDeEstacionamiento zona) {
-		this.zona = zona;
 	}
 
 	
