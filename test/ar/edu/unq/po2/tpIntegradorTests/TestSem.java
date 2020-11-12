@@ -89,9 +89,8 @@ class TestSem {
 	@Test
 	void registrarYFinalizarEstacionamientosPorAppYPorPuntoDeVenta() {
 		unSem.registrarEstacionamientoViaApp(estacionamientoPorApp);;
-		unSem.finalizarEstacionamientosViaApp();
-		unSem.registrarEstacionamientoViaApp(estacionamientoPorApp);;
-		unSem.finalizarEstacionamientosViaApp();
+		unSem.registrarEstacionamientoViaPuntoDeVenta(estacionamientoPorPuntoDeVenta);;
+		unSem.finalizarTodosLosEstacionamientos();
 		
 		assertTrue(!estacionamientoPorApp.estacionamientoEstaAcitvo());
 		assertTrue(!estacionamientoPorPuntoDeVenta.estacionamientoEstaAcitvo());

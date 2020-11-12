@@ -99,7 +99,7 @@ public class Sem implements ISem {
 		this.appDeUsuarios.add(appUsuario);
 	}
 
-	private void finalizarTodosLosEstacionamientos() {
+	public void finalizarTodosLosEstacionamientos() {
 		this.finalizarEstacionamientosViaPuntoDeVenta();
 		this.finalizarEstacionamientosViaApp();
 		
