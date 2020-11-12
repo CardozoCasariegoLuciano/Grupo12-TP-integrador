@@ -58,12 +58,12 @@ public class AppUsuario implements MovementSensor, Gps {
 
 	/// METODOS DE ESTACIONAMIENTO MANUAL
 
-	void estacionar() {
+	public void estacionar() {
 
 		modoDeApp.estacionar();
 	}
 
-	void finDeEstacionamiento() {
+	public void finDeEstacionamiento() {
 		modoDeApp.finDeEstacionamiento();
 	}
 
@@ -82,16 +82,14 @@ public class AppUsuario implements MovementSensor, Gps {
 	/// MovementSensor/////////
 	@Override
 	public void driving() {
-		if (sem.existeEstacionamientoDe(this.getPatente()) && this.modoDeApp == modoDeApp) {// Falta definir sem y gps
 			this.finDeEstacionamientoAutomatico();
-		}
+		
 	}
 
 	@Override
 	public void walking() {
-		if (!(sem.existeEstacionamientoDe(this.getPatente()))) {// Falta definir sem y gps
 			this.inicioDeEstacionamientoAutomatico();
-		}
+		
 	}
 
 	/////////////////
@@ -109,4 +107,11 @@ public class AppUsuario implements MovementSensor, Gps {
 
 	}
 	/////////////////////////////
+
+
+
+	public Object getModo() {
+		
+		return this.modoDeApp;
+	}
 }
