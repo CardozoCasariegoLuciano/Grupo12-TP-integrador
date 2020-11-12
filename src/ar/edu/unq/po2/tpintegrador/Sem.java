@@ -157,7 +157,7 @@ public class Sem implements ISem {
 
 	@Override
 	public void finalizarEstacionamientoViaApp(int numero) {
-		
+		this.estacionamientosViaApp.removeIf(n -> n.getNumeroDeCelular() ==  numero);
 		
 	}
 	
