@@ -5,6 +5,7 @@ public interface ISem {
   abstract	public boolean existeEstacionamientoDe(String unaPatente);
   abstract  public void registrarEstacionamientoViaApp(EstacionamientoViaApp unEstacionamiento);
   abstract  public void registrarEstacionamientoViaPuntoDeVenta(EstacionamientoViaPuntoDeVenta unEstacionamiento);
+  abstract void finalizarEstacionamientoViaApp(int numero);
 		
 	
 
