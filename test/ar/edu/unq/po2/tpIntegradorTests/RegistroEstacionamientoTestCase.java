@@ -25,6 +25,7 @@ class RegistroEstacionamientoTestCase {
 		unPuntoDeV = mock(PuntoDeVenta.class);
 		unEstacionamientoPuntoDeVenta = new EstacionamientoViaPuntoDeVenta(1, "altaPatente", unPuntoDeV);
 		
+		
 	}
 	
 	@Test

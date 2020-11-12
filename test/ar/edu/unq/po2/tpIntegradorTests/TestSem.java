@@ -13,8 +13,11 @@ import org.junit.jupiter.api.Test;
 import ar.edu.unq.po2.tpintegrador.AppUsuario;
 import ar.edu.unq.po2.tpintegrador.EstacionamientoViaApp;
 import ar.edu.unq.po2.tpintegrador.EstacionamientoViaPuntoDeVenta;
+import ar.edu.unq.po2.tpintegrador.Inspector;
 import ar.edu.unq.po2.tpintegrador.PuntoDeVenta;
+import ar.edu.unq.po2.tpintegrador.RegistroCargaCelular;
 import ar.edu.unq.po2.tpintegrador.Sem;
+import ar.edu.unq.po2.tpintegrador.ZonaDeEstacionamiento;
 
 class TestSem {
 
@@ -26,6 +29,10 @@ class TestSem {
 	EstacionamientoViaPuntoDeVenta otroEstacionamiento;
 	AppUsuario appDeUsuario;
 	PuntoDeVenta unPuntoDeV;
+	Inspector unInspector;
+	ZonaDeEstacionamiento unaZona;
+	PuntoDeVenta unPuntoDeVenta;
+	AppUsuario unaAppDeUsuario;
 	
 	@BeforeEach
 	public void setup() {
@@ -35,6 +42,12 @@ class TestSem {
 		appDeUsuario = mock(AppUsuario.class);
 		unPuntoDeV = mock(PuntoDeVenta.class);
 		otroEstacionamiento = new EstacionamientoViaPuntoDeVenta(1, "altaPatente", unPuntoDeV);
+		unInspector = mock(Inspector.class);
+		unaZona = new ZonaDeEstacionamiento(unInspector);
+		unPuntoDeVenta = new PuntoDeVenta(unaZona , unSem);
+		unaAppDeUsuario = mock(AppUsuario.class);
+		
+		
 	}
 	
 	@Test
@@ -112,4 +125,25 @@ class TestSem {
 		assertTrue(!unSem.existeEstacionamientoDe(otroEstacionamiento.getPatente()));
 	}
 
+	@Test 
+	void registrarTodasLasComprasDeLasZonasDelSem() {
+		assertEquals(0 , unSem.registrarTodasLasCompras().size()); 
+		unaZona.abrirPuntoDeVenta(unPuntoDeVenta);
+		unPuntoDeVenta.registrarCargaCredito(12, unaAppDeUsuario);
+		
+		assertEquals(1 , unSem.registrarTodasLasCompras().size()); 
+	}
+	
+	
+	@Test 
+	void registrarTodasLasComprasDeLasZonasDelSem2() {
+		assertEquals(0 , unSem.registrarTodasLasCompras().size()); 
+		unaZona.abrirPuntoDeVenta(unPuntoDeVenta);
+		unPuntoDeVenta.registrarCargaCredito(12, unaAppDeUsuario);
+		RegistroCargaCelular carga = new RegistroCargaCelular(12f , unaAppDeUsuario ,unPuntoDeVenta);
+		
+		assertTrue(unSem.registrarTodasLasCompras().contains(carga)); 
+	}
+	
+	
 }	
