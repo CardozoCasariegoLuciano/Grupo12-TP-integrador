@@ -7,7 +7,7 @@ public class EstacionamientoViaApp extends Estacionamiento {
 	private String patente;
 	private Integer saldo;
 	private Sem sem;
-	
+	private Boolean estaActivo;
 
 	public EstacionamientoViaApp(AppUsuario app) {
 		this.numeroDeCelular = app.getNumero();
@@ -23,6 +23,11 @@ public class EstacionamientoViaApp extends Estacionamiento {
 	public boolean comprobarValidez() {
 		
 		return this.estaActivo && this.saldo >= sem.getCosto();
+	}
+	
+	public Boolean estacionamientoEstaAcitvo() {
+		return this.estaActivo;
+		
 	}
 
 }

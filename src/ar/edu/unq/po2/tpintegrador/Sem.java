@@ -47,6 +47,17 @@ public class Sem implements ISem {
 	public void registrarEstacionamientoViaApp(EstacionamientoViaApp unEstacionamiento) {
 		this.estacionamientosViaApp.add(unEstacionamiento);
 	}
+	
+	 
+	
+
+	public List<EstacionamientoViaApp> getEstacionamientosViaApp() {
+		return estacionamientosViaApp;
+	}
+
+	public List<EstacionamientoViaPuntoDeVenta> getEstacionamientosViaPuntoDeVenta() {
+		return estacionamientosViaPuntoDeVenta;
+	}
 
 	public LocalTime getInicioFranjaHoraria() {
 		return inicioFranjaHoraria;
@@ -76,29 +87,45 @@ public class Sem implements ISem {
 		return zonas;
 	}
 
-	private void setZonas(List<ZonaDeEstacionamiento> zonas) {
+	public void setZonas(List<ZonaDeEstacionamiento> zonas) {
 		this.zonas = zonas;
 	}
 
-	private List<AppUsuario> getAppDeConductores() {
+	public List<AppUsuario> getAppDeConductores() {
 		return appDeUsuarios;
 	}
 
-	private void agregarAppUsuario(AppUsuario appUsuario) {
+	public void agregarAppUsuario(AppUsuario appUsuario) {
 		this.appDeUsuarios.add(appUsuario);
 	}
 
 	private void finalizarTodosLosEstacionamientos() {
-      List<Estacionamiento>estacionamientos = new ArrayList<Estacionamiento>();
-      estacionamientos.addAll(this.estacionamientosViaApp);
-      estacionamientos.addAll(this.estacionamientosViaPuntoDeVenta);
-    
-		for (Estacionamiento elem : estacionamientos) {
-			elem.finalizarRegistro();
+		this.finalizarEstacionamientosViaPuntoDeVenta();
+		this.finalizarEstacionamientosViaApp();
+		
+	}
+	
+	
+	
+	public void finalizarEstacionamientosViaApp() {
+		for(EstacionamientoViaApp estacionamiento : this.estacionamientosViaApp) {
+			estacionamiento.finalizarRegistro();
+			
 		}
+		
+	}
+	
+	
 
+	public void finalizarEstacionamientosViaPuntoDeVenta() {
+		for(EstacionamientoViaPuntoDeVenta estacionamiento : this.estacionamientosViaPuntoDeVenta) {
+			estacionamiento.finalizarRegistro();
+			
+		}
+		
 	}
 
+	
 	public List<RegistroDeCompra> registrarTodasLasCompras() {
 		List<RegistroDeCompra> todasLasCompras = new ArrayList<RegistroDeCompra>();
 
