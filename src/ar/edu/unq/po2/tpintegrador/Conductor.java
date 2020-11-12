@@ -22,10 +22,10 @@ public class Conductor {
 		this.puntoDeVenta.registrarEstacionamiento(patente, horas);
 	}
 
-	void estacionarPorApp() {
-
-		app.estacionar(patente);
-	}
+//	void estacionarPorApp() {
+//
+//		this.app.estacionar(patente);
+//	}
 	
 	
 	//Delega acciones al celular

@@ -11,13 +11,13 @@ public class AppAutomatica implements ModoDeApp {
 
 	@Override
 	public void estacionar() {
-		// Esta acción no se ejecuta de forma manual
+		// Esta acción  se ejecuta de forma manual
 		
 	}
 
 	@Override
 	public void finDeEstacionamiento() {
-		// Esta acción no se ejecuta de forma manual
+		// Esta acción se ejecuta de forma manual
 		
 	}
 
