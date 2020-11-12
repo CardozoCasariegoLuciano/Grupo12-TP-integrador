@@ -5,42 +5,35 @@ import java.time.LocalTime;
 
 public class Inspector {
    
+	//Variables
 	private ZonaDeEstacionamiento perteneceA;
 	private AppInspector dispositivoMovil;
 	
-	
+	//Constructor
 	public Inspector(ZonaDeEstacionamiento perteneceA, AppInspector dispositivoMovil) {
-		this.setPerteneceA(perteneceA);
-		this.setDispositivoMovil(dispositivoMovil);
+		this.perteneceA = perteneceA;
+		this.dispositivoMovil = dispositivoMovil;
 	}
 
-
+	// Getters
 	public ZonaDeEstacionamiento getPerteneceA() {
 		return perteneceA;
 	}
+	
 
-
-	private void setPerteneceA(ZonaDeEstacionamiento perteneceA) {
-		this.perteneceA = perteneceA;
-	}
-
-
-	private AppInspector getDispositivoMovil() {
+	public AppInspector getDispositivoMovil() {
 		return dispositivoMovil;
 	}
-
-
-	private void setDispositivoMovil(AppInspector dispositivoMovil) {
-		this.dispositivoMovil = dispositivoMovil;
-	}
 	
 	
-	private boolean verificarEstacionamiento(String patente, ISem unSem) {
+	//Metodos
+	
+	public boolean verificarEstacionamiento(String patente, ISem unSem) {
 		return unSem.existeEstacionamientoDe(patente);
 	}
 	
 	
-	private void multar(String patente) {
+	public void multar(String patente) {
 		this.dispositivoMovil.registrarMulta(patente , LocalDate.now() , LocalTime.now() , this);
 	}
 	
