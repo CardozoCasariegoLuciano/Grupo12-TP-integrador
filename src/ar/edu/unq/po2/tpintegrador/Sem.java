@@ -137,7 +137,19 @@ public class Sem implements ISem {
 		return false;
 
 	}
+	
+	
+	public List<Integer> conocerSaldoDeTodasLasAppsDeUsuario(){
+		List<Integer> saldos = new ArrayList<Integer>();
+		
+		this.getAppDeConductores().stream().
+		                                    forEach(app -> saldos.add(app.getSaldo()));
+		
+		return saldos;
+	}
 
+	
+	
 	@Override
 	public void finalizarEstacionamientoViaApp(int numeroDeTelefono) {
 		

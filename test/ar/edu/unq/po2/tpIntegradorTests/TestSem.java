@@ -45,6 +45,7 @@ class TestSem {
 		estacionamientoPorApp = mock(EstacionamientoViaApp.class);
 		estacionamientoPorPuntoDeVenta = mock(EstacionamientoViaPuntoDeVenta.class);
 		appDeUsuario = mock(AppUsuario.class);
+		when(appDeUsuario.getSaldo()).thenReturn(8);
 		unPuntoDeV = mock(PuntoDeVenta.class);
 		otroEstacionamiento = new EstacionamientoViaPuntoDeVenta(1, "altaPatente", unPuntoDeV);
 		unInspector = mock(Inspector.class);
@@ -53,6 +54,7 @@ class TestSem {
 		unaAppDeUsuario = mock(AppUsuario.class);
 		unaUbicacion = mock(Ubicacion.class);
 		sistemaSubscriptor = mock(Subscriptor.class);
+		
 	}
 	
 	@Test
@@ -173,4 +175,13 @@ class TestSem {
 	   
 	   assertTrue(!unSem.getSistemasSubscriptos().contains(sistemaSubscriptor));
    }
+   
+	@Test
+	void testPedirSaldoAappsDeUsuarios() {
+		unSem.agregarAppUsuario(appDeUsuario);
+		
+		assertTrue(unSem.conocerSaldoDeTodasLasAppsDeUsuario().contains(8));
+		
+	}
+   
 }	
