@@ -52,13 +52,13 @@ public class AppAutomatica implements ModoDeApp {
 
 	@Override
 	public void alertaDeInicioDeEstacionamiento() {
-		// TODO Auto-generated method stub
+		System.out.println("Inicio de Estacionamiento exitoso");
 
 	}
 
 	@Override
 	public void alertaDeFinDeEstacionamiento() {
-		// TODO Auto-generated method stub
+		System.out.println("Fin de Estacionamiento exitoso");
 
 	}
 

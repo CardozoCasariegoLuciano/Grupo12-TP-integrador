@@ -71,11 +71,13 @@ public class AppUsuario implements MovementSensor, Gps {
 
 	private void inicioDeEstacionamientoAutomatico() {
 		modoDeApp.inicioDeEstacionamientoAutomatico();
+		modoDeApp.alertaDeInicioDeEstacionamiento();
 
 	}
 
 	private void finDeEstacionamientoAutomatico() {
 		modoDeApp.finDeEstacionamientoAutomatico();
+		modoDeApp.alertaDeFinDeEstacionamiento();
 
 	}
 
