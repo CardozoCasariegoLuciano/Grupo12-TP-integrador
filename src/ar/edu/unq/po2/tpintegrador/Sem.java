@@ -13,8 +13,8 @@ public class Sem implements ISem {
 	private LocalTime finFranjaHoraria;
 	private float costo;
 	private List<Subscriptor> sistemasSubscriptos;
-	private List<EstacionamientoViaApp> estacionamientosViaApp;
-	private List<EstacionamientoViaPuntoDeVenta> estacionamientosViaPuntoDeVenta;
+	private List<Estacionamiento> estacionamientos;
+	
 
 
 	public Sem(LocalTime inicioDeFranja,LocalTime finDeFranja, float costo) {
@@ -28,36 +28,33 @@ public class Sem implements ISem {
 		this.setCosto(costo);
 		
 		this.sistemasSubscriptos = new ArrayList<Subscriptor>();
-		this.estacionamientosViaApp = new ArrayList<EstacionamientoViaApp>();
-		this.estacionamientosViaPuntoDeVenta = new ArrayList<EstacionamientoViaPuntoDeVenta>();
+		this.estacionamientos = new ArrayList<Estacionamiento>();
 	}
 
-	private void suscribirSistema(Subscriptor sistemaSubscriptor) {
+	public void suscribirSistema(Subscriptor sistemaSubscriptor) {
 		this.sistemasSubscriptos.add(sistemaSubscriptor);
 	}
 
-	private void desSubscribirSistema(Subscriptor sistema) {
+	public void desSubscribirSistema(Subscriptor sistema) {
 		this.sistemasSubscriptos.remove(sistema);
 	}
 	
 	public void registrarEstacionamientoViaPuntoDeVenta(EstacionamientoViaPuntoDeVenta unEstacionamiento) {
-		this.estacionamientosViaPuntoDeVenta.add(unEstacionamiento);
+		this.estacionamientos.add(unEstacionamiento);
 	}
 
 	public void registrarEstacionamientoViaApp(EstacionamientoViaApp unEstacionamiento) {
-		this.estacionamientosViaApp.add(unEstacionamiento);
+		this.estacionamientos.add(unEstacionamiento);
 	}
 	
 	 
 	
 
-	public List<EstacionamientoViaApp> getEstacionamientosViaApp() {
-		return estacionamientosViaApp;
+	public List<Estacionamiento> getEstacionamientos() {
+		return this.estacionamientos;
 	}
 
-	public List<EstacionamientoViaPuntoDeVenta> getEstacionamientosViaPuntoDeVenta() {
-		return estacionamientosViaPuntoDeVenta;
-	}
+
 
 	public LocalTime getInicioFranjaHoraria() {
 		return inicioFranjaHoraria;
@@ -83,16 +80,20 @@ public class Sem implements ISem {
 		this.costo = costo;
 	}
 
-	private List<ZonaDeEstacionamiento> getZonas() {
+	public List<ZonaDeEstacionamiento> getZonas() {
 		return zonas;
 	}
 
-	public void setZonas(List<ZonaDeEstacionamiento> zonas) {
-		this.zonas = zonas;
-	}
+
 
 	public List<AppUsuario> getAppDeConductores() {
 		return appDeUsuarios;
+	}
+	
+	
+
+	public List<Subscriptor> getSistemasSubscriptos() {
+		return sistemasSubscriptos;
 	}
 
 	public void agregarAppUsuario(AppUsuario appUsuario) {
@@ -100,40 +101,21 @@ public class Sem implements ISem {
 	}
 
 	public void finalizarTodosLosEstacionamientos() {
-		this.finalizarEstacionamientosViaPuntoDeVenta();
-		this.finalizarEstacionamientosViaApp();
+     this.estacionamientos.stream().
+                                    forEach(estacionamiento -> estacionamiento.finalizarRegistro());
 		
 	}
 	
 	
 	
-	public void finalizarEstacionamientosViaApp() {
-		for(EstacionamientoViaApp estacionamiento : this.estacionamientosViaApp) {
-			estacionamiento.finalizarRegistro();
-			
-		}
-		
-	}
-	
-	
-
-	public void finalizarEstacionamientosViaPuntoDeVenta() {
-		for(EstacionamientoViaPuntoDeVenta estacionamiento : this.estacionamientosViaPuntoDeVenta) {
-			estacionamiento.finalizarRegistro();
-			
-		}
-		
-	}
-
 	
 	public List<RegistroDeCompra> registrarTodasLasCompras() {
 		List<RegistroDeCompra> todasLasCompras = new ArrayList<RegistroDeCompra>();
 
-		for (ZonaDeEstacionamiento zona : zonas) {
-			todasLasCompras.addAll(zona.registrarComprasDePuntosDeVenta());
-		}
-
-		return todasLasCompras;
+        this.getZonas().stream().
+                              forEach(zona -> todasLasCompras.addAll(zona.registrarComprasDePuntosDeVenta()));
+        
+        return todasLasCompras;
 	}
 
 
@@ -144,11 +126,8 @@ public class Sem implements ISem {
 
 
 	public boolean existeEstacionamientoDe(String unaPatente) {
-	  List<Estacionamiento>estacionamientos = new ArrayList<Estacionamiento>();
-	  estacionamientos.addAll(this.estacionamientosViaApp);
-	  estacionamientos.addAll(this.estacionamientosViaPuntoDeVenta);
-	  
-		for (Estacionamiento estacionamiento : estacionamientos) {
+
+		for (Estacionamiento estacionamiento : this.estacionamientos) {
 			if (estacionamiento.perteneceAPatente(unaPatente)) {
 				return true;
 

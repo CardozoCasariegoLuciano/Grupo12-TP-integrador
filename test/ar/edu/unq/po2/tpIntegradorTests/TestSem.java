@@ -17,6 +17,7 @@ import ar.edu.unq.po2.tpintegrador.Inspector;
 import ar.edu.unq.po2.tpintegrador.PuntoDeVenta;
 import ar.edu.unq.po2.tpintegrador.RegistroCargaCelular;
 import ar.edu.unq.po2.tpintegrador.Sem;
+import ar.edu.unq.po2.tpintegrador.Subscriptor;
 import ar.edu.unq.po2.tpintegrador.Ubicacion;
 import ar.edu.unq.po2.tpintegrador.ZonaDeEstacionamiento;
 
@@ -35,6 +36,7 @@ class TestSem {
 	PuntoDeVenta unPuntoDeVenta;
 	AppUsuario unaAppDeUsuario;
 	Ubicacion unaUbicacion;
+	Subscriptor sistemaSubscriptor;
 	
 	@BeforeEach
 	public void setup() {
@@ -50,7 +52,7 @@ class TestSem {
 		unPuntoDeVenta = new PuntoDeVenta(unaZona , unSem);
 		unaAppDeUsuario = mock(AppUsuario.class);
 		unaUbicacion = mock(Ubicacion.class);
-		
+		sistemaSubscriptor = mock(Subscriptor.class);
 	}
 	
 	@Test
@@ -62,7 +64,7 @@ class TestSem {
 	void testRegistrarEstacionamientoPorApp() {
 		unSem.registrarEstacionamientoViaApp(estacionamientoPorApp);
 		
-		assertTrue(unSem.getEstacionamientosViaApp().contains(estacionamientoPorApp));
+		assertTrue(unSem.getEstacionamientos().contains(estacionamientoPorApp));
 		
 	}
 
@@ -70,7 +72,7 @@ class TestSem {
 	void testRegistrarEstacionamientoPorPuntoDeVenta() {
 		unSem.registrarEstacionamientoViaPuntoDeVenta(estacionamientoPorPuntoDeVenta);
 		
-		assertTrue(unSem.getEstacionamientosViaPuntoDeVenta().contains(estacionamientoPorPuntoDeVenta));
+		assertTrue(unSem.getEstacionamientos().contains(estacionamientoPorPuntoDeVenta));
 		
 	}
 	
@@ -84,23 +86,16 @@ class TestSem {
 	}
 	
 	@Test 
-	void testFinalizarEstacionamientosViaApp() {
+	void testFinalizarEstacionamientos() {
 		unSem.registrarEstacionamientoViaApp(estacionamientoPorApp);;
-		unSem.finalizarEstacionamientosViaApp();
+		unSem.finalizarTodosLosEstacionamientos();
 		
 		assertTrue(!estacionamientoPorApp.estacionamientoEstaAcitvo());
 		
 	}
 	
 	
-	@Test
-	void testFinalizarEstacionamientosViaPuntoDeVenta() {
-		unSem.registrarEstacionamientoViaApp(estacionamientoPorApp);;
-		unSem.finalizarEstacionamientosViaApp();
-		
-		assertTrue(!estacionamientoPorPuntoDeVenta.estacionamientoEstaAcitvo());
-	}
-	
+
 	
 	@Test
 	void registrarYFinalizarEstacionamientosPorAppYPorPuntoDeVenta() {
@@ -112,6 +107,7 @@ class TestSem {
 		assertTrue(!estacionamientoPorPuntoDeVenta.estacionamientoEstaAcitvo());
 		
 	}
+	
 	
 	
 	@Test
@@ -128,15 +124,53 @@ class TestSem {
 		assertTrue(!unSem.existeEstacionamientoDe(otroEstacionamiento.getPatente()));
 	}
 
+	
 	@Test 
 	void registrarTodasLasComprasDeLasZonasDelSem() {
 		
 		unaZona.abrirPuntoDeVenta(unPuntoDeVenta);
+		unSem.agregarZonaDeEstacionamientoASem(unaZona);
 		unPuntoDeVenta.registrarCargaCredito(12, unaAppDeUsuario);
 		
 		assertEquals(1 , unSem.registrarTodasLasCompras().size()); 
 	}
 	
 
+	@Test 
+	void agregarZonaDeEstacionamientoAlSem() {
+		
+		unaZona.abrirPuntoDeVenta(unPuntoDeVenta);
+		unSem.agregarZonaDeEstacionamientoASem(unaZona);
+		unPuntoDeVenta.registrarCargaCredito(12, unaAppDeUsuario);
+		
+		assertEquals(1 , unSem.getZonas().size()); 
+	}
 	
+	@Test
+	void verificarInicioDeFranjaHoraria() {
+		assertEquals(franjaInicial, unSem.getInicioFranjaHoraria());
+		
+	}
+	
+	@Test
+	void verificarFinDeFranjaHoraria() {
+		assertEquals(franjaFin, unSem.getFinFranjaHoraria());
+		
+	}
+	
+   @Test
+   void suscribirSistema() {
+	   unSem.suscribirSistema(sistemaSubscriptor);
+	   
+	   assertTrue(unSem.getSistemasSubscriptos().contains(sistemaSubscriptor));
+   }
+   
+   
+   @Test
+   void desSuscribirSistema() {
+	   unSem.suscribirSistema(sistemaSubscriptor);
+	   unSem.desSubscribirSistema(sistemaSubscriptor);
+	   
+	   assertTrue(!unSem.getSistemasSubscriptos().contains(sistemaSubscriptor));
+   }
 }	
