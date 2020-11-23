@@ -116,4 +116,12 @@ public class AppUsuario implements MovementSensor, Gps {
 		
 		return this.modoDeApp;
 	}
+
+
+
+	public boolean seEncuentraEnZona() {
+		// TODO Auto-generated method stub
+		
+		return false;
+	}
 }

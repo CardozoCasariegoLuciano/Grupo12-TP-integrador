@@ -1,5 +1,7 @@
 package ar.edu.unq.po2.tpintegrador;
 
+import com.sun.org.apache.xpath.internal.operations.Equals;
+
 public class AppManual implements ModoDeApp {
 
 	private AppUsuario app;
@@ -11,12 +13,16 @@ public class AppManual implements ModoDeApp {
 
 	@Override
 	public void estacionar() {
-		if (this.app.getSaldo() > this.app.sem.getCosto() ) {
-			// && this.app.getPosition() == Falta la validación del sem
-			this.app.sem.registrarEstacionamientoViaApp(new EstacionamientoViaApp(app));
-			this.alertaDeInicioDeEstacionamiento();
-		} else
-			System.out.println("Saldo insuficiente. Estacionamiento no permitido.");
+		if (app.seEncuentraEnZona()) {
+			if (this.app.getSaldo() > this.app.sem.getCosto()) {
+				// && this.app.getPosition() == Falta la validación del sem
+				this.app.sem.registrarEstacionamientoViaApp(new EstacionamientoViaApp(app));
+				this.alertaDeInicioDeEstacionamiento();
+			} else
+				System.out.println("Saldo insuficiente. Estacionamiento no permitido.");
+		} else {
+			System.out.println("No se encuentra en un una zona de Estacionamiento");
+		}
 	}
 
 	@Override

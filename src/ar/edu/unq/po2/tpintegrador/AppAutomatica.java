@@ -23,17 +23,20 @@ public class AppAutomatica implements ModoDeApp {
 
 	@Override
 	public void inicioDeEstacionamientoAutomatico() {
-		if (this.app.getSaldo() > this.app.sem.getCosto() && !(this.app.sem.existeEstacionamientoDe(this.app.getPatente()))  ) {
-			// && this.app.getPosition() == Falta la validación del sem
-			this.app.sem.registrarEstacionamientoViaApp(new EstacionamientoViaApp(app));
-			this.alertaDeInicioDeEstacionamiento();
-		} else
-			System.out.println("Saldo insuficiente. Estacionamiento no permitido.");
+		if (app.seEncuentraEnZona()) {
+			if (this.app.getSaldo() > this.app.sem.getCosto()
+					&& !(this.app.sem.existeEstacionamientoDe(this.app.getPatente()))) {
+				// && this.app.getPosition() == Falta la validación del sem
+				this.app.sem.registrarEstacionamientoViaApp(new EstacionamientoViaApp(app));
+				this.alertaDeInicioDeEstacionamiento();
+			} else
+				System.out.println("Saldo insuficiente. Estacionamiento no permitido.");
+		} else {
+			System.out.println("No existe estacionamiento de la patente");
+		}
 	}
-		
-			
-		//new AppManual(this.app).estacionar();
 
+	// new AppManual(this.app).estacionar();
 
 	@Override
 	public void finDeEstacionamientoAutomatico() {
@@ -46,8 +49,7 @@ public class AppAutomatica implements ModoDeApp {
 			System.out.println("No existe estacionamiento de la patente");
 		}
 
-		
-		//new AppManual(this.app).finDeEstacionamiento();
+		// new AppManual(this.app).finDeEstacionamiento();
 	}
 
 	@Override
