@@ -20,5 +20,10 @@
 	<classpathentry kind="lib" path="C:/Users/Ramiro/Downloads/Mockito_v3.3.12_and_deps/objenesis-3.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Ramiro/Downloads/Mockito_v3.3.12_and_deps/objenesis-3.1-javadoc.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Ramiro/Downloads/Mockito_v3.3.12_and_deps/objenesis-3.1-sources.jar"/>
+	<classpathentry kind="lib" path="/home/luciano/Desktop/Disco de datos/Mockito/mockV2/objenesis-3.1.jar"/>
+	<classpathentry kind="lib" path="/home/luciano/Desktop/Disco de datos/Mockito/mockV2/mockito-inline-3.6.0.jar"/>
+	<classpathentry kind="lib" path="/home/luciano/Desktop/Disco de datos/Mockito/mockV2/mockito-core-3.6.0.jar"/>
+	<classpathentry kind="lib" path="/home/luciano/Desktop/Disco de datos/Mockito/mockV2/byte-buddy-agent-1.10.15.jar"/>
+	<classpathentry kind="lib" path="/home/luciano/Desktop/Disco de datos/Mockito/mockV2/byte-buddy-1.10.18.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

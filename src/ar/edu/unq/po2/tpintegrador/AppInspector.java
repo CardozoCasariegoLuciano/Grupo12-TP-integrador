@@ -22,9 +22,9 @@ public class AppInspector {
 	}
 
 	//Metodos
-	public void registrarMulta(String patente , LocalDate fecha, LocalTime hora , Inspector inspector) {  
+	public void registrarMulta(String patente ,LocalDate fecha, LocalTime hora, Inspector inspector) {  
 	  		
-  	   this.listaDeMultas.add(new Multa(patente , fecha, hora , inspector, inspector.getPerteneceA()));		
+  	   this.listaDeMultas.add(new Multa(patente , fecha , hora , inspector, inspector.getPerteneceA()));		
 	}
 
 }

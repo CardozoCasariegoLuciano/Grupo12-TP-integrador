@@ -32,9 +32,18 @@ public class Inspector {
 		return unSem.existeEstacionamientoDe(patente);
 	}
 	
+	public LocalTime horaActual() {
+
+		return LocalTime.now();
+	}
+	
+	public LocalDate fechaActual() {
+
+		return LocalDate.now();
+	}
 	
 	public void multar(String patente) {
-		this.dispositivoMovil.registrarMulta(patente , LocalDate.now() , LocalTime.now() , this);
+		this.dispositivoMovil.registrarMulta(patente ,fechaActual(), horaActual(), this);
 	}
 	
 	
