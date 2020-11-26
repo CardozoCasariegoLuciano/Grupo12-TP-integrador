@@ -149,6 +149,14 @@ public class Sem implements ISem {
 	}
 
 	
+
+	
+     public  void cargarCredito(int unMonto, AppUsuario unaAppusuario) {
+      int  indice = this.getAppDeConductores().indexOf(unaAppusuario);
+      this.getAppDeConductores().get(indice).aumentarSaldo(unMonto);
+    	 
+     }
+
 	
 	@Override
 	public void finalizarEstacionamientoViaApp(int numeroDeTelefono) {

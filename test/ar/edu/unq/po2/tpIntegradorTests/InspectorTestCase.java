@@ -59,6 +59,17 @@ class InspectorTestCase {
 		verify(unSem).existeEstacionamientoDe("patente");
 	}
 
+	@Test	
+     void unInspectorPuedeMultar3() {
+		
+		when(unInspec.horaActual()).thenReturn(LocalTime.of(20, 00, 00));
+		when(unInspec.fechaActual()).thenReturn(LocalDate.of(2020, 7, 21));
+		
+		unInspec.multar("unaPatente");		
+		
+		verify(appInspector, atLeastOnce()).registrarMulta("unaPatente", LocalDate.of(2020, 11, 21) , LocalTime.of(20, 00, 00) , unInspec); //Tira error, no retornan los mismo por las milesimas del LocalTime.now()
+	}
+	
 }
 
 
