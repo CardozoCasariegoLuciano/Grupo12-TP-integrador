@@ -80,6 +80,12 @@ class AppUsuarioTest {
 		unaApp.driving();
 		verify(appAutomatica, atLeastOnce()).finDeEstacionamientoAutomatico();
 	}
+	@Test
+	public void testPuedeRegistrarUnaCarga() {
+		unaApp.setSaldo(100);
+		assertEquals(100, unaApp.getSaldo());
+	}
+	
 	
 	
 

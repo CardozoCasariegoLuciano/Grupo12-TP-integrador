@@ -6,7 +6,7 @@ public class AppUsuario implements MovementSensor, Gps {
 
 	private ModoDeApp modoDeApp;
 	private int numero;
-	private int saldo;
+	private float saldo;
 	private String patente;
 	protected Sem sem;
 
@@ -40,11 +40,11 @@ public class AppUsuario implements MovementSensor, Gps {
 //		
 //	}
 
-	public Integer getSaldo() {
+	public float getSaldo() {
 		return saldo;
 	}
 
-	public void setSaldo(Integer saldo) {
+	public void setSaldo(float saldo) {
 		this.saldo = saldo;
 	}
 
