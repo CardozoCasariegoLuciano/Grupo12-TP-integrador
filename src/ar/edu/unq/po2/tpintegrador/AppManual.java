@@ -5,7 +5,9 @@ import com.sun.org.apache.xpath.internal.operations.Equals;
 public class AppManual implements ModoDeApp {
 
 	private AppUsuario app;
-
+	private int cantidadDeHorasEstacionado;
+	
+	
 	public AppManual(AppUsuario app) {
 		this.app = app;
 

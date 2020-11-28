@@ -5,8 +5,8 @@ public class Ubicacion {
 	private double latitud;
 	
 	public Ubicacion(double longitud, double latitud) {
-		this.longitud = longitud;
-		this.latitud = latitud;
+		this.longitud = longitud;  // Este, Oeste
+		this.latitud = latitud;    // Norte, Sur
 	}
 	
 	public double getLongitud() {
@@ -16,6 +16,10 @@ public class Ubicacion {
 	public double getLatitud() {
 		return latitud;
 	}
+	public double distanciaAlOrigen() {
+		return Math.sqrt(this.longitud * this.longitud + this.latitud * this.latitud);
+	}
 }
+
 
 
