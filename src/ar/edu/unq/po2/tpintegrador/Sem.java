@@ -140,8 +140,8 @@ public class Sem implements ISem {
 	}
 	
 	
-	public List<Integer> conocerSaldoDeTodasLasAppsDeUsuario(){
-		List<Integer> saldos = new ArrayList<Integer>();
+	public List<Float> conocerSaldoDeTodasLasAppsDeUsuario(){
+		List<Float> saldos = new ArrayList<Float>();
 		
 		this.getAppDeConductores().stream().
 		                                    forEach(app -> saldos.add(app.getSaldo()));
