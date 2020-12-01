@@ -17,18 +17,6 @@ public class AppAutomatica implements ModoDeApp {
 
 	@Override
 	public void estacionar() {
-		// Esta acción se ejecuta de forma manual
-
-	}
-
-	@Override
-	public void finDeEstacionamiento() {
-		// Esta acción se ejecuta de forma manual
-
-	}
-
-	@Override
-	public void inicioDeEstacionamientoAutomatico() {
 		if (app.seEncuentraEnZona()) {
 			if (this.app.getSaldo() > this.app.sem.getCosto() && !(this.app.sem.existeEstacionamientoDe(this.app.getPatente()))) {
 				this.app.setSaldo(app.getSaldo() - this.app.sem.getCosto());
@@ -42,12 +30,11 @@ public class AppAutomatica implements ModoDeApp {
 		}
 	}
 
-	// new AppManual(this.app).estacionar();
-
+	
 	@Override
-	public void finDeEstacionamientoAutomatico() {
+	public void finDeEstacionamiento() {
 		if ((this.app.sem.existeEstacionamientoDe(this.app.getPatente()))) {
-
+			this.app.decrementarSaldo( this.app.sem.getCosto());
 			this.app.sem.finalizarEstacionamientoViaApp(this.app.getNumero());
 			this.horaFinDeEstacionamiento = LocalTime.now();
 			this.alertaDeFinDeEstacionamiento();
@@ -58,6 +45,8 @@ public class AppAutomatica implements ModoDeApp {
 
 		// new AppManual(this.app).finDeEstacionamiento();
 	}
+
+	
 
 	@Override
 	public void alertaDeInicioDeEstacionamiento() {

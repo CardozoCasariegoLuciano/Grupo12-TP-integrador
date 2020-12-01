@@ -45,6 +45,7 @@ public class AppUsuario implements MovementSensor, Gps {
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
 	}
+	
 
 	public int getNumero() {
 		return numero;
@@ -66,28 +67,30 @@ public class AppUsuario implements MovementSensor, Gps {
 
 	/// METODOS ESTACIONAMIENTO AUTOMATICO
 
-	private void inicioDeEstacionamientoAutomatico() {
-		modoDeApp.inicioDeEstacionamientoAutomatico();
-		//modoDeApp.alertaDeInicioDeEstacionamiento();
+//	private void inicioDeEstacionamientoAutomatico() {
+//		modoDeApp.inicioDeEstacionamientoAutomatico();
+//		//modoDeApp.alertaDeInicioDeEstacionamiento();
+//
+//	}
 
-	}
-
-	private void finDeEstacionamientoAutomatico() {
-		modoDeApp.finDeEstacionamientoAutomatico();
-		//modoDeApp.alertaDeFinDeEstacionamiento();
-
-	}
+//	private void finDeEstacionamientoAutomatico() {
+//		modoDeApp.finDeEstacionamientoAutomatico();
+//		//modoDeApp.alertaDeFinDeEstacionamiento();
+//
+//	}
 
 	/// MovementSensor/////////
 	@Override
 	public void driving() {
-		this.finDeEstacionamientoAutomatico();
+		modoDeApp.finDeEstacionamiento();
+		//this.finDeEstacionamientoAutomatico();
 
 	}
 
 	@Override
 	public void walking() {
-		this.inicioDeEstacionamientoAutomatico();
+		modoDeApp.estacionar();
+		//this.inicioDeEstacionamientoAutomatico();
 
 	}
 
@@ -120,5 +123,9 @@ public class AppUsuario implements MovementSensor, Gps {
 
 	public void aumentarSaldo(float unSaldo) {
 		saldo = saldo + unSaldo;
+	}
+	
+	public void decrementarSaldo(float saldoADecrementar) {
+		saldo = saldo - saldoADecrementar;
 	}
 }
