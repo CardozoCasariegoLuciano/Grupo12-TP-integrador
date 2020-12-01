@@ -6,7 +6,7 @@ public class EstacionamientoViaApp extends Estacionamiento {
 	private int numeroDeCelular;
 	
 	private String patente;
-	private Integer saldo;
+	private float saldo;
 	private Sem sem;
 	private Boolean estaActivo;
 

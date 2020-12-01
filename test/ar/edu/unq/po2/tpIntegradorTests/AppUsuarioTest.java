@@ -86,8 +86,9 @@ class AppUsuarioTest {
 	public void estacionamientoAutomatico() {
 		unaApp.modoAutomatico();
 		unaApp.walking();
-		unaApp.driving();
 		verify(appAutomatica, atLeastOnce()).inicioDeEstacionamientoAutomatico();
+		unaApp.driving();
+		verify(appAutomatica,atLeastOnce()).finDeEstacionamientoAutomatico();
 	
 	
 	}

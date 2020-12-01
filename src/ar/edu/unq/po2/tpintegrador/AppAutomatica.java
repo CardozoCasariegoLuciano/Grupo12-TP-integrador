@@ -29,7 +29,7 @@ public class AppAutomatica implements ModoDeApp {
 
 	@Override
 	public void inicioDeEstacionamientoAutomatico() {
-		if (!app.seEncuentraEnZona()) {
+		if (app.seEncuentraEnZona()) {
 			if (this.app.getSaldo() > this.app.sem.getCosto() && !(this.app.sem.existeEstacionamientoDe(this.app.getPatente()))) {
 				this.app.setSaldo(app.getSaldo() - this.app.sem.getCosto());
 				this.app.sem.registrarEstacionamientoViaApp(new EstacionamientoViaApp(app));

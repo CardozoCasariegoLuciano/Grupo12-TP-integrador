@@ -18,8 +18,6 @@ public class AppUsuario implements MovementSensor, Gps {
 		this.sem = semClase;
 	}
 
-	
-
 	private void setModo(ModoDeApp setModo) {
 		this.modoDeApp = setModo;
 	}
@@ -59,7 +57,6 @@ public class AppUsuario implements MovementSensor, Gps {
 	/// METODOS DE ESTACIONAMIENTO MANUAL
 
 	public void estacionar() {
-
 		modoDeApp.estacionar();
 	}
 
@@ -71,27 +68,27 @@ public class AppUsuario implements MovementSensor, Gps {
 
 	private void inicioDeEstacionamientoAutomatico() {
 		modoDeApp.inicioDeEstacionamientoAutomatico();
-		modoDeApp.alertaDeInicioDeEstacionamiento();
+		//modoDeApp.alertaDeInicioDeEstacionamiento();
 
 	}
 
 	private void finDeEstacionamientoAutomatico() {
 		modoDeApp.finDeEstacionamientoAutomatico();
-		modoDeApp.alertaDeFinDeEstacionamiento();
+		//modoDeApp.alertaDeFinDeEstacionamiento();
 
 	}
 
 	/// MovementSensor/////////
 	@Override
 	public void driving() {
-			this.finDeEstacionamientoAutomatico();
-		
+		this.finDeEstacionamientoAutomatico();
+
 	}
 
 	@Override
 	public void walking() {
-			this.inicioDeEstacionamientoAutomatico();
-		
+		this.inicioDeEstacionamientoAutomatico();
+
 	}
 
 	/////////////////
@@ -110,21 +107,17 @@ public class AppUsuario implements MovementSensor, Gps {
 	}
 	/////////////////////////////
 
-
-
 	public Object getModo() {
-		
+
 		return this.modoDeApp;
 	}
 
-
-
 	public boolean seEncuentraEnZona() {
 		// TODO Auto-generated method stub
-		
+
 		return true;
 	}
-	
+
 	public void aumentarSaldo(int unSaldo) {
 		saldo = saldo + unSaldo;
 	}
