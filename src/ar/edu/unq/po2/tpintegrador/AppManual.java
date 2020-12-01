@@ -55,13 +55,13 @@ public class AppManual implements ModoDeApp {
 
 	@Override
 	public void alertaDeInicioDeEstacionamiento() {
-		System.out.println("Estacionamiento Exitoso");
+		System.out.println("Estacionamiento Automatico Exitoso");
 
 	}
 
 	@Override
 	public void alertaDeFinDeEstacionamiento() {
-		System.out.println("Fin de Estacionamiento Exitoso");
+		System.out.println("Fin de Estacionamiento Automatico Exitoso");
 
 	}
 
