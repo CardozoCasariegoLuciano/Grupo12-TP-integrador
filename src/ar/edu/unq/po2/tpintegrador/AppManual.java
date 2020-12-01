@@ -1,6 +1,6 @@
 package ar.edu.unq.po2.tpintegrador;
 
-import com.sun.org.apache.xpath.internal.operations.Equals;
+
 
 public class AppManual implements ModoDeApp {
 

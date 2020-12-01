@@ -9,12 +9,12 @@ public class AppUsuario implements MovementSensor, Gps {
 	private float saldo;
 	private String patente;
 	protected Sem sem;
+	private Conductor contuctor;
 
-	public AppUsuario(ModoDeApp modoDeApp, int numero, int saldo, String patente, Sem semClase) {
-		this.modoDeApp = modoDeApp;
+	public AppUsuario(int numero, Sem semClase) {
+		this.modoDeApp = new AppManual(this);
 		this.numero = numero;
-		this.saldo = saldo;
-		this.patente = patente;
+		this.saldo = 0;
 		this.sem = semClase;
 	}
 
@@ -65,19 +65,7 @@ public class AppUsuario implements MovementSensor, Gps {
 		modoDeApp.finDeEstacionamiento();
 	}
 
-	/// METODOS ESTACIONAMIENTO AUTOMATICO
 
-//	private void inicioDeEstacionamientoAutomatico() {
-//		modoDeApp.inicioDeEstacionamientoAutomatico();
-//		//modoDeApp.alertaDeInicioDeEstacionamiento();
-//
-//	}
-
-//	private void finDeEstacionamientoAutomatico() {
-//		modoDeApp.finDeEstacionamientoAutomatico();
-//		//modoDeApp.alertaDeFinDeEstacionamiento();
-//
-//	}
 
 	/// MovementSensor/////////
 	@Override
