@@ -72,13 +72,10 @@ class AppUsuarioTest {
 	}
 	
 	@Test 
-	public void testFinalizarEstacionamientoAutomatico() {
+	public void existeEstacionamiento() {
 		
 		when(unSem.existeEstacionamientoDe(unaApp.getPatente())).thenReturn(true);
-		unaApp.modoAutomatico();
-		unaApp.walking();
-		unaApp.driving();
-		verify(appAutomatica, atLeastOnce()).finDeEstacionamientoAutomatico();
+
 	}
 	@Test
 	public void testPuedeRegistrarUnaCarga() {
@@ -86,7 +83,13 @@ class AppUsuarioTest {
 		assertEquals(100, unaApp.getSaldo());
 	}
 	
+	public void estacionamientoAutomatico() {
+		unaApp.modoAutomatico();
+		unaApp.walking();
+		unaApp.driving();
+		verify(appAutomatica, atLeastOnce()).inicioDeEstacionamientoAutomatico();
 	
 	
+	}
 
 }

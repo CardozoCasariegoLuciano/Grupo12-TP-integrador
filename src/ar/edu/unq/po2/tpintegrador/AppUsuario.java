@@ -122,7 +122,7 @@ public class AppUsuario implements MovementSensor, Gps {
 	public boolean seEncuentraEnZona() {
 		// TODO Auto-generated method stub
 		
-		return false;
+		return true;
 	}
 	
 	public void aumentarSaldo(int unSaldo) {
