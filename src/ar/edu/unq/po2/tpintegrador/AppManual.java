@@ -17,7 +17,8 @@ public class AppManual implements ModoDeApp {
 	public void estacionar() {
 		if (app.seEncuentraEnZona()) {
 			if (this.app.getSaldo() > this.app.sem.getCosto()) {
-				this.app.setSaldo(app.getSaldo() - this.app.sem.getCosto());
+				this.app.decrementarSaldo( this.app.sem.getCosto());
+				//this.app.setSaldo(app.getSaldo() - this.app.sem.getCosto());
 				this.app.sem.registrarEstacionamientoViaApp(new EstacionamientoViaApp(app));
 				this.alertaDeInicioDeEstacionamiento();
 			} else
