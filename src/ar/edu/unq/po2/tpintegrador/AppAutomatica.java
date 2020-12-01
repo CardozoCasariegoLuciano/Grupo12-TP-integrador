@@ -16,6 +16,7 @@ public class AppAutomatica implements ModoDeApp {
 	}
 
 	
+	
 	@Override
 	public void estacionar() {
 		if (app.seEncuentraEnZona()) {
