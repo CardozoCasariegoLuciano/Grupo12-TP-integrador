@@ -30,6 +30,7 @@ class TestSem {
 	EstacionamientoViaPuntoDeVenta estacionamientoPorPuntoDeVenta;
 	EstacionamientoViaPuntoDeVenta otroEstacionamiento;
 	AppUsuario appDeUsuario;
+	AppUsuario otraAppDeUsuario;
 	PuntoDeVenta unPuntoDeV;
 	Inspector unInspector;
 	ZonaDeEstacionamiento unaZona;
@@ -45,7 +46,9 @@ class TestSem {
 		estacionamientoPorApp = mock(EstacionamientoViaApp.class);
 		estacionamientoPorPuntoDeVenta = mock(EstacionamientoViaPuntoDeVenta.class);
 		appDeUsuario = mock(AppUsuario.class);
-		when(appDeUsuario.getSaldo()).thenReturn(8);
+		otraAppDeUsuario = mock(AppUsuario.class);
+		when(appDeUsuario.getSaldo()).thenReturn(8f);
+		when(otraAppDeUsuario.getSaldo()).thenReturn(15f);
 		unPuntoDeV = mock(PuntoDeVenta.class);
 		otroEstacionamiento = new EstacionamientoViaPuntoDeVenta(1, "altaPatente", unPuntoDeV);
 		unInspector = mock(Inspector.class);
@@ -54,6 +57,7 @@ class TestSem {
 		unaAppDeUsuario = mock(AppUsuario.class);
 		unaUbicacion = mock(Ubicacion.class);
 		sistemaSubscriptor = mock(Subscriptor.class);
+		
 		
 	}
 	
@@ -132,7 +136,7 @@ class TestSem {
 		
 		unaZona.abrirPuntoDeVenta(unPuntoDeVenta);
 		unSem.agregarZonaDeEstacionamientoASem(unaZona);
-		unPuntoDeVenta.registrarCargaCredito(12, unaAppDeUsuario);
+		unPuntoDeVenta.registrarCargaCredito(12f, unaAppDeUsuario);
 		
 		assertEquals(1 , unSem.registrarTodasLasCompras().size()); 
 	}
@@ -143,7 +147,7 @@ class TestSem {
 		
 		unaZona.abrirPuntoDeVenta(unPuntoDeVenta);
 		unSem.agregarZonaDeEstacionamientoASem(unaZona);
-		unPuntoDeVenta.registrarCargaCredito(12, unaAppDeUsuario);
+		
 		
 		assertEquals(1 , unSem.getZonas().size()); 
 	}
@@ -175,15 +179,15 @@ class TestSem {
 	   
 	   assertTrue(!unSem.getSistemasSubscriptos().contains(sistemaSubscriptor));
    }
-   
-	@Test
-	void testPedirSaldoAappsDeUsuarios() {
-		unSem.agregarAppUsuario(appDeUsuario);
-		
-		assertTrue(unSem.conocerSaldoDeTodasLasAppsDeUsuario().contains(8));
-		
-	}
-   
+
 	
+  @Test
+  void testConsultarSaldoDeUnaApp() {
+	  unSem.agregarAppUsuario(appDeUsuario);
+	  unSem.agregarAppUsuario(otraAppDeUsuario);
+	  
+	  assertEquals(8f , unSem.conocerSaldoDeApp(appDeUsuario));
+  }
+
    
 }	

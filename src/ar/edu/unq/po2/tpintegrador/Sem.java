@@ -3,6 +3,7 @@ package ar.edu.unq.po2.tpintegrador;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Sem implements ISem {
@@ -139,8 +140,8 @@ public class Sem implements ISem {
 	}
 	
 	
-	public List<Integer> conocerSaldoDeTodasLasAppsDeUsuario(){
-		List<Integer> saldos = new ArrayList<Integer>();
+	public List<Float> conocerSaldoDeTodasLasAppsDeUsuario(){
+		List<Float> saldos = new ArrayList<Float>();
 		
 		this.getAppDeConductores().stream().
 		                                    forEach(app -> saldos.add(app.getSaldo()));
@@ -148,16 +149,25 @@ public class Sem implements ISem {
 		return saldos;
 	}
 
+    public  Float conocerSaldoDeApp(AppUsuario unaAppusuario) { 	
+       int  indice = this.getAppDeConductores().indexOf(unaAppusuario);
+       return this.getAppDeConductores().get(indice).getSaldo(); 
+      	 
+              }
+      	
+           
 	
-
+   
 	
-     public  void cargarCredito(int unMonto, AppUsuario unaAppusuario) {
+    public  void cargarCredito(float unMonto, AppUsuario unaAppusuario) {
       int  indice = this.getAppDeConductores().indexOf(unaAppusuario);
-      this.getAppDeConductores().get(indice).aumentarSaldo(unMonto);
-    	 
-     }
-
+      this.getAppDeConductores().get(indice).aumentarSaldo(unMonto); 
+    
+    	
+         }
 	
+
+     
 	@Override
 	public void finalizarEstacionamientoViaApp(int numeroDeTelefono) {
 		
@@ -165,4 +175,6 @@ public class Sem implements ISem {
 	}
 	
 	
+
+ 	
 }
