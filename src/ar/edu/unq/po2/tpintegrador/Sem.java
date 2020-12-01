@@ -109,7 +109,7 @@ public class Sem implements ISem {
 	
 	
 	
-	
+	//Registra Las compras
 	public List<RegistroDeCompra> registrarTodasLasCompras() {
 		List<RegistroDeCompra> todasLasCompras = new ArrayList<RegistroDeCompra>();
 
