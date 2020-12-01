@@ -22,3 +22,4 @@ public class RegistroCargaCelular extends RegistroDeCompra {
 	}	
 }
 
+

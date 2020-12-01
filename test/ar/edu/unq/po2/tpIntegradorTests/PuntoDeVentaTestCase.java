@@ -26,6 +26,7 @@ class PuntoDeVentaTestCase {
 	}
 	
 	
+	
 	@Test
 	void unPuntoDeVentaEsCreadoConUnaZonaYConListaDeComprasVacia() {
 					

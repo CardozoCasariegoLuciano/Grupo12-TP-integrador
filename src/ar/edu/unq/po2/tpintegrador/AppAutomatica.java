@@ -15,6 +15,7 @@ public class AppAutomatica implements ModoDeApp {
 
 	}
 
+	
 	@Override
 	public void estacionar() {
 		// Esta acción se ejecuta de forma manual

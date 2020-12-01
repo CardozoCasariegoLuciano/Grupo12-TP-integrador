@@ -6,7 +6,7 @@ public interface ISem {
   abstract  public void registrarEstacionamientoViaApp(EstacionamientoViaApp unEstacionamiento);
   abstract  public void registrarEstacionamientoViaPuntoDeVenta(EstacionamientoViaPuntoDeVenta unEstacionamiento);
   abstract void finalizarEstacionamientoViaApp(int numero);
-  public  void cargarCredito(float unMonto, AppUsuario unaAppusuairo);
+  public  void cargarCredito(int unMonto, AppUsuario unaAppusuairo);
 		
 	
 

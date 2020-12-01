@@ -42,11 +42,14 @@ public class ZonaDeEstacionamiento {
 			
 		for (PuntoDeVenta puntoDeVenta : puntosDeVenta) {
 			compras.addAll(puntoDeVenta.getRegistrosDeCompra());
+			
+			
 		}
 		
 		return compras;
 	}
 
+	
 
 	public void abrirPuntoDeVenta(PuntoDeVenta unPV) {
 		this.puntosDeVenta.add(unPV);

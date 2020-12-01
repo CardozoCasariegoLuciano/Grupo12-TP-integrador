@@ -61,6 +61,7 @@ class TestSem {
 		
 	}
 	
+	
 	@Test
 	void testSeCreaUnSemConCosto12() {
 		assertEquals(12 , unSem.getCosto());	
@@ -136,9 +137,9 @@ class TestSem {
 		
 		unaZona.abrirPuntoDeVenta(unPuntoDeVenta);
 		unSem.agregarZonaDeEstacionamientoASem(unaZona);
-		unPuntoDeVenta.registrarCargaCredito(12f, unaAppDeUsuario);
+		unPuntoDeVenta.registrarCargaCredito(12, unaAppDeUsuario);
 		
-		assertEquals(1 , unSem.registrarTodasLasCompras().size()); 
+		assertEquals(1, unPuntoDeVenta.getRegistrosDeCompra().size()); 
 	}
 	
 
