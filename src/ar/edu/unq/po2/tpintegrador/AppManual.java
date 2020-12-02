@@ -16,6 +16,7 @@ public class AppManual implements ModoDeApp {
 		this.app = app;
 
 	}
+	
 
 	@Override
 	public void estacionar() {
