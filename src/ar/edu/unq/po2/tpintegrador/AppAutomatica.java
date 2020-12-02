@@ -21,7 +21,7 @@ public class AppAutomatica implements ModoDeApp {
 	public void estacionar() {
 		if (app.seEncuentraEnZona()) {
 			if (this.app.getSaldo() > this.app.sem.getCosto() && !(this.app.sem.existeEstacionamientoDe(this.app.getPatente()))) {
-				this.app.setSaldo(app.getSaldo() - this.app.sem.getCosto());
+				this.app.decrementarSaldo(this.app.sem.getCosto());				
 				this.app.sem.registrarEstacionamientoViaApp(new EstacionamientoViaApp(app));
 				this.horaInicioEstacionamiento = LocalTime.now();
 				this.alertaDeInicioDeEstacionamiento();

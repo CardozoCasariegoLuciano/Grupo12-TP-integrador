@@ -42,17 +42,28 @@ class AppUsuarioTest {
 		assertEquals(12354, unaApp.getNumero());
 		assertEquals(0, unaApp.getSaldo());		
 		assertEquals(unConductor, unaApp.getConductor());		
-	}
-	
+	}	
 	
 	@Test 
-	public void testCambioDeModo() {
+	public void testCambioDeModo01() {
 		
 		assertTrue(unaApp.getModo().getClass().equals(appManual.getClass()));
 		
 		unaApp.modoAutomatico();
 		
 		assertTrue(unaApp.getModo().getClass().equals(AppAutomatica.class));		
+	}
+	
+	@Test 
+	public void testCambioDeModo02() {		
+		
+		unaApp.modoAutomatico();
+		
+		assertTrue(unaApp.getModo().getClass().equals(AppAutomatica.class));	
+		
+		unaApp.modoManual();
+		
+		assertTrue(unaApp.getModo().getClass().equals(AppManual.class));
 	}
 	 
 	@Test 

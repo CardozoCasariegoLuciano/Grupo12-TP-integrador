@@ -13,31 +13,28 @@ import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.po2.tpintegrador.Inspector;
 import ar.edu.unq.po2.tpintegrador.PuntoDeVenta;
-import ar.edu.unq.po2.tpintegrador.Ubicacion;
 import ar.edu.unq.po2.tpintegrador.ZonaDeEstacionamiento;
 
 class ZonaDeEstacionamientoTestCase {
 
 	ZonaDeEstacionamiento unaZona;
-	Ubicacion unaUbicacion;
+	
 	
 	Inspector unInspector;
 	
 	@BeforeEach
 	public void setUp() {
 		
-		unInspector = mock(Inspector.class);
-		unaUbicacion = mock(Ubicacion.class);
+		unInspector = mock(Inspector.class);		
 		
-		unaZona = new ZonaDeEstacionamiento(unInspector, unaUbicacion);
+		unaZona = new ZonaDeEstacionamiento(unInspector);
 		
 	}
 	@Test
 	void unaZonaEsCreadaConSuInspectorYConSuListaVaciaDePuntosDeVentas() {
 		
 		assertEquals(unInspector, unaZona.getInspector());
-		assertEquals(0, unaZona.getPuntosDeVenta().size());
-		assertEquals(unaUbicacion, unaZona.getUbicacion());
+		assertEquals(0, unaZona.getPuntosDeVenta().size());	
 	}
 	
 	@Test

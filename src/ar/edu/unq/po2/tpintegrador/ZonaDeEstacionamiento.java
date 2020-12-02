@@ -8,23 +8,18 @@ public class ZonaDeEstacionamiento {
 	//Variables
 	private Inspector inspector;
 	private List<PuntoDeVenta>puntosDeVenta;
-	private Ubicacion unaUbicacion;
+	
 
 	
 	/*Constructor*/
-	public ZonaDeEstacionamiento(Inspector inspector, Ubicacion unaUbicacion) {
+	public ZonaDeEstacionamiento(Inspector inspector) {
 		this.inspector = inspector;
-		this.puntosDeVenta = new ArrayList<PuntoDeVenta>();
-		this.unaUbicacion = unaUbicacion; 
+		this.puntosDeVenta = new ArrayList<PuntoDeVenta>();		
 	}
 	
 	
-	//Getters
+	//Getters	
 	
-	public Ubicacion getUbicacion() {
-		
-		return this.unaUbicacion;
-	}
 	
 	public Inspector getInspector() {
 		return inspector;

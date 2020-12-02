@@ -20,7 +20,6 @@ import ar.edu.unq.po2.tpintegrador.PuntoDeVenta;
 import ar.edu.unq.po2.tpintegrador.RegistroCargaCelular;
 import ar.edu.unq.po2.tpintegrador.Sem;
 import ar.edu.unq.po2.tpintegrador.Subscriptor;
-import ar.edu.unq.po2.tpintegrador.Ubicacion;
 import ar.edu.unq.po2.tpintegrador.ZonaDeEstacionamiento;
 
 class TestSem {
@@ -37,8 +36,7 @@ class TestSem {
 	Inspector unInspector;
 	ZonaDeEstacionamiento unaZona;
 	PuntoDeVenta unPuntoDeVenta;
-	AppUsuario unaAppDeUsuario;
-	Ubicacion unaUbicacion;
+	AppUsuario unaAppDeUsuario;	
 	Conductor unConductor;
 	Subscriptor sistemaSubscriptor;
 	AppManual unModo;
@@ -57,10 +55,9 @@ class TestSem {
 		otroEstacionamiento = new EstacionamientoViaPuntoDeVenta(1, "altaPatente", unPuntoDeV);
 		unInspector = mock(Inspector.class);
 		unModo = mock(AppManual.class);
-		unaZona = new ZonaDeEstacionamiento(unInspector , unaUbicacion);
+		unaZona = new ZonaDeEstacionamiento(unInspector);
 		unPuntoDeVenta = new PuntoDeVenta(unaZona , unSem);
-		unaAppDeUsuario = new AppUsuario(1111 , unSem , unConductor, unModo);
-		unaUbicacion = mock(Ubicacion.class);
+		unaAppDeUsuario = new AppUsuario(1111 , unSem , unConductor, unModo);		
 		sistemaSubscriptor = mock(Subscriptor.class);
 		unSem.agregarAppUsuario(appDeUsuario);
 		

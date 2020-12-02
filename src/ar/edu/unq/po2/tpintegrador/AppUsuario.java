@@ -49,9 +49,6 @@ public class AppUsuario implements MovementSensor, Gps {
 
 	//Setters	
 	
-	public void setSaldo(float saldo) {
-		this.saldo = saldo;
-	}
 	
 	public void setModo(ModoDeApp unModo) {
 		
@@ -93,6 +90,7 @@ public class AppUsuario implements MovementSensor, Gps {
 
 
 
+ 
 	/// MovementSensor/////////
 	@Override
 	public void driving() {
@@ -114,6 +112,7 @@ public class AppUsuario implements MovementSensor, Gps {
 		// No sabemos como se define
 
 	}
+	
 
 	@Override
 	public void getPosition() {
