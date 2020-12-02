@@ -15,11 +15,14 @@ public class EstacionamientoViaPuntoDeVenta extends Estacionamiento {
 	// Constructor
 	public EstacionamientoViaPuntoDeVenta(int cantDeHoras, String unaPatente, PuntoDeVenta puntoDeVenta) {
 
+		LocalTime actual = LocalTime.now();
+		
 		this.cantDeHoras = cantDeHoras;
 		this.puntoDeVenta = puntoDeVenta;
 		this.patente = unaPatente;
 		this.estaActivo = true;
-		this.horaFinal = LocalTime.now().plusHours(this.cantDeHoras);
+		this.horaInicio = actual;
+		this.horaFinal = actual.plusHours(this.cantDeHoras);
 	}
 
 	// Getters
@@ -33,6 +36,9 @@ public class EstacionamientoViaPuntoDeVenta extends Estacionamiento {
 		return this.puntoDeVenta;
 	}
 
+	
+	// Metodos
+	
 	public LocalTime horaActual() {
 
 		return LocalTime.now();
@@ -43,9 +49,13 @@ public class EstacionamientoViaPuntoDeVenta extends Estacionamiento {
 		return this.estaActivo;
 		
 	}
-
 	
-	// Metodos
+	public void finalizarRegistro() {
+		
+		this.estaActivo = false;
+	}
+	
+	
 	@Override
 	public boolean comprobarValidez() {
 
@@ -53,8 +63,8 @@ public class EstacionamientoViaPuntoDeVenta extends Estacionamiento {
 
 		LocalTime horaActual = horaActual();
 
-		resultado = (this.estaActivo && this.horaFinal.isAfter(horaActual));
-
+		resultado = (this.estacionamientoEstaAcitvo() && this.horaFinal.isAfter(horaActual));
+		
 		return resultado;
 	}
 	
