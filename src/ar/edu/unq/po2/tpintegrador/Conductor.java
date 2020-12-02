@@ -11,6 +11,8 @@ public class Conductor {
 
 	}
 
+	
+	
 	public String getPatente() {
 		return patente;
 	}
