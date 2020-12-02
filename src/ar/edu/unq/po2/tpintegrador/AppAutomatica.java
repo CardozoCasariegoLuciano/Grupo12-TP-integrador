@@ -1,6 +1,5 @@
 package ar.edu.unq.po2.tpintegrador;
 
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -44,7 +43,6 @@ public class AppAutomatica implements ModoDeApp {
 
 	}
 
-	
 	@Override
 	public void alertaDeInicioDeEstacionamiento() {
 		System.out.println("Inicio de Estacionamiento exitoso \n Hora de Inicio:" + LocalTime.now() + LocalDate.now());

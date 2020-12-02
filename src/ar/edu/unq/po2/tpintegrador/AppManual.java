@@ -27,9 +27,8 @@ public class AppManual implements ModoDeApp {
 				this.alertaDeInicioDeEstacionamiento();
 			} else
 				System.out.println("Saldo insuficiente.\n Estacionamiento no permitido.");
-		} 
+		}
 	}
-	
 
 	@Override
 	public void finDeEstacionamiento() {
@@ -47,8 +46,6 @@ public class AppManual implements ModoDeApp {
 		return this.app;
 	}
 
-	
-	
 	@Override
 	public void alertaDeInicioDeEstacionamiento() {
 		System.out.println("Inicio de Estacionamiento exitoso \n Hora de Inicio:" + LocalTime.now() + LocalDate.now());
