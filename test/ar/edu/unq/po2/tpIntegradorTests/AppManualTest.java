@@ -42,9 +42,6 @@ class AppManualTest {
 		
 		unaAppManual = new AppManual(unaApp);
 		otraAppManual = new AppManual(otraApp);
-		
-       
-
 	}
 	
 	
@@ -54,8 +51,6 @@ class AppManualTest {
 		unaAppManual.estacionar();
 		
 		assertTrue(unSem.existeEstacionamientoDe(unaAppManual.getApp().getPatente()));
-		
-		
 	}
 	
 	@Test
@@ -65,8 +60,7 @@ class AppManualTest {
 	
         otraAppManual.estacionar();
 		
-		assertEquals("Saldo insuficiente.\n Estacionamiento no permitido.", outContent.toString().replaceAll("\r\n" , ""));
-		
+		assertEquals("Saldo insuficiente.\n Estacionamiento no permitido.", outContent.toString().replaceAll("\r\n" , ""));		
 	}
 	
 

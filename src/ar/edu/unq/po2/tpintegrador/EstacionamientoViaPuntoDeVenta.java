@@ -54,6 +54,7 @@ public class EstacionamientoViaPuntoDeVenta extends Estacionamiento {
 		
 		this.estaActivo = false;
 	}
+
 	
 	
 	@Override

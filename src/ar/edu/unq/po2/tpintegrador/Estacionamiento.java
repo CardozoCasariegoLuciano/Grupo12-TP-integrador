@@ -25,7 +25,11 @@ public abstract class Estacionamiento {
 	}
 
 	// Metodos
-
+	
+	public void finalizarRegistro() {
+		
+		this.estaActivo = false;
+	}
 
 
 	public boolean perteneceAPatente(String patente) {
