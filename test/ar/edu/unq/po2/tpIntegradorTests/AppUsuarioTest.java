@@ -9,6 +9,7 @@ import ar.edu.unq.po2.tpintegrador.AppAutomatica;
 import ar.edu.unq.po2.tpintegrador.AppManual;
 import ar.edu.unq.po2.tpintegrador.AppUsuario;
 import ar.edu.unq.po2.tpintegrador.Conductor;
+import ar.edu.unq.po2.tpintegrador.EstacionamientoViaApp;
 import ar.edu.unq.po2.tpintegrador.ISem;
 import ar.edu.unq.po2.tpintegrador.ModoDeApp;
 import ar.edu.unq.po2.tpintegrador.Sem;
@@ -21,6 +22,7 @@ class AppUsuarioTest {
 	AppManual appManual;
 	AppAutomatica appAutomatica;
 	Conductor unConductor;	
+	EstacionamientoViaApp estacionamiento;
 	
 	@BeforeEach
 	
@@ -59,17 +61,16 @@ class AppUsuarioTest {
 	 
 	@Test 
 	public void testEstacionar() {
-		
+		unaApp.aumentarSaldo(200);
 		unaApp.estacionar();
-		
 		verify(unaApp.getModo() , atLeastOnce()).estacionar();
 	}
 
 	@Test 
 	public void testFinalizarEstacionamiento() {
-		
+		when(unSem.existeEstacionamientoDe(unaApp.getPatente())).thenReturn(true);
 		unaApp.finDeEstacionamiento();
-		verify(unaApp.getModo(), atLeastOnce()).finDeEstacionamiento();
+		verify(unaApp.getModo(), atLeastOnce()).alertaDeFinDeEstacionamiento();
 	}
 	
 
