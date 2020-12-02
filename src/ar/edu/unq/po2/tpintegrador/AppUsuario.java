@@ -4,13 +4,16 @@ package ar.edu.unq.po2.tpintegrador;
 
 public class AppUsuario implements MovementSensor, Gps {
 
+	//Variables
 	private ModoDeApp modoDeApp;
 	private int numero;
 	private float saldo;
 	protected Sem sem;
 	private Conductor conductor;
 
+	//Construtor
 	public AppUsuario(int numero, Sem semClase, Conductor conductor, ModoDeApp unModo) {
+		
 		this.modoDeApp = unModo;
 		this.numero = numero;
 		this.saldo = 0;
@@ -20,37 +23,16 @@ public class AppUsuario implements MovementSensor, Gps {
 
 
 	
-	private void setModo(ModoDeApp setModo) {
-		this.modoDeApp = setModo;
-	}
-
-	public ModoDeApp getModo() {
-
-		return this.modoDeApp;
-	}
-	
-	public void modoManual() {
-		this.setModo(new AppManual(this));
-	}
-
-	public void modoAutomatico() {
-		this.setModo(new AppAutomatica(this));
-	}
-
 	public Conductor getConductor() {
 		
 		return this.conductor;
 	}
 
 	public float getSaldo() {
+		
 		return saldo;
 	}
-
-	public void setSaldo(float saldo) {
-		this.saldo = saldo;
-	}
 	
-
 	public int getNumero() {
 		return numero;
 	}
@@ -58,9 +40,48 @@ public class AppUsuario implements MovementSensor, Gps {
 	public String getPatente() {
 		return this.conductor.getPatente();
 	
+	}	
+	
+	public ModoDeApp getModo() {
+
+		return this.modoDeApp;
 	}
 
-	/// METODOS DE ESTACIONAMIENTO MANUAL
+	//Setters	
+	
+	public void setSaldo(float saldo) {
+		this.saldo = saldo;
+	}
+	
+	public void setModo(ModoDeApp unModo) {
+		
+		this.modoDeApp = unModo;
+	}
+	
+	//Metodos
+	
+	
+	public void modoManual() {
+		
+		this.modoDeApp = new AppManual(this);
+	}
+
+	public void modoAutomatico() {
+		
+		this.modoDeApp = new AppAutomatica(this);
+	}
+	
+	public void aumentarSaldo(float unSaldo) {
+		
+		saldo = saldo + unSaldo;
+	}
+	
+	public void decrementarSaldo(float saldoADecrementar) {
+		
+		saldo = saldo - saldoADecrementar;
+	}
+
+	/// METODOS DE ESTACIONAMIENTO
 
 	public void estacionar() {
 		modoDeApp.estacionar();
@@ -77,14 +98,12 @@ public class AppUsuario implements MovementSensor, Gps {
 	public void driving() {
 		modoDeApp.finDeEstacionamiento();
 		//this.finDeEstacionamientoAutomatico();
-
 	}
 
 	@Override
 	public void walking() {
 		modoDeApp.estacionar();
 		//this.inicioDeEstacionamientoAutomatico();
-
 	}
 
 	/////////////////
@@ -99,7 +118,6 @@ public class AppUsuario implements MovementSensor, Gps {
 	@Override
 	public void getPosition() {
 		// No sabemos como se define
-
 	}
 	/////////////////////////////
 
@@ -110,14 +128,5 @@ public class AppUsuario implements MovementSensor, Gps {
 
 		return true;
 	}
-
-	public void aumentarSaldo(float unSaldo) {
-		saldo = saldo + unSaldo;
-	}
-	
-	public void decrementarSaldo(float saldoADecrementar) {
-		saldo = saldo - saldoADecrementar;
-	}
-
 	
 }

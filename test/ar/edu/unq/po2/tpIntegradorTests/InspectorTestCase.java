@@ -17,6 +17,7 @@ import ar.edu.unq.po2.tpintegrador.ZonaDeEstacionamiento;
 
 class InspectorTestCase {
 	
+	
 	Inspector unInspec;
 	
 	AppInspector appInspector;
