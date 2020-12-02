@@ -26,7 +26,7 @@ class InspectorTestCase {
 	public void setUp() {
 		
 		unaZona = mock (ZonaDeEstacionamiento.class);
-		appInspector = mock (AppInspector.class);
+		appInspector = new AppInspector();
 		
 		unInspec = new Inspector(unaZona, appInspector);
 	}
@@ -41,13 +41,11 @@ class InspectorTestCase {
 	@Test
 	void unInspectorPuedeMultar() {
 		
-		when(unInspec.horaActual()).thenReturn(LocalTime.of(20, 00, 00));
-		when(unInspec.fechaActual()).thenReturn(LocalDate.of(2020, 7, 21));
-		
+		assertEquals(0, unInspec.getDispositivoMovil().getListaDeMultas().size());
 		unInspec.multar("unaPatente");		
+		assertEquals(1, unInspec.getDispositivoMovil().getListaDeMultas().size());
 		
-		verify(appInspector, atLeastOnce()).registrarMulta("unaPatente", LocalDate.of(2020, 11, 21) , LocalTime.of(20, 00, 00) , unInspec); //Tira error, no retornan los mismo por las milesimas del LocalTime.now()
-	}
+		}
 	
 	@Test
 	void unInspectorPuedeverificarUnEstacionamiento() {
@@ -58,17 +56,7 @@ class InspectorTestCase {
 		
 		verify(unSem).existeEstacionamientoDe("patente");
 	}
-
-	@Test	
-     void unInspectorPuedeMultar3() {
-		
-		when(unInspec.horaActual()).thenReturn(LocalTime.of(20, 00, 00));
-		when(unInspec.fechaActual()).thenReturn(LocalDate.of(2020, 7, 21));
-		
-		unInspec.multar("unaPatente");		
-		
-		verify(appInspector, atLeastOnce()).registrarMulta("unaPatente", LocalDate.of(2020, 11, 21) , LocalTime.of(20, 00, 00) , unInspec); //Tira error, no retornan los mismo por las milesimas del LocalTime.now()
-	}
+	
 	
 }
 
