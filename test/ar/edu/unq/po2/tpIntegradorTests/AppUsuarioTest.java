@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import ar.edu.unq.po2.tpintegrador.AppAutomatica;
 import ar.edu.unq.po2.tpintegrador.AppManual;
 import ar.edu.unq.po2.tpintegrador.AppUsuario;
+import ar.edu.unq.po2.tpintegrador.Conductor;
 import ar.edu.unq.po2.tpintegrador.ISem;
 import ar.edu.unq.po2.tpintegrador.ModoDeApp;
 import ar.edu.unq.po2.tpintegrador.Sem;
@@ -18,6 +19,7 @@ class AppUsuarioTest {
 	Sem unSem;
 	AppManual appManual;
 	AppAutomatica appAutomatica;
+	Conductor unConductor;
 	
 	
 	
@@ -29,8 +31,10 @@ class AppUsuarioTest {
 		appManual= mock(AppManual.class);
 		appAutomatica = mock(AppAutomatica.class);
 		unSem = mock(Sem.class);
+		when(unSem.getCosto()).thenReturn(100f);
+		unConductor = new Conductor("ABC123", unaApp );
 		
-		unaApp = new AppUsuario(appManual, 12354, 1000, "asdf565",unSem);
+		unaApp = new AppUsuario( 12354,unSem,unConductor );
 	}
 	
 	@Test 
@@ -51,14 +55,19 @@ class AppUsuarioTest {
 		assertTrue(unaApp.getModo().getClass().equals(AppManual.class));
 	}
 	 
-	@Test 
-	public void testEstacionar() {
-		unaApp.estacionar();
-		verify(appManual, atLeastOnce()).estacionar();
-	}
-	
+//	@Test 
+//	public void testEstacionar() {
+//		
+//		unaApp.aumentarSaldo(100);
+//		unaApp.estacionar();
+//		verify(appManual, atLeastOnce()).estacionar();
+//	}
+//	
 	@Test 
 	public void testFinalizarEstacionamiento() {
+		unaApp.aumentarSaldo(100);
+		unaApp.estacionar();
+		verify(appManual, atLeastOnce()).estacionar();
 		unaApp.finDeEstacionamiento();
 		verify(appManual, atLeastOnce()).finDeEstacionamiento();
 	}
@@ -67,7 +76,7 @@ class AppUsuarioTest {
 	public void testEstacionarAutomatico() {
 		unaApp.modoAutomatico();
 		unaApp.walking();
-		verify(appAutomatica, atLeastOnce()).inicioDeEstacionamientoAutomatico();
+		verify(appAutomatica, atLeastOnce()).estacionar();
 		
 	}
 	
@@ -86,11 +95,11 @@ class AppUsuarioTest {
 	public void estacionamientoAutomatico() {
 		unaApp.modoAutomatico();
 		unaApp.walking();
-		verify(appAutomatica, atLeastOnce()).inicioDeEstacionamientoAutomatico();
 		unaApp.driving();
-		verify(appAutomatica,atLeastOnce()).finDeEstacionamientoAutomatico();
+		verify(appAutomatica,atLeastOnce()).finDeEstacionamiento();
 	
 	
 	}
+	
 
 }

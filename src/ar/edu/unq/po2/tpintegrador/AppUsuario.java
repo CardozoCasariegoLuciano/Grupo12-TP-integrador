@@ -7,7 +7,6 @@ public class AppUsuario implements MovementSensor, Gps {
 	private ModoDeApp modoDeApp;
 	private int numero;
 	private float saldo;
-	private String patente;
 	protected Sem sem;
 	private Conductor conductor;
 
@@ -48,7 +47,8 @@ public class AppUsuario implements MovementSensor, Gps {
 	}
 
 	public String getPatente() {
-		return patente;
+		return this.conductor.getPatente();
+	
 	}
 
 	/// METODOS DE ESTACIONAMIENTO MANUAL
