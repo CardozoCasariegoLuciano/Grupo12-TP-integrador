@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.po2.tpintegrador.AppUsuario;
+import ar.edu.unq.po2.tpintegrador.Conductor;
 import ar.edu.unq.po2.tpintegrador.EstacionamientoViaApp;
 import ar.edu.unq.po2.tpintegrador.EstacionamientoViaPuntoDeVenta;
 import ar.edu.unq.po2.tpintegrador.Inspector;
@@ -37,29 +38,31 @@ class TestSem {
 	PuntoDeVenta unPuntoDeVenta;
 	AppUsuario unaAppDeUsuario;
 	Ubicacion unaUbicacion;
+	Conductor unConductor;
 	Subscriptor sistemaSubscriptor;
 	
 	@BeforeEach
 	public void setup() {
 		
 		unSem = new Sem(franjaInicial, franjaFin, 12);
+		unConductor =  mock(Conductor.class);
 		estacionamientoPorApp = mock(EstacionamientoViaApp.class);
 		estacionamientoPorPuntoDeVenta = mock(EstacionamientoViaPuntoDeVenta.class);
 		appDeUsuario = mock(AppUsuario.class);
 		otraAppDeUsuario = mock(AppUsuario.class);
 		when(appDeUsuario.getSaldo()).thenReturn(8f);
 		when(otraAppDeUsuario.getSaldo()).thenReturn(15f);
-		unPuntoDeV = mock(PuntoDeVenta.class);
 		otroEstacionamiento = new EstacionamientoViaPuntoDeVenta(1, "altaPatente", unPuntoDeV);
 		unInspector = mock(Inspector.class);
 		unaZona = new ZonaDeEstacionamiento(unInspector , unaUbicacion);
 		unPuntoDeVenta = new PuntoDeVenta(unaZona , unSem);
-		unaAppDeUsuario = mock(AppUsuario.class);
+		unaAppDeUsuario = new AppUsuario(1111 , unSem , unConductor);
 		unaUbicacion = mock(Ubicacion.class);
 		sistemaSubscriptor = mock(Subscriptor.class);
 		
 		
 	}
+	
 	
 	
 	@Test
@@ -137,11 +140,13 @@ class TestSem {
 		
 		unaZona.abrirPuntoDeVenta(unPuntoDeVenta);
 		unSem.agregarZonaDeEstacionamientoASem(unaZona);
-		unPuntoDeVenta.registrarCargaCredito(12, unaAppDeUsuario);
+		unPuntoDeVenta.registrarCargaCredito(12f, unaAppDeUsuario);
 		
 		assertEquals(1, unPuntoDeVenta.getRegistrosDeCompra().size()); 
 	}
 	
+	
+
 
 	@Test 
 	void agregarZonaDeEstacionamientoAlSem() {

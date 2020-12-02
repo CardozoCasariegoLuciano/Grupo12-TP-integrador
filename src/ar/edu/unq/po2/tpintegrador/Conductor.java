@@ -14,6 +14,8 @@ public class Conductor {
 		return this.app;
 	}
 
+	
+	
 	public String getPatente() {
 		return patente;
 	}

@@ -36,9 +36,9 @@ public class PuntoDeVenta {
 		this.listaDeCompras.add(new RegistroCompraDeHoras(cantDeHoras, unaPatente, this));
 	}
 
-	public void registrarCargaCredito(int unMonto, AppUsuario unaAppusuairo) {
-
-		this.listaDeCompras.add(new RegistroCargaCelular(unMonto, unaAppusuairo, this));
+	public void registrarCargaCredito(float unMonto, AppUsuario unaAppusuairo) {
+		RegistroCargaCelular registro =  new RegistroCargaCelular(unMonto, unaAppusuairo, this);
+		this.listaDeCompras.add(registro);
 		elSem.cargarCredito(unMonto, unaAppusuairo);
 	}
 

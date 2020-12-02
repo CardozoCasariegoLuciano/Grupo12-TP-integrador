@@ -110,7 +110,7 @@ public class AppUsuario implements MovementSensor, Gps {
 		return true;
 	}
 
-	public void aumentarSaldo(int unSaldo) {
+	public void aumentarSaldo(float unSaldo) {
 		saldo = saldo + unSaldo;
 	}
 	

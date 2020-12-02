@@ -140,14 +140,7 @@ public class Sem implements ISem {
 	}
 	
 	
-	public List<Float> conocerSaldoDeTodasLasAppsDeUsuario(){
-		List<Float> saldos = new ArrayList<Float>();
-		
-		this.getAppDeConductores().stream().
-		                                    forEach(app -> saldos.add(app.getSaldo()));
-		
-		return saldos;
-	}
+
 
     public  Float conocerSaldoDeApp(AppUsuario unaAppusuario) { 	
        int  indice = this.getAppDeConductores().indexOf(unaAppusuario);
@@ -159,13 +152,22 @@ public class Sem implements ISem {
 	
    
 	
-    public  void cargarCredito(int unMonto, AppUsuario unaAppusuario) {
-      int  indice = this.getAppDeConductores().indexOf(unaAppusuario);
-      this.getAppDeConductores().get(indice).aumentarSaldo(unMonto);
-    
+    public  void cargarCredito(float unMonto, AppUsuario unaAppusuario) {
+  /*    int indice = this.getAppDeConductores().indexOf(unaAppusuario);
+      
+      this.getAppDeConductores().get(indice).aumentarSaldo(unMonto);*/
     	
+    	Iterator<AppUsuario> it = this.getAppDeConductores().iterator();
+    	
+    	while(it.hasNext() && it.next() != unaAppusuario) {
+    		
+    	}
+    
+    	   it.next().aumentarSaldo(unMonto);
          }
 	
+    
+    
 
      
 	@Override
