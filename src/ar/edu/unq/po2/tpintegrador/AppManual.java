@@ -28,10 +28,9 @@ public class AppManual implements ModoDeApp {
 				this.alertaDeInicioDeEstacionamiento();
 			} else
 				System.out.println("Saldo insuficiente.\n Estacionamiento no permitido.");
-		} else {
-			System.out.println("No se encuentra en una zona de Estacionamiento");
-		}
+		} 
 	}
+	
 
 	@Override
 	public void finDeEstacionamiento() {
@@ -49,6 +48,7 @@ public class AppManual implements ModoDeApp {
 	public AppUsuario getApp() {
 		return this.app;
 	}
+	
 	
 	@Override
 	public void alertaDeInicioDeEstacionamiento() {
