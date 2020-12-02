@@ -20,8 +20,7 @@ class AppUsuarioTest {
 	ModoDeApp modoApp;
 	AppManual appManual;
 	AppAutomatica appAutomatica;
-	Conductor unConductor;
-	
+	Conductor unConductor;	
 	
 	@BeforeEach
 	
@@ -32,7 +31,8 @@ class AppUsuarioTest {
 		appManual= mock(AppManual.class);
 		appAutomatica = mock(AppAutomatica.class);
 		unSem = mock(Sem.class);
-		
+		when(unSem.getCosto()).thenReturn(100f);
+		unConductor = new Conductor("ABC123", unaApp );
 		unaApp = new AppUsuario(12354, unSem, unConductor, appManual);
 	}
 	
@@ -64,7 +64,7 @@ class AppUsuarioTest {
 		
 		verify(unaApp.getModo() , atLeastOnce()).estacionar();
 	}
-	
+
 	@Test 
 	public void testFinalizarEstacionamiento() {
 		
@@ -72,6 +72,14 @@ class AppUsuarioTest {
 		verify(unaApp.getModo(), atLeastOnce()).finDeEstacionamiento();
 	}
 	
+
+	@Test
+	public void testEstacionarAutomatico() {
+		unaApp.modoAutomatico();
+		unaApp.walking();
+		verify(appAutomatica, atLeastOnce()).estacionar();
+		
+	}
 	
 	@Test 
 	public void existeEstacionamiento() {
@@ -88,11 +96,11 @@ class AppUsuarioTest {
 	public void estacionamientoAutomatico() {
 		unaApp.modoAutomatico();
 		unaApp.walking();
-		verify(appAutomatica, atLeastOnce()).inicioDeEstacionamientoAutomatico();
 		unaApp.driving();
-		verify(appAutomatica,atLeastOnce()).finDeEstacionamientoAutomatico();
+		verify(appAutomatica,atLeastOnce()).finDeEstacionamiento();
 	
 	
 	}
+	
 
 }
