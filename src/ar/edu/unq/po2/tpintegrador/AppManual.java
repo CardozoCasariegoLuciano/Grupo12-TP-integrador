@@ -26,7 +26,7 @@ public class AppManual implements ModoDeApp {
 				this.horaInicioEstacionamiento = LocalTime.now();
 				this.alertaDeInicioDeEstacionamiento();
 			} else
-				System.out.println("Saldo insuficiente. Estacionamiento no permitido.");
+				System.out.println("Saldo insuficiente.\n Estacionamiento no permitido.");
 		} else {
 			System.out.println("No se encuentra en una zona de Estacionamiento");
 		}
@@ -47,13 +47,13 @@ public class AppManual implements ModoDeApp {
 	
 	@Override
 	public void alertaDeInicioDeEstacionamiento() {
-		System.out.println("Inicio de Estacionamiento exitoso" + LocalTime.now() + LocalDate.now() );
+		System.out.println("Inicio de Estacionamiento exitoso \n Hora de Inicio:" + LocalTime.now() + LocalDate.now() );
 
 	}
 
 	@Override
 	public void alertaDeFinDeEstacionamiento() {
-		System.out.println("Fin de Estacionamiento exitoso\n" + "Cantidad de Horas:" + this.cantidadDeHoras() );
+		System.out.println("Fin de Estacionamiento exitoso\n Cantidad de Horas:" + this.cantidadDeHoras() );
 
 	}
 	
