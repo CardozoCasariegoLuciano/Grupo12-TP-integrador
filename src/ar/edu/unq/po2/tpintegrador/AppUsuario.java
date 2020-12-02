@@ -17,6 +17,7 @@ public class AppUsuario implements MovementSensor, Gps {
 		this.saldo = 0;
 		this.sem = semClase;
 		this.conductor = conductor;
+	
 	}
 
 	private void setModo(ModoDeApp setModo) {
@@ -31,13 +32,7 @@ public class AppUsuario implements MovementSensor, Gps {
 		this.setModo(new AppAutomatica(this));
 	}
 
-//	void alertaDeInicioDeEstacionamiento() {
-//	
-//	}
-//
-//	void alertaDeFinDeEstacionamiento() {
-//		
-//	}
+
 
 	public float getSaldo() {
 		return saldo;

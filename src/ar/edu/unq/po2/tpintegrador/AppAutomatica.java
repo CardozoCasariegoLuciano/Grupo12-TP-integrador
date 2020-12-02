@@ -36,7 +36,6 @@ public class AppAutomatica implements ModoDeApp {
 	@Override
 	public void finDeEstacionamiento() {
 		if ((this.app.sem.existeEstacionamientoDe(this.app.getPatente()))) {
-			this.app.decrementarSaldo( this.app.sem.getCosto());
 			this.app.sem.finalizarEstacionamientoViaApp(this.app.getNumero());
 			this.horaFinDeEstacionamiento = LocalTime.now();
 			this.alertaDeFinDeEstacionamiento();
@@ -45,7 +44,6 @@ public class AppAutomatica implements ModoDeApp {
 			System.out.println("No existe estacionamiento de la patente");
 		}
 
-		// new AppManual(this.app).finDeEstacionamiento();
 	}
 
 	
@@ -65,5 +63,6 @@ public class AppAutomatica implements ModoDeApp {
 	public Duration cantidadDeHoras() {
 		return Duration.between(this.horaInicioEstacionamiento,this.horaFinDeEstacionamiento).abs();
 	}
+
 
 }
