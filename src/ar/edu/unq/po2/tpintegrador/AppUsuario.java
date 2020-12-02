@@ -1,6 +1,6 @@
 package ar.edu.unq.po2.tpintegrador;
 
-////Falta validación de zona y retorno de fin de estacionamiento 
+////Falta validaciï¿½n de zona y retorno de fin de estacionamiento 
 
 public class AppUsuario implements MovementSensor, Gps {
 
@@ -11,19 +11,24 @@ public class AppUsuario implements MovementSensor, Gps {
 	protected Sem sem;
 	private Conductor conductor;
 
-	public AppUsuario(int numero, Sem semClase, Conductor conductor) {
-		this.modoDeApp = new AppManual(this);
+	public AppUsuario(int numero, Sem semClase, Conductor conductor, ModoDeApp unModo) {
+		this.modoDeApp = unModo;
 		this.numero = numero;
 		this.saldo = 0;
 		this.sem = semClase;
-		this.conductor = conductor;
-	
+		this.conductor = conductor;	
 	}
 
+	
 	private void setModo(ModoDeApp setModo) {
 		this.modoDeApp = setModo;
 	}
 
+	public ModoDeApp getModo() {
+
+		return this.modoDeApp;
+	}
+	
 	public void modoManual() {
 		this.setModo(new AppManual(this));
 	}
@@ -32,7 +37,10 @@ public class AppUsuario implements MovementSensor, Gps {
 		this.setModo(new AppAutomatica(this));
 	}
 
-
+	public Conductor getConductor() {
+		
+		return this.conductor;
+	}
 
 	public float getSaldo() {
 		return saldo;
@@ -94,10 +102,7 @@ public class AppUsuario implements MovementSensor, Gps {
 	}
 	/////////////////////////////
 
-	public Object getModo() {
-
-		return this.modoDeApp;
-	}
+	
 
 	public boolean seEncuentraEnZona() {
 		// TODO Auto-generated method stub
@@ -112,4 +117,6 @@ public class AppUsuario implements MovementSensor, Gps {
 	public void decrementarSaldo(float saldoADecrementar) {
 		saldo = saldo - saldoADecrementar;
 	}
+
+	
 }
