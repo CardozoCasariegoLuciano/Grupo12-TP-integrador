@@ -64,7 +64,9 @@ public class AppManual implements ModoDeApp {
 		return (this.app.sem.getCosto() * this.cantidadDeHoras());
 	}
 
+
 	public int cantidadDeHoras() {
 		return Math.abs(this.horaInicioEstacionamiento.getHour() - this.horaFinDeEstacionamiento.getHour());
 	}
 }
+

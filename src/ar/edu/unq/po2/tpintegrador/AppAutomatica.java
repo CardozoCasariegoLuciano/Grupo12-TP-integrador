@@ -45,7 +45,7 @@ public class AppAutomatica implements ModoDeApp {
 
 	@Override
 	public void alertaDeInicioDeEstacionamiento() {
-		System.out.println("Inicio de Estacionamiento exitoso \n Hora de Inicio:" + LocalTime.now() + LocalDate.now());
+		System.out.println("Inicio de Estacionamiento exitoso \n Hora de Inicio:" + LocalTime.now().getHour() + LocalDate.now());
 
 	}
 
@@ -65,4 +65,5 @@ public class AppAutomatica implements ModoDeApp {
 		return Math.abs(this.horaInicioEstacionamiento.getHour() - this.horaFinDeEstacionamiento.getHour());
 	}
 
+	
 }

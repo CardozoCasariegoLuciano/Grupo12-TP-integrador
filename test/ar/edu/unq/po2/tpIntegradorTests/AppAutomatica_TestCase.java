@@ -36,8 +36,9 @@ class AppAutomatica_TestCase {
 	
         appAuto.alertaDeInicioDeEstacionamiento();
 		
-		assertEquals("Inicio de Estacionamiento exitoso \n Hora de Inicio:" + LocalTime.now() + LocalDate.now(), outContent.toString().replaceAll("\r\n" , ""));		
+		assertEquals("Inicio de Estacionamiento exitoso \n Hora de Inicio:" + LocalTime.now().getHour() + LocalDate.now(), outContent.toString().replaceAll("\r\n" , ""));		
 	}
+	
 }
 
 
