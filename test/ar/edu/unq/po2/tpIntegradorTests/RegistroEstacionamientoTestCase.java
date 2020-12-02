@@ -3,8 +3,6 @@ package ar.edu.unq.po2.tpIntegradorTests;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import java.time.LocalTime;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,9 +12,9 @@ import ar.edu.unq.po2.tpintegrador.EstacionamientoViaPuntoDeVenta;
 class RegistroEstacionamientoTestCase {
 	
 	PuntoDeVenta unPuntoDeV;
+	
 	EstacionamientoViaPuntoDeVenta unEstacionamientoPuntoDeVenta;
 	
-	EstacionamientoViaPuntoDeVenta unRegistro2;
 	
 	
 	@BeforeEach
@@ -34,6 +32,9 @@ class RegistroEstacionamientoTestCase {
 		assertEquals("altaPatente", unEstacionamientoPuntoDeVenta.getPatente());
 		assertEquals(1, unEstacionamientoPuntoDeVenta.getCantDeHS());
 		assertEquals(unPuntoDeV, unEstacionamientoPuntoDeVenta.getPuntoDeVenta());
+		assertTrue(unEstacionamientoPuntoDeVenta.estacionamientoEstaAcitvo());
+		assertEquals(unEstacionamientoPuntoDeVenta.getHoraInicio().plusHours(1) , unEstacionamientoPuntoDeVenta.getHoraFinal());
+				
 	}
 
 	
@@ -41,17 +42,7 @@ class RegistroEstacionamientoTestCase {
 	void unRegistroDeEstacionamientSabeSiEstaActivo() {
 		
 		assertTrue(unEstacionamientoPuntoDeVenta.comprobarValidez());
-	}
-	
-	@Test
-	void unRegistroDeEstacionamientSabeSiNoEstaActivo() {
-		
-		when(unEstacionamientoPuntoDeVenta.horaActual()).thenReturn(LocalTime.of(20, 00, 00));
-		
-		assertFalse(unEstacionamientoPuntoDeVenta.comprobarValidez());
-	}
-	
-	
+	}		
 	
 	
 	@Test
@@ -59,9 +50,10 @@ class RegistroEstacionamientoTestCase {
 		
 		assertTrue(unEstacionamientoPuntoDeVenta.comprobarValidez());
 		
-		unEstacionamientoPuntoDeVenta.finalizarRegistro();
+		unEstacionamientoPuntoDeVenta.finalizarRegistro();		
 		
-		assertFalse(unEstacionamientoPuntoDeVenta.comprobarValidez());
+		assertFalse(unEstacionamientoPuntoDeVenta.estacionamientoEstaAcitvo());
+		
 	}	
 	
 	

@@ -14,20 +14,22 @@ public abstract class Estacionamiento {
 	public String getPatente() {
 		return this.patente;
 	}
+	
+	public LocalTime getHoraInicio() {
+		
+		return this.horaInicio;
+	}
 
 	public LocalTime getHoraFinal() {
 		return horaFinal;
 	}
 
 	// Metodos
-	public void finalizarRegistro() {
 
-		this.estaActivo = false;
 
-	}
 
 	public boolean perteneceAPatente(String patente) {
-		return this.patente == patente;
+		return this.patente == patente;					// este metodo se podria borrar (lo usa el Sem en existeEstacionamientoDe)
 	}
 
 	public abstract boolean comprobarValidez();
