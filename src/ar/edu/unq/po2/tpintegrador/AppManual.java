@@ -16,7 +16,7 @@ public class AppManual implements ModoDeApp {
 		this.app = app;
 
 	}
-	
+
 
 	@Override
 	public void estacionar() {
@@ -35,7 +35,7 @@ public class AppManual implements ModoDeApp {
 
 	@Override
 	public void finDeEstacionamiento() {
-		if (!(this.app.sem.existeEstacionamientoDe(this.app.getPatente()))) {
+		if ((this.app.sem.existeEstacionamientoDe(this.app.getPatente()))) {
 			this.app.sem.finalizarEstacionamientoViaApp(this.app.getNumero());
 			this.alertaDeFinDeEstacionamiento();
 
@@ -44,7 +44,11 @@ public class AppManual implements ModoDeApp {
 		}
 
 	}
-
+	
+	
+	public AppUsuario getApp() {
+		return this.app;
+	}
 	
 	@Override
 	public void alertaDeInicioDeEstacionamiento() {

@@ -18,6 +18,7 @@ public class AppUsuario implements MovementSensor, Gps {
 		this.conductor = conductor;	
 	}
 
+
 	
 	private void setModo(ModoDeApp setModo) {
 		this.modoDeApp = setModo;

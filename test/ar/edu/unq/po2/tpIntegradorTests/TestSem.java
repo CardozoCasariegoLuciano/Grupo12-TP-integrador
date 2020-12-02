@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.po2.tpintegrador.AppManual;
 import ar.edu.unq.po2.tpintegrador.AppUsuario;
 import ar.edu.unq.po2.tpintegrador.Conductor;
 import ar.edu.unq.po2.tpintegrador.EstacionamientoViaApp;
@@ -40,6 +41,7 @@ class TestSem {
 	Ubicacion unaUbicacion;
 	Conductor unConductor;
 	Subscriptor sistemaSubscriptor;
+	AppManual unModo;
 	
 	@BeforeEach
 	public void setup() {
@@ -54,13 +56,15 @@ class TestSem {
 		when(otraAppDeUsuario.getSaldo()).thenReturn(15f);
 		otroEstacionamiento = new EstacionamientoViaPuntoDeVenta(1, "altaPatente", unPuntoDeV);
 		unInspector = mock(Inspector.class);
+		unModo = mock(AppManual.class);
 		unaZona = new ZonaDeEstacionamiento(unInspector , unaUbicacion);
 		unPuntoDeVenta = new PuntoDeVenta(unaZona , unSem);
-		unaAppDeUsuario = new AppUsuario(1111 , unSem , unConductor);
+		unaAppDeUsuario = new AppUsuario(1111 , unSem , unConductor, unModo);
 		unaUbicacion = mock(Ubicacion.class);
 		sistemaSubscriptor = mock(Subscriptor.class);
+		unSem.agregarAppUsuario(appDeUsuario);
 		
-		
+	
 	}
 	
 	
@@ -134,13 +138,12 @@ class TestSem {
 		assertTrue(!unSem.existeEstacionamientoDe(otroEstacionamiento.getPatente()));
 	}
 
-	
+
 	@Test 
 	void registrarTodasLasComprasDeLasZonasDelSem() {
-		
-		unaZona.abrirPuntoDeVenta(unPuntoDeVenta);
 		unSem.agregarZonaDeEstacionamientoASem(unaZona);
-		unPuntoDeVenta.registrarCargaCredito(12f, unaAppDeUsuario);
+		unaZona.abrirPuntoDeVenta(unPuntoDeVenta);
+		unPuntoDeVenta.registrarCargaCredito(12, unaAppDeUsuario);
 		
 		assertEquals(1, unPuntoDeVenta.getRegistrosDeCompra().size()); 
 	}
@@ -187,6 +190,7 @@ class TestSem {
    }
 
 	
+  
   @Test
   void testConsultarSaldoDeUnaApp() {
 	  unSem.agregarAppUsuario(appDeUsuario);
@@ -195,5 +199,7 @@ class TestSem {
 	  assertEquals(8f , unSem.conocerSaldoDeApp(appDeUsuario));
   }
 
+
+  
    
 }	

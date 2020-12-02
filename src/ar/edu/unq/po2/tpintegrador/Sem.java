@@ -139,7 +139,10 @@ public class Sem implements ISem {
 
 	}
 	
-	
+	public void agregarEstacionamiento(Estacionamiento unEstacionamiento) {
+		this.estacionamientos.add(unEstacionamiento);
+		
+	}
 
 
     public  Float conocerSaldoDeApp(AppUsuario unaAppusuario) { 	
@@ -148,26 +151,23 @@ public class Sem implements ISem {
       	 
               }
       	
-           
+ 
 	
    
 	
     public  void cargarCredito(float unMonto, AppUsuario unaAppusuario) {
-  /*    int indice = this.getAppDeConductores().indexOf(unaAppusuario);
-      
-      this.getAppDeConductores().get(indice).aumentarSaldo(unMonto);*/
-    	
-    	Iterator<AppUsuario> it = this.getAppDeConductores().iterator();
-    	
-    	while(it.hasNext() && it.next() != unaAppusuario) {
-    		
-    	}
-    
-    	   it.next().aumentarSaldo(unMonto);
+         if(!this.appDeUsuarios.contains(unaAppusuario)) {
+        	 this.appDeUsuarios.add(unaAppusuario);
+        	 unaAppusuario.aumentarSaldo(unMonto);
+        	 
+         }
+         
+            unaAppusuario.aumentarSaldo(unMonto);
          }
 	
     
     
+   
 
      
 	@Override
@@ -175,6 +175,7 @@ public class Sem implements ISem {
 		
 				
 	}
+	
 	
 	
 	

@@ -66,4 +66,5 @@ public class AppAutomatica implements ModoDeApp {
 	}
 
 
+
 }
