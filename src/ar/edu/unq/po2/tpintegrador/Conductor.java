@@ -7,8 +7,11 @@ public class Conductor {
 	public Conductor(String patente, AppUsuario app) {
 		this.app = app;
 		this.patente = patente;
-		
+	}	
 
+	public AppUsuario getApp() {
+		
+		return this.app;
 	}
 
 	
@@ -19,25 +22,26 @@ public class Conductor {
 
 	// Metodos para estacionar
 
-	void estacionarPorPuntoDeVenta(PuntoDeVenta unPuntoDeVenta, String patente, int horas) {
+	public void estacionarPorPuntoDeVenta(PuntoDeVenta unPuntoDeVenta, String patente, int horas) {
 		unPuntoDeVenta.registrarEstacionamiento(patente, horas);
 	}
 
-	void estacionarPorApp() {
+	public void estacionarPorApp() {
 
 		this.app.estacionar();
 	}
 	
 	
 	//Delega acciones al celular
-	void finalizarEstacionamientoPorApp() {
+	public void finalizarEstacionamientoPorApp() {
 		app.finDeEstacionamiento();
 	}
 	
 
-	void recargarCelular(int saldoACargar , PuntoDeVenta unPunto) {
+	public void recargarCelular(int saldoACargar , PuntoDeVenta unPunto) {
 		unPunto.registrarCargaCredito(saldoACargar, this.app);
 	}
+
 	
 	
 }
