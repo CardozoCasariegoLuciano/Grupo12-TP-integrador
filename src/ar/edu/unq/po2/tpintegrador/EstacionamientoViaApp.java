@@ -10,14 +10,19 @@ public class EstacionamientoViaApp extends Estacionamiento {
 	private Sem sem;
 	private Boolean estaActivo;
 
-	public EstacionamientoViaApp(AppUsuario app) {
+	public EstacionamientoViaApp(AppUsuario app ) {
 		this.numeroDeCelular = app.getNumero();
 		this.patente = app.getPatente();
 		this.horaInicio = LocalTime.now();
 		this.estaActivo = true;
 		this.saldo = app.getSaldo();
+		
 
 		
+	}
+	
+	public void setSem(Sem unSem) {
+		this.sem = unSem;
 	}
 	
 	public int getNumeroDeCelular() {
@@ -28,12 +33,14 @@ public class EstacionamientoViaApp extends Estacionamiento {
 	@Override
 	public boolean comprobarValidez() {
 		
-		return this.estaActivo && this.saldo >= sem.getCosto();
+		return this.saldo >= sem.getCosto();
+	}
+
+	public boolean estacionamientoEstaAcitvo() {
+		
+		return this.estaActivo;
 	}
 	
-	public Boolean estacionamientoEstaAcitvo() {
-		return this.estaActivo;
-		
-	}
+
 
 }

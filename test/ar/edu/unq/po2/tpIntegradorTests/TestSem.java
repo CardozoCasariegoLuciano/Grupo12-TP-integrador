@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.po2.tpintegrador.AppUsuario;
+import ar.edu.unq.po2.tpintegrador.Conductor;
 import ar.edu.unq.po2.tpintegrador.EstacionamientoViaApp;
 import ar.edu.unq.po2.tpintegrador.EstacionamientoViaPuntoDeVenta;
 import ar.edu.unq.po2.tpintegrador.Inspector;
@@ -37,12 +38,14 @@ class TestSem {
 	PuntoDeVenta unPuntoDeVenta;
 	AppUsuario unaAppDeUsuario;
 	Ubicacion unaUbicacion;
+	Conductor unConductor;
 	Subscriptor sistemaSubscriptor;
 	
 	@BeforeEach
 	public void setup() {
 		
 		unSem = new Sem(franjaInicial, franjaFin, 12);
+		unConductor =  mock(Conductor.class);
 		estacionamientoPorApp = mock(EstacionamientoViaApp.class);
 		estacionamientoPorPuntoDeVenta = mock(EstacionamientoViaPuntoDeVenta.class);
 		appDeUsuario = mock(AppUsuario.class);
@@ -53,7 +56,7 @@ class TestSem {
 		unInspector = mock(Inspector.class);
 		unaZona = new ZonaDeEstacionamiento(unInspector , unaUbicacion);
 		unPuntoDeVenta = new PuntoDeVenta(unaZona , unSem);
-		unaAppDeUsuario = new AppUsuario(1111 , unSem);
+		unaAppDeUsuario = new AppUsuario(1111 , unSem , unConductor);
 		unaUbicacion = mock(Ubicacion.class);
 		sistemaSubscriptor = mock(Subscriptor.class);
 		
