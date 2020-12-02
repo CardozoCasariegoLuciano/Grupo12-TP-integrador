@@ -10,7 +10,6 @@ import ar.edu.unq.po2.tpintegrador.AppManual;
 import ar.edu.unq.po2.tpintegrador.AppUsuario;
 import ar.edu.unq.po2.tpintegrador.Conductor;
 import ar.edu.unq.po2.tpintegrador.EstacionamientoViaApp;
-import ar.edu.unq.po2.tpintegrador.ISem;
 import ar.edu.unq.po2.tpintegrador.ModoDeApp;
 import ar.edu.unq.po2.tpintegrador.Sem;
 
@@ -26,22 +25,21 @@ class AppUsuarioTest {
 	
 	@BeforeEach
 	
-	public void setUp() {
+	public void setUp() {			
 		
-		unConductor = mock(Conductor.class);
-		modoApp = mock(ModoDeApp.class);
-		appManual= mock(AppManual.class);
-		appAutomatica = mock(AppAutomatica.class);
 		unSem = mock(Sem.class);
-		when(unSem.getCosto()).thenReturn(100f);
-		unConductor = new Conductor("ABC123", unaApp );
+		appManual= mock(AppManual.class);
+		appAutomatica = mock(AppAutomatica.class);	
+		
+		
+		unConductor = new Conductor("ABC123", unaApp );		
 		unaApp = new AppUsuario(12354, unSem, unConductor, appManual);
 	}
 	
 	@Test 
 	public void testConstructor() {		
 		
-		assertTrue(unaApp.getModo().getClass().equals(AppManual.class));
+		assertTrue(unaApp.getModo().getClass().equals(appManual.getClass()));
 		assertEquals(12354, unaApp.getNumero());
 		assertEquals(0, unaApp.getSaldo());		
 		assertEquals(unConductor, unaApp.getConductor());		
@@ -51,57 +49,74 @@ class AppUsuarioTest {
 	@Test 
 	public void testCambioDeModo() {
 		
-		assertTrue(unaApp.getModo().getClass().equals(AppManual.class));
+		assertTrue(unaApp.getModo().getClass().equals(appManual.getClass()));
 		
 		unaApp.modoAutomatico();
 		
-		assertTrue(unaApp.getModo().getClass().equals(AppAutomatica.class));	
-		
+		assertTrue(unaApp.getModo().getClass().equals(AppAutomatica.class));		
 	}
 	 
 	@Test 
-	public void testEstacionar() {
-		unaApp.aumentarSaldo(200);
+	public void testEstacionar01() {
+		
 		unaApp.estacionar();
+		
+		verify(unaApp.getModo() , atLeastOnce()).estacionar();
+	}
+	
+	@Test 
+	public void testEstacionar02() {
+		
+		unaApp.setModo(appAutomatica);
+		
+		unaApp.estacionar();
+		
 		verify(unaApp.getModo() , atLeastOnce()).estacionar();
 	}
 
 	@Test 
-	public void testFinalizarEstacionamiento() {
-		when(unSem.existeEstacionamientoDe(unaApp.getPatente())).thenReturn(true);
-		unaApp.finDeEstacionamiento();
-		verify(unaApp.getModo(), atLeastOnce()).alertaDeFinDeEstacionamiento();
-	}
-	
-
-	@Test
-	public void testEstacionarAutomatico() {
-		unaApp.modoAutomatico();
-		unaApp.walking();
-		verify(appAutomatica, atLeastOnce()).estacionar();
+	public void testFinalizarEstacionamiento01() {		
 		
+		unaApp.finDeEstacionamiento();
+		
+		verify(unaApp.getModo(), atLeastOnce()).finDeEstacionamiento();
 	}
 	
 	@Test 
-	public void existeEstacionamiento() {
+	public void testFinalizarEstacionamiento02() {		
 		
-		when(unSem.existeEstacionamientoDe(unaApp.getPatente())).thenReturn(true);
-
+		unaApp.setModo(appAutomatica);
+		unaApp.finDeEstacionamiento();
+		
+		verify(unaApp.getModo(), atLeastOnce()).finDeEstacionamiento();
 	}
+	
+
 	@Test
-	public void testPuedeRegistrarUnaCarga() {
-		unaApp.setSaldo(100);
+	public void testPuedeAumentarSuSaldo() {
+		
+		assertEquals(0, unaApp.getSaldo());
+		
+		unaApp.aumentarSaldo(100);
+		
 		assertEquals(100, unaApp.getSaldo());
 	}
 	
-	public void estacionamientoAutomatico() {
-		unaApp.modoAutomatico();
-		unaApp.walking();
-		unaApp.driving();
-		verify(appAutomatica,atLeastOnce()).finDeEstacionamiento();
+	@Test
+	public void testPuedeDecrementarSuSaldo() {
+		
+		unaApp.aumentarSaldo(100);
+		assertEquals(100, unaApp.getSaldo());
+		
+		unaApp.decrementarSaldo(25);
+		
+		assertEquals(75, unaApp.getSaldo());
+	}	
 	
-	
-	}
 	
 
 }
+
+
+
+
