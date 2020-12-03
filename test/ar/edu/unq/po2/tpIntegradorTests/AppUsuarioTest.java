@@ -41,7 +41,14 @@ class AppUsuarioTest {
 		assertTrue(unaApp.getModo().getClass().equals(appManual.getClass()));
 		assertEquals(12354, unaApp.getNumero());
 		assertEquals(0, unaApp.getSaldo());		
-		assertEquals(unConductor, unaApp.getConductor());		
+		assertEquals(unConductor, unaApp.getConductor());
+		assertEquals(unSem, unaApp.getSem());
+	}	
+	
+	@Test 
+	public void testGetPatente() {		
+		
+		assertEquals("ABC123", unaApp.getPatente());
 	}	
 	
 	@Test 
