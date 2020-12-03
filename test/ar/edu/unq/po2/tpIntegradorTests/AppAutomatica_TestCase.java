@@ -68,6 +68,7 @@ class AppAutomatica_TestCase {
 
 	}
 	
+	
 	@Test
 	void testAlertaDeInicioDeEstacionamiento() {
 
