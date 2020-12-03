@@ -23,14 +23,20 @@ class AppAutomatica_TestCase {
 	AppAutomatica appAuto;
 	AppAutomatica appAutoMock;
 	AppUsuario appUsuario;
+	Sem sem;
+	ModoDeApp unModo;
+	Conductor unConductor;
 
 	@BeforeEach
-	public void setUp() {
-	
-		appUsuario = mock (AppUsuario.class);
+	public void setUp() {	
+			
+		unModo = mock(ModoDeApp.class);
+		sem = mock (Sem.class);
+		unConductor = mock (Conductor.class);
 		
 		appAutoMock = mock(AppAutomatica.class);
 		
+		appUsuario = new AppUsuario( 101, sem, unConductor, unModo);
 		appAuto = new AppAutomatica(appUsuario);
 		
 	}
@@ -65,6 +71,29 @@ class AppAutomatica_TestCase {
 
 	}
 	
+	@Test
+	void testCantidadDeHoras() {
+		
+		appAuto.setHoraInicioEstacionamiento(LocalTime.of(10, 30, 15));
+		appAuto.setHoraFinDeEstacionamiento(LocalTime.of(12, 30, 15));
+		
+		assertEquals(2, appAuto.cantidadDeHoras() );
+		
+	}
+	
+	
+	/*
+	@Test
+	void testPrecioTotal() {
+		
+		appAuto.setHoraInicioEstacionamiento(LocalTime.of(10, 30, 15));
+		appAuto.setHoraFinDeEstacionamiento(LocalTime.of(12, 30, 15));
+		
+		assertEquals(2, appAuto.cantidadDeHoras() );
+		
+	}*/
+	
+
 	
 
 	

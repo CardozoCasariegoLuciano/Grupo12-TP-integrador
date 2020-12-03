@@ -22,7 +22,10 @@ public class AppUsuario  {
 	}
 
 	
-
+	public Sem getSem() {
+		
+		return this.sem;
+	}
 	
 	public Conductor getConductor() {
 		
