@@ -42,7 +42,7 @@ class RegistroEstacionamientoTestCase {
 	@Test
 	void unRegistroDeEstacionamientSabeSiEstaActivo() {
 		
-		assertFalse(unEstacionamientoPuntoDeVenta.comprobarValidez());
+		assertTrue(unEstacionamientoPuntoDeVenta.comprobarValidez());
 	}		
 	
 	
@@ -50,7 +50,7 @@ class RegistroEstacionamientoTestCase {
 	@Test
 	void unRegistroDeEstacionamientPuedeFinalizarse() {
 		
-		assertFalse(unEstacionamientoPuntoDeVenta.comprobarValidez());
+		assertTrue(unEstacionamientoPuntoDeVenta.comprobarValidez());
 		
 		unEstacionamientoPuntoDeVenta.finalizarRegistro();		
 		

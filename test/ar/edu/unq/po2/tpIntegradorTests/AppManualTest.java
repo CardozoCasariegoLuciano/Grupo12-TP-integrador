@@ -73,7 +73,7 @@ class AppManualTest {
 	   unaAppManual.estacionar();
 	   unaAppManual.setHoraFinDeEstacionamiento(franjaFin);
 	   
-	   assertEquals(192 ,unaAppManual.precioTotal());
+	   assertEquals(96 ,unaAppManual.precioTotal());
 	}
 
 	@Test
