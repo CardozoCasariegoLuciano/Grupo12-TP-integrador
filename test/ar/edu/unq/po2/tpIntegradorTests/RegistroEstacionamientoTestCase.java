@@ -38,21 +38,23 @@ class RegistroEstacionamientoTestCase {
 	}
 
 	
+	
 	@Test
 	void unRegistroDeEstacionamientSabeSiEstaActivo() {
 		
-		assertTrue(unEstacionamientoPuntoDeVenta.comprobarValidez());
+		assertFalse(unEstacionamientoPuntoDeVenta.comprobarValidez());
 	}		
+	
 	
 	
 	@Test
 	void unRegistroDeEstacionamientPuedeFinalizarse() {
 		
-		assertTrue(unEstacionamientoPuntoDeVenta.comprobarValidez());
+		assertFalse(unEstacionamientoPuntoDeVenta.comprobarValidez());
 		
 		unEstacionamientoPuntoDeVenta.finalizarRegistro();		
 		
-		assertFalse(unEstacionamientoPuntoDeVenta.estacionamientoEstaAcitvo());
+		assertTrue(unEstacionamientoPuntoDeVenta.estacionamientoEstaAcitvo());
 		
 	}	
 	

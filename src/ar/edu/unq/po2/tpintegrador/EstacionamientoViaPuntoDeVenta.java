@@ -11,6 +11,7 @@ public class EstacionamientoViaPuntoDeVenta extends Estacionamiento {
 	private int cantDeHoras;
 	private PuntoDeVenta puntoDeVenta;
 	private Boolean estaActivo;
+	
 
 	// Constructor
 	public EstacionamientoViaPuntoDeVenta(int cantDeHoras, String unaPatente, PuntoDeVenta puntoDeVenta) {
@@ -50,10 +51,7 @@ public class EstacionamientoViaPuntoDeVenta extends Estacionamiento {
 		
 	}
 	
-	public void finalizarRegistro() {
-		
-		this.estaActivo = false;
-	}
+
 
 	
 	

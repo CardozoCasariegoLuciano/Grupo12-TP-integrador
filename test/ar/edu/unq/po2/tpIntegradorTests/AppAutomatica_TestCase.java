@@ -105,23 +105,12 @@ class AppAutomatica_TestCase {
 	@Test
 	void precioTotal() {
     
+	   otraAppAutomatica.estacionar();
 	   otraAppAutomatica.setHoraInicioEstacionamiento(franjaInicial);
 	   otraAppAutomatica.setHoraFinDeEstacionamiento(franjaFin);
 	   
 	   assertEquals(192 ,otraAppAutomatica.precioTotal());
 	}
-	
-	/*
-	@Test
-	void testPrecioTotal() {
-		
-		appAuto.setHoraInicioEstacionamiento(LocalTime.of(10, 30, 15));
-		appAuto.setHoraFinDeEstacionamiento(LocalTime.of(12, 30, 15));
-		
-		assertEquals(2, appAuto.cantidadDeHoras() );
-		
-	}*/
-	
 
 	
 
