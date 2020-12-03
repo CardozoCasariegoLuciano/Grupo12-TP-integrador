@@ -76,26 +76,10 @@ public class AppAutomatica implements ModoDeApp {
 				+ "PrecioTotal:" + ".\n" + this.precioTotal());
 
 	}
-
 	
 	
-	
 
-	public LocalTime getHoraInicioEstacionamiento() {
-		return horaInicioEstacionamiento;
-	}
 
-	public void setHoraInicioEstacionamiento(LocalTime horaInicioEstacionamiento) {
-		this.horaInicioEstacionamiento = horaInicioEstacionamiento;
-	}
-
-	public LocalTime getHoraFinDeEstacionamiento() {
-		return horaFinDeEstacionamiento;
-	}
-
-	public void setHoraFinDeEstacionamiento(LocalTime horaFinDeEstacionamiento) {
-		this.horaFinDeEstacionamiento = horaFinDeEstacionamiento;
-	}
 
 	public float precioTotal() {
 		return (this.app.sem.getCosto() * this.cantidadDeHoras());

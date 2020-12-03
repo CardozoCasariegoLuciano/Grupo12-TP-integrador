@@ -13,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.po2.tpintegrador.AppAutomatica;
+import ar.edu.unq.po2.tpintegrador.AppManual;
 import ar.edu.unq.po2.tpintegrador.AppUsuario;
 import ar.edu.unq.po2.tpintegrador.Conductor;
 import ar.edu.unq.po2.tpintegrador.ModoDeApp;
@@ -23,21 +24,26 @@ class AppAutomatica_TestCase {
 	AppAutomatica appAuto;
 	AppAutomatica appAutoMock;
 	AppUsuario appUsuario;
-	Sem sem;
+	Sem unSem;
 	ModoDeApp unModo;
 	Conductor unConductor;
+	LocalTime franjaInicial = LocalTime.now();
+	LocalTime franjaFin = LocalTime.now().plusHours(8);
+	AppManual otraAppManual;
 
 	@BeforeEach
 	public void setUp() {	
 			
 		unModo = mock(ModoDeApp.class);
-		sem = mock (Sem.class);
+		unSem = new Sem(franjaInicial , franjaFin , 12);
 		unConductor = mock (Conductor.class);
 		
 		appAutoMock = mock(AppAutomatica.class);
 		
-		appUsuario = new AppUsuario( 101, sem, unConductor, unModo);
+		appUsuario = new AppUsuario( 101, unSem, unConductor, unModo);
 		appAuto = new AppAutomatica(appUsuario);
+		
+		otraAppManual = new AppManual(appUsuario);
 		
 	}
 	
@@ -81,6 +87,19 @@ class AppAutomatica_TestCase {
 		
 	}
 	
+	@Test
+	void alertaFinalizarEstacionamiento() {
+		
+		final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        otraAppManual.setHoraInicioEstacionamiento(franjaInicial);
+        otraAppManual.setHoraFinDeEstacionamiento(franjaFin);
+        otraAppManual.alertaDeFinDeEstacionamiento();
+		
+		assertEquals("Fin de Estacionamiento exitoso\n HoraDeInicio:" + otraAppManual.getHoraInicioEstacionamiento() + ".\n"
+				+ "HoraDeFin:" + otraAppManual.getHoraFinDeEstacionamiento() + ".\n" + "Cantidad de Horas:" + otraAppManual.cantidadDeHoras()
+				+ "PrecioTotal:" + ".\n" + otraAppManual.precioTotal(), outContent.toString().replaceAll("\r\n" , ""));		
+	}
 	
 	/*
 	@Test
