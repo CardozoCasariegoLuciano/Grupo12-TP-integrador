@@ -30,6 +30,7 @@ public class AppAutomatica implements ModoDeApp {
 		}
 	}
 
+
 	@Override
 	public void finDeEstacionamiento() {
 		if ((this.app.sem.existeEstacionamientoDe(this.app.getPatente()))) {
@@ -42,6 +43,7 @@ public class AppAutomatica implements ModoDeApp {
 		}
 
 	}
+
 
 	@Override
 	public void alertaDeInicioDeEstacionamiento() {
@@ -56,6 +58,9 @@ public class AppAutomatica implements ModoDeApp {
 				+ "PrecioTotal:" + ".\n" + this.precioTotal());
 
 	}
+
+	
+	
 
 	public float precioTotal() {
 		return (this.app.sem.getCosto() * this.cantidadDeHoras());

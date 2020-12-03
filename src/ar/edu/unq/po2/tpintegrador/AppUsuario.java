@@ -2,7 +2,7 @@ package ar.edu.unq.po2.tpintegrador;
 
 ////Falta validaci�n de zona y retorno de fin de estacionamiento 
 
-public class AppUsuario implements MovementSensor, Gps {
+public class AppUsuario implements MovementSensor {
 
 	//Variables
 	private ModoDeApp modoDeApp;
@@ -21,6 +21,7 @@ public class AppUsuario implements MovementSensor, Gps {
 		this.conductor = conductor;	
 	}
 
+	
 
 	
 	public Conductor getConductor() {
@@ -106,21 +107,7 @@ public class AppUsuario implements MovementSensor, Gps {
 
 	/////////////////
 
-	/// GPS///////////////////////
-	@Override
-	public void cambiarPosicion() {
-		// No sabemos como se define
 
-	}
-	
-
-	@Override
-	public void getPosition() {
-		// No sabemos como se define
-	}
-	/////////////////////////////
-
-	
 
 	public boolean seEncuentraEnZona() {
 		// TODO Auto-generated method stub
