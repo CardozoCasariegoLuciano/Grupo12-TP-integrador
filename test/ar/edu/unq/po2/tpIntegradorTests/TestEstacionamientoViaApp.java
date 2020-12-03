@@ -62,4 +62,10 @@ class TestEstacionamientoViaApp {
     	   assertTrue(unEstacionamiento.estacionamientoEstaAcitvo());
        }       
        
+       
+       @Test
+       void finalizarElEstacionamiento() {
+    	   unEstacionamiento.finalizarRegistro();
+    	   assertFalse(unEstacionamiento.getEstaActivo());
+       }
 }

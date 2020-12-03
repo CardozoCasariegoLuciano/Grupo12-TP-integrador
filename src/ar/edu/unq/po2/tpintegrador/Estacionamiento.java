@@ -26,6 +26,10 @@ public abstract class Estacionamiento {
 
 	// Metodos
 	
+	public boolean getEstaActivo() {
+		return this.estaActivo;
+	}
+	
 	public void finalizarRegistro() {
 		
 		this.estaActivo = false;
