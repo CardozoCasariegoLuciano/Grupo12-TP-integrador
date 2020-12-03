@@ -23,12 +23,13 @@ public class AppManual implements ModoDeApp {
 					&& !(this.app.sem.existeEstacionamientoDe(this.app.getPatente()))) {
 				this.app.decrementarSaldo(this.app.sem.getCosto());
 				this.app.sem.registrarEstacionamientoViaApp(new EstacionamientoViaApp(app));
-				this.horaInicioEstacionamiento = LocalTime.now();
+				this.setHoraInicioEstacionamiento(LocalTime.now());
 				this.alertaDeInicioDeEstacionamiento();
 			} else
 				System.out.println("Saldo insuficiente.\n Estacionamiento no permitido.");
 		}
 	}
+
 
 	@Override
 	public void finDeEstacionamiento() {
@@ -54,8 +55,8 @@ public class AppManual implements ModoDeApp {
 
 	@Override
 	public void alertaDeFinDeEstacionamiento() {
-		System.out.println("Fin de Estacionamiento exitoso\n HoraDeInicio:" + this.horaInicioEstacionamiento + ".\n"
-				+ "HoraDeFin:" + this.horaFinDeEstacionamiento + ".\n" + "Cantidad de Horas:" + this.cantidadDeHoras()
+		System.out.println("Fin de Estacionamiento exitoso\n HoraDeInicio:" + this.getHoraInicioEstacionamiento() + ".\n"
+				+ "HoraDeFin:" + this.getHoraFinDeEstacionamiento() + ".\n" + "Cantidad de Horas:" + this.cantidadDeHoras()
 				+ "PrecioTotal:" + ".\n" + this.precioTotal());
 
 	}
@@ -64,9 +65,28 @@ public class AppManual implements ModoDeApp {
 		return (this.app.sem.getCosto() * this.cantidadDeHoras());
 	}
 
+	
+	
+
+	public LocalTime getHoraInicioEstacionamiento() {
+		return horaInicioEstacionamiento;
+	}
+
+	public void setHoraInicioEstacionamiento(LocalTime horaInicioEstacionamiento) {
+		this.horaInicioEstacionamiento = horaInicioEstacionamiento;
+	}
+
+	public LocalTime getHoraFinDeEstacionamiento() {
+		return horaFinDeEstacionamiento;
+	}
+
+	public void setHoraFinDeEstacionamiento(LocalTime horaFinDeEstacionamiento) {
+		this.horaFinDeEstacionamiento = horaFinDeEstacionamiento;
+	}
 
 	public int cantidadDeHoras() {
-		return Math.abs(this.horaInicioEstacionamiento.getHour() - this.horaFinDeEstacionamiento.getHour());
+		return Math.abs(this.getHoraInicioEstacionamiento().getHour() - this.getHoraFinDeEstacionamiento().getHour());
 	}
+	
 }
 

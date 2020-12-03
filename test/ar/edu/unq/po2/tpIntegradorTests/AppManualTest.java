@@ -20,6 +20,7 @@ class AppManualTest {
 	
 	AppManual unaAppManual;
 	AppManual otraAppManual;
+	AppManual appManualMock;
 	AppUsuario unaApp;
 	AppUsuario otraApp;
 	Conductor unConductor;
@@ -39,9 +40,10 @@ class AppManualTest {
 		otraAppManual = new AppManual(otraApp);
 		otraApp.aumentarSaldo(2);
 		unEstacionamiento = new EstacionamientoViaApp(unaApp);
-		
+		appManualMock = mock(AppManual.class);
 		unaAppManual = new AppManual(unaApp);
 		otraAppManual = new AppManual(otraApp);
+		
 	}
 	
 	
@@ -65,7 +67,48 @@ class AppManualTest {
 	}
 	
 
+	@Test
+	void precioTotal() {
+    
+	   unaAppManual.estacionar();
+	   unaAppManual.setHoraFinDeEstacionamiento(franjaFin);
+	   
+	   assertEquals(192 ,unaAppManual.precioTotal());
+	}
 
+	@Test
+	void alertaFinalizarEstacionamiento() {
+		
+		final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        otraAppManual.setHoraInicioEstacionamiento(franjaInicial);
+        otraAppManual.setHoraFinDeEstacionamiento(franjaFin);
+        otraAppManual.alertaDeFinDeEstacionamiento();
+		
+		assertEquals("Fin de Estacionamiento exitoso\n HoraDeInicio:" + otraAppManual.getHoraInicioEstacionamiento() + ".\n"
+				+ "HoraDeFin:" + otraAppManual.getHoraFinDeEstacionamiento() + ".\n" + "Cantidad de Horas:" + otraAppManual.cantidadDeHoras()
+				+ "PrecioTotal:" + ".\n" + otraAppManual.precioTotal(), outContent.toString().replaceAll("\r\n" , ""));		
+	}
 	
-
+	
+	@Test
+	void testFinDeEstacionamiento() {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+	
+        otraAppManual.finDeEstacionamiento();
+		
+		assertEquals("No existe estacionamiento de la patente", outContent.toString().replaceAll("\r\n" , ""));		
+	}
+	
+	/*@Test
+	void testFinDeEstacionamiento2() {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+	    otraAppManual.estacionar();
+        otraAppManual.finDeEstacionamiento();
+		
+		assertEquals("No existe estacionamiento de la patente", outContent.toString().replaceAll("\r\n" , ""));		
+	}*/
+	
 }
