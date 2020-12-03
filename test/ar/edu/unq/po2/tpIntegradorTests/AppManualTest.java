@@ -101,6 +101,7 @@ class AppManualTest {
 		assertEquals("No existe estacionamiento de la patente", outContent.toString().replaceAll("\r\n" , ""));		
 	}
 	
+	
 	/*@Test
 	void testFinDeEstacionamiento2() {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();

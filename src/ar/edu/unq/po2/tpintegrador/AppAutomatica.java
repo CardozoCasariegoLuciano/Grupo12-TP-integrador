@@ -48,6 +48,7 @@ public class AppAutomatica implements ModoDeApp {
 		}
 	}
 
+	
 
 	@Override
 	public void finDeEstacionamiento() {

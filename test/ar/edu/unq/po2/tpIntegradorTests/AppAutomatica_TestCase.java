@@ -29,7 +29,7 @@ class AppAutomatica_TestCase {
 	Conductor unConductor;
 	LocalTime franjaInicial = LocalTime.now();
 	LocalTime franjaFin = LocalTime.now().plusHours(8);
-	AppManual otraAppManual;
+	AppAutomatica otraAppAutomatica;
 
 	@BeforeEach
 	public void setUp() {	
@@ -43,7 +43,7 @@ class AppAutomatica_TestCase {
 		appUsuario = new AppUsuario( 101, unSem, unConductor, unModo);
 		appAuto = new AppAutomatica(appUsuario);
 		
-		otraAppManual = new AppManual(appUsuario);
+		otraAppAutomatica = new AppAutomatica(appUsuario);
 		
 	}
 	
@@ -86,19 +86,29 @@ class AppAutomatica_TestCase {
 		assertEquals(2, appAuto.cantidadDeHoras() );
 		
 	}
+
 	
 	@Test
 	void alertaFinalizarEstacionamiento() {
 		
 		final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        otraAppManual.setHoraInicioEstacionamiento(franjaInicial);
-        otraAppManual.setHoraFinDeEstacionamiento(franjaFin);
-        otraAppManual.alertaDeFinDeEstacionamiento();
+        otraAppAutomatica.setHoraInicioEstacionamiento(franjaInicial);
+        otraAppAutomatica.setHoraFinDeEstacionamiento(franjaFin);
+        otraAppAutomatica.alertaDeFinDeEstacionamiento();
 		
-		assertEquals("Fin de Estacionamiento exitoso\n HoraDeInicio:" + otraAppManual.getHoraInicioEstacionamiento() + ".\n"
-				+ "HoraDeFin:" + otraAppManual.getHoraFinDeEstacionamiento() + ".\n" + "Cantidad de Horas:" + otraAppManual.cantidadDeHoras()
-				+ "PrecioTotal:" + ".\n" + otraAppManual.precioTotal(), outContent.toString().replaceAll("\r\n" , ""));		
+		assertEquals("Fin de Estacionamiento exitoso\n HoraDeInicio:" + otraAppAutomatica.getHoraInicioEstacionamiento() + ".\n"
+				+ "HoraDeFin:" + otraAppAutomatica.getHoraFinDeEstacionamiento() + ".\n" + "Cantidad de Horas:" + otraAppAutomatica.cantidadDeHoras()
+				+ "PrecioTotal:" + ".\n" + otraAppAutomatica.precioTotal(), outContent.toString().replaceAll("\r\n" , ""));		
+	}
+	
+	@Test
+	void precioTotal() {
+    
+	   otraAppAutomatica.setHoraInicioEstacionamiento(franjaInicial);
+	   otraAppAutomatica.setHoraFinDeEstacionamiento(franjaFin);
+	   
+	   assertEquals(192 ,otraAppAutomatica.precioTotal());
 	}
 	
 	/*
