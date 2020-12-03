@@ -132,7 +132,10 @@ public class Sem implements ISem {
 			if (estacionamiento.perteneceAPatente(unaPatente)) {
 				return true;
 
+			
 			}
+			
+
 
 		}
 		return false;

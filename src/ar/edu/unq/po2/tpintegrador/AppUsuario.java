@@ -2,7 +2,7 @@ package ar.edu.unq.po2.tpintegrador;
 
 ////Falta validaci�n de zona y retorno de fin de estacionamiento 
 
-public class AppUsuario implements MovementSensor {
+public class AppUsuario  {
 
 	//Variables
 	private ModoDeApp modoDeApp;
@@ -91,7 +91,7 @@ public class AppUsuario implements MovementSensor {
 
 
 
- 
+ /*
 	/// MovementSensor/////////
 	@Override
 	public void driving() {
@@ -104,7 +104,7 @@ public class AppUsuario implements MovementSensor {
 		modoDeApp.estacionar();
 		//this.inicioDeEstacionamientoAutomatico();
 	}
-
+*/
 	/////////////////
 
 

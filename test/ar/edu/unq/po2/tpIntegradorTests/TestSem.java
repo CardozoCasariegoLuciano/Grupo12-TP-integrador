@@ -143,6 +143,7 @@ class TestSem {
 		unPuntoDeVenta.registrarCargaCredito(12, unaAppDeUsuario);
 		
 		assertEquals(1, unPuntoDeVenta.getRegistrosDeCompra().size()); 
+		assertEquals(1 ,unSem.registrarTodasLasCompras().size());
 	}
 	
 	
@@ -178,6 +179,7 @@ class TestSem {
    }
    
    
+  
    @Test
    void desSuscribirSistema() {
 	   unSem.suscribirSistema(sistemaSubscriptor);
@@ -198,7 +200,12 @@ class TestSem {
 
 
   
- 
+  @Test
+  void agregarEstacionamiento() {
+	  unSem.agregarEstacionamiento(estacionamientoPorApp);
+	  
+	  assertTrue(unSem.getEstacionamientos().contains(estacionamientoPorApp));
+  }
   
    
 }	
