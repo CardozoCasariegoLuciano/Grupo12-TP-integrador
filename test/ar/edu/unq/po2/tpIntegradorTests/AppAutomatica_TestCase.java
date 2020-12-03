@@ -109,7 +109,7 @@ class AppAutomatica_TestCase {
 	   otraAppAutomatica.setHoraInicioEstacionamiento(franjaInicial);
 	   otraAppAutomatica.setHoraFinDeEstacionamiento(franjaFin);
 	   
-	   assertEquals(96 ,otraAppAutomatica.precioTotal());
+	   assertEquals(192 ,otraAppAutomatica.precioTotal());
 	}
 
 	

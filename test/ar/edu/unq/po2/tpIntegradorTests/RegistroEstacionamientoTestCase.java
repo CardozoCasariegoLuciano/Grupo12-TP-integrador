@@ -54,7 +54,7 @@ class RegistroEstacionamientoTestCase {
 		
 		unEstacionamientoPuntoDeVenta.finalizarRegistro();		
 		
-		assertTrue(unEstacionamientoPuntoDeVenta.estacionamientoEstaAcitvo());
+		assertFalse(unEstacionamientoPuntoDeVenta.estacionamientoEstaAcitvo());
 		
 	}	
 	

@@ -51,7 +51,10 @@ public class EstacionamientoViaPuntoDeVenta extends Estacionamiento {
 		
 	}
 	
-
+	public void finalizarRegistro() {
+		
+		this.estaActivo = false;
+	}
 
 	
 	
