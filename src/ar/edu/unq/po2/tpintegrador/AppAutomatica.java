@@ -21,7 +21,7 @@ public class AppAutomatica implements ModoDeApp {
 					&& !(this.app.sem.existeEstacionamientoDe(this.app.getPatente()))) {
 				this.app.decrementarSaldo(this.app.sem.getCosto());
 				this.app.sem.registrarEstacionamientoViaApp(new EstacionamientoViaApp(app));
-				this.horaInicioEstacionamiento = LocalTime.now();
+				this.setHoraInicioEstacionamiento(LocalTime.now());
 				this.alertaDeInicioDeEstacionamiento();
 			} else
 				System.out.println("Saldo insuficiente. Estacionamiento no permitido.");
@@ -61,13 +61,31 @@ public class AppAutomatica implements ModoDeApp {
 
 	
 	
+	
+
+	public LocalTime getHoraInicioEstacionamiento() {
+		return horaInicioEstacionamiento;
+	}
+
+	public void setHoraInicioEstacionamiento(LocalTime horaInicioEstacionamiento) {
+		this.horaInicioEstacionamiento = horaInicioEstacionamiento;
+	}
+
+	public LocalTime getHoraFinDeEstacionamiento() {
+		return horaFinDeEstacionamiento;
+	}
+
+	public void setHoraFinDeEstacionamiento(LocalTime horaFinDeEstacionamiento) {
+		this.horaFinDeEstacionamiento = horaFinDeEstacionamiento;
+	}
 
 	public float precioTotal() {
 		return (this.app.sem.getCosto() * this.cantidadDeHoras());
 	}
 
+	
 	public int cantidadDeHoras() {
-		return Math.abs(this.horaInicioEstacionamiento.getHour() - this.horaFinDeEstacionamiento.getHour());
+		return Math.abs(this.getHoraInicioEstacionamiento().getHour() - this.getHoraFinDeEstacionamiento().getHour());
 	}
 
 	
